@@ -1,4 +1,3 @@
-import * as demo from 'lib/demo.data'
 import { urlForImage } from 'lib/sanity.image'
 import type { Metadata } from 'next'
 import type { Image } from 'sanity'
@@ -10,7 +9,7 @@ export function defineMetadata({
   baseTitle,
   description,
   image,
-  title,
+  title
 }: {
   baseTitle?: string
   description?: string
@@ -19,21 +18,21 @@ export function defineMetadata({
 }) {
   const metaTitle = [
     ...(title ? [title] : []),
-    ...(baseTitle ? [baseTitle] : []),
+    ...(baseTitle ? [baseTitle] : [])
   ].join(' | ')
 
   const imageUrl =
     image && urlForImage(image)?.width(1200).height(627).fit('crop').url()
 
   return {
-    title: metaTitle || demo.title,
+    title: metaTitle || 'Personel Website',
     themeColor: '#000',
     description,
     openGraph: imageUrl
       ? {
-          images: [imageUrl],
+          images: [imageUrl]
         }
-      : undefined,
+      : undefined
   } satisfies Metadata
 }
 

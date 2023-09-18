@@ -6,7 +6,7 @@ import { LiveQuery } from 'next-sanity/preview/live-query'
 import NavbarLayout from './NavbarLayout'
 import NavbarPreview from './NavbarPreview'
 
-export async function Navbar() {
+export async function NavbarComponent() {
   const data = await getSettings()
 
   return (

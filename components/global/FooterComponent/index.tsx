@@ -6,7 +6,7 @@ import { LiveQuery } from 'next-sanity/preview/live-query'
 import FooterLayout from './FooterLayout'
 import FooterPreview from './FooterPreview'
 
-export async function Footer() {
+export async function FooterComponent() {
   const data = await getSettings()
 
   return (
