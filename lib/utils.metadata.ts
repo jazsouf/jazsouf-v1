@@ -25,7 +25,7 @@ export function defineMetadata({
     image && urlForImage(image)?.width(1200).height(627).fit('crop').url()
 
   return {
-    title: metaTitle || 'Personel Website',
+    title: 'JAZSOUF' || 'Personal Website',
     themeColor: '#000',
     description,
     openGraph: imageUrl
