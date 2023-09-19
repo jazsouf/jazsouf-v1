@@ -9,14 +9,14 @@ import {
   pagesBySlugQuery,
   projectBySlugQuery,
   projectPaths,
-  settingsQuery,
+  settingsQuery
 } from 'lib/sanity.queries'
 import { draftMode } from 'next/headers'
 import type {
   HomePagePayload,
   PagePayload,
   ProjectPayload,
-  SettingsPayload,
+  SettingsPayload
 } from 'types'
 
 import { revalidateSecret } from './sanity.api'
@@ -29,7 +29,7 @@ const DEFAULT_TAGS = [] as string[]
 export async function sanityFetch<QueryResponse>({
   query,
   params = DEFAULT_PARAMS,
-  tags = DEFAULT_TAGS,
+  tags = DEFAULT_TAGS
 }: {
   query: string
   params?: QueryParams
@@ -38,7 +38,7 @@ export async function sanityFetch<QueryResponse>({
   const isDraftMode = draftMode().isEnabled
   if (isDraftMode && !token) {
     throw new Error(
-      'The `SANITY_API_READ_TOKEN` environment variable is required.',
+      'The `SANITY_API_READ_TOKEN` environment variable is required.'
     )
   }
 
@@ -53,19 +53,19 @@ export async function sanityFetch<QueryResponse>({
     ...(isDraftMode && {
       cache: undefined,
       token: token,
-      perspective: 'previewDrafts',
+      perspective: 'previewDrafts'
     }),
     next: {
-      ...(isDraftMode && { revalidate: 30 }),
-      tags,
-    },
+      ...(isDraftMode ? { revalidate: 30 } : { revalidate: 604800 }),
+      tags
+    }
   })
 }
 
 export function getSettings() {
   return sanityFetch<SettingsPayload>({
     query: settingsQuery,
-    tags: ['settings', 'home', 'page', 'project'],
+    tags: ['settings', 'home', 'page', 'project']
   })
 }
 
@@ -73,7 +73,7 @@ export function getPageBySlug(slug: string) {
   return sanityFetch<PagePayload | null>({
     query: pagesBySlugQuery,
     params: { slug },
-    tags: [`page:${slug}`],
+    tags: [`page:${slug}`]
   })
 }
 
@@ -81,21 +81,21 @@ export function getProjectBySlug(slug: string) {
   return sanityFetch<ProjectPayload | null>({
     query: projectBySlugQuery,
     params: { slug },
-    tags: [`project:${slug}`],
+    tags: [`project:${slug}`]
   })
 }
 
 export function getHomePage() {
   return sanityFetch<HomePagePayload | null>({
     query: homePageQuery,
-    tags: ['home', 'project'],
+    tags: ['home', 'project']
   })
 }
 
 export function getHomePageTitle() {
   return sanityFetch<string | null>({
     query: homePageTitleQuery,
-    tags: ['home'],
+    tags: ['home']
   })
 }
 
@@ -103,13 +103,13 @@ export function getPagesPaths() {
   return client.fetch<string[]>(
     pagePaths,
     {},
-    { token, perspective: 'published' },
+    { token, perspective: 'published' }
   )
 }
 export function getProjectsPaths() {
   return client.fetch<string[]>(
     projectPaths,
     {},
-    { token, perspective: 'published' },
+    { token, perspective: 'published' }
   )
 }
