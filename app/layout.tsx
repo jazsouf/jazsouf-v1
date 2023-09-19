@@ -10,7 +10,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable} bg-[#000B00]`}
+      className={`${mono.variable} ${sans.variable} ${serif.variable} bg-[#281A14]`}
     >
       <body>{children}</body>
     </html>
