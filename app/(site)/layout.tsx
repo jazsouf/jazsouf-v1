@@ -20,7 +20,7 @@ export default async function IndexRoute({
   const isDraftMode = draftMode().isEnabled
 
   const layout = (
-    <div className="flex min-h-screen flex-col bg-[#16160E] text-white ">
+    <div className="flex min-h-screen flex-col bg-[#281A14] text-white ">
       {isDraftMode && <PreviewBanner />}
       <Suspense>
         {/* @ts-expect-error Server Component */}
