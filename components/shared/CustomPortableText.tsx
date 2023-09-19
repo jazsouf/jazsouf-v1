@@ -6,7 +6,7 @@ import { Image } from 'sanity'
 
 export function CustomPortableText({
   paragraphClasses,
-  value,
+  value
 }: {
   paragraphClasses?: string
   value: PortableTextBlock[]
@@ -15,7 +15,7 @@ export function CustomPortableText({
     block: {
       normal: ({ children }) => {
         return <p className={paragraphClasses}>{children}</p>
-      },
+      }
     },
     marks: {
       link: ({ children, value }) => {
@@ -28,11 +28,11 @@ export function CustomPortableText({
             {children}
           </a>
         )
-      },
+      }
     },
     types: {
       image: ({
-        value,
+        value
       }: {
         value: Image & { alt?: string; caption?: string }
       }) => {
@@ -44,7 +44,7 @@ export function CustomPortableText({
               classesWrapper="relative aspect-[16/9]"
             />
             {value?.caption && (
-              <div className="font-sans text-sm text-gray-600">
+              <div className="font-sans text-sm text-gray-400">
                 {value.caption}
               </div>
             )}
@@ -54,8 +54,8 @@ export function CustomPortableText({
       timeline: ({ value }) => {
         const { items } = value || {}
         return <TimelineSection timelines={items} />
-      },
-    },
+      }
+    }
   }
 
   return <PortableText components={components} value={value} />

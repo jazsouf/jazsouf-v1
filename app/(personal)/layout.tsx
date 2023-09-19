@@ -9,22 +9,23 @@ import { draftMode } from 'next/headers'
 import { Suspense } from 'react'
 
 const PreviewProvider = dynamic(
-  () => import('components/preview/PreviewProvider'),
+  () => import('components/preview/PreviewProvider')
 )
 
 export default async function IndexRoute({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
   const isDraftMode = draftMode().isEnabled
 
   const layout = (
-    <div className="flex min-h-screen flex-col bg-[#14130e] text-black">
+    <div className="flex min-h-screen flex-col bg-[#16160E] text-white ">
       {isDraftMode && <PreviewBanner />}
-      {/* <Suspense>
-        <Navbar />
-      </Suspense> */}
+      <Suspense>
+        {/* @ts-expect-error Server Component */}
+        <NavbarComponent />
+      </Suspense>
       <div className="mt-24 flex-grow px-4 md:px-16 lg:px-32">
         <Suspense>{children}</Suspense>
       </div>
@@ -32,7 +33,6 @@ export default async function IndexRoute({
         {/* @ts-expect-error Server Component */}
         <FooterComponent />
       </Suspense>
-      
     </div>
   )
 

@@ -12,19 +12,19 @@ export function Page({ data }: PageProps) {
 
   return (
     <div>
-      <div className="mb-14">
+      <div className="pb-14">
         {/* Header */}
         <Header title={title} description={overview} />
+        <div className=" h-1  border-t py-2"></div>
 
         {/* Body */}
         {body && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+            paragraphClasses="font-serif max-w-3xl text-gray-400 text-xl pt-2"
             value={body}
           />
         )}
       </div>
-      <div className="absolute left-0 w-screen border-t" />
     </div>
   )
 }

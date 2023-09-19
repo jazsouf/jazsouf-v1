@@ -16,15 +16,13 @@ export default function ImageBox({
   width = 3500,
   height = 2000,
   size = '100vw',
-  classesWrapper,
+  classesWrapper
 }: ImageBoxProps) {
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).fit('crop').url()
 
   return (
-    <div
-      className={`w-full overflow-hidden rounded-[3px] bg-gray-50 ${classesWrapper}`}
-    >
+    <div className={`w-full overflow-hidden bg-gray-500 ${classesWrapper}`}>
       {imageUrl && (
         <Image
           className="absolute h-full w-full"

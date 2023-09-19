@@ -18,11 +18,11 @@ export function ProjectPage({ data }: ProjectPageProps) {
     overview,
     site,
     tags,
-    title,
+    title
   } = data ?? {}
 
   const startYear = new Date(duration?.start!).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : 'Now'
+  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : ''
 
   return (
     <div>
@@ -30,7 +30,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
         {/* Header */}
         <Header title={title} description={overview} />
 
-        <div className="rounded-md border">
+        <div className=" border">
           {/* Image  */}
           <ImageBox
             image={coverImage}
@@ -38,12 +38,12 @@ export function ProjectPage({ data }: ProjectPageProps) {
             classesWrapper="relative aspect-[16/9]"
           />
 
-          <div className="divide-inherit grid grid-cols-1 divide-y lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          <div className="divide-inherit grid grid-cols-1 divide-y text-white [text-wrap:balance] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
             {/* Duration */}
             {!!(startYear && endYear) && (
               <div className="p-3 lg:p-4">
-                <div className="text-xs md:text-sm">Duration</div>
-                <div className="text-md md:text-lg">{`${startYear} -  ${endYear}`}</div>
+                <div className="text-xs md:text-sm">Date</div>
+                <div className="text-md md:text-lg">{`${startYear}`}</div>
               </div>
             )}
 
@@ -62,7 +62,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
                 {site && (
                   <Link
                     target="_blank"
-                    className="text-md break-words md:text-lg"
+                    className="text-md break-words md:text-sm"
                     href={site}
                   >
                     {site}
@@ -88,7 +88,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
         {/* Description */}
         {description && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-xl text-gray-600"
+            paragraphClasses="font-serif max-w-3xl text-xl text-gray-400"
             value={description}
           />
         )}

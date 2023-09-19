@@ -3,7 +3,7 @@ import type { MilestoneItem } from 'types'
 
 export function TimelineItem({
   isLast,
-  milestone,
+  milestone
 }: {
   isLast: boolean
   milestone: MilestoneItem
@@ -19,7 +19,7 @@ export function TimelineItem({
       <div className="flex flex-col">
         {/* Thumbnail */}
         <div
-          className="relative overflow-hidden rounded-md bg-black"
+          className="relative overflow-hidden  bg-black"
           style={{ width: '65px', height: '65px' }}
         >
           <ImageBox
@@ -37,7 +37,7 @@ export function TimelineItem({
         {/* Title */}
         <div className="font-bold text-black">{title}</div>
         {/* Tags */}
-        <div className="text-sm text-gray-600 ">
+        <div className="text-sm text-gray-400 ">
           {tags?.map((tag, key) => (
             <span key={key}>
               {tag}
@@ -47,7 +47,7 @@ export function TimelineItem({
           {startYear} - {endYear}
         </div>
         {/* Description */}
-        <div className="pb-5 pt-3 font-serif text-gray-600">{description}</div>
+        <div className="pb-5 pt-3 font-serif text-gray-400">{description}</div>
       </div>
     </div>
   )

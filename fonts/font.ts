@@ -25,15 +25,15 @@ export const mono = localFont({
 export const sans = localFont({
   src: [
     {
-      path: './Lena.ttf',
+      path: './Mona-Sans.ttf',
       weight: '100'
     },
     {
-      path: './Lena.ttf',
+      path: './Mona-Sans.ttf',
       weight: '400'
     },
     {
-      path: './Lena.ttf',
+      path: './Mona-Sans.ttf',
       weight: '700'
     }
   ],
