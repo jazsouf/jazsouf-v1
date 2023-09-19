@@ -7,8 +7,8 @@ module.exports = {
     ...theme,
     // Overriding fontFamily to use @next/font loaded families
     fontFamily: {
-      mono: 'var(--mono)',
-      sans: 'var(--sans)',
+      mono: 'var(--mono), Arial',
+      sans: 'var(--sans), Arial',
       serif: 'var(--serif)'
     }
   },

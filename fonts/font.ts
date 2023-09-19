@@ -38,7 +38,7 @@ export const sans = localFont({
     }
   ],
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: 'Arial',
   variable: '--sans',
   preload: true,
   fallback: ['system ui', 'arial']
@@ -57,7 +57,7 @@ export const serif = localFont({
     { path: './LeagueSpartan-VariableFont_wght.ttf', weight: '700' }
   ],
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: 'Arial',
   variable: '--serif',
   preload: true,
   fallback: ['system-ui', 'arial']
