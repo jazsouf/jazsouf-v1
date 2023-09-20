@@ -2,10 +2,10 @@
 
 export function PreviewBanner() {
   return (
-    <div className="bg-[#020304] p-3 text-center text-[#F8FAF5]">
+    <div className="bg-s-color text-t-color p-3 text-center">
       {'Previewing drafts. '}
       <a
-        className="underline transition hover:opacity-50"
+        className="hover:text-lh-color underline transition"
         href="/api/disable-draft"
       >
         Back to published

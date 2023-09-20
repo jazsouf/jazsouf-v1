@@ -16,7 +16,7 @@ export const mono = localFont({
 export const sans = localFont({
   src: [
     {
-      path: './Hubot-Sans.woff2'
+      path: './BebasNeue-Regular.ttf'
     }
   ],
   display: 'swap',
@@ -29,7 +29,7 @@ export const sans = localFont({
 export const serif = localFont({
   src: [
     {
-      path: './Mona-Sans.woff2'
+      path: './Karbon-Regular.ttf'
     }
   ],
   display: 'swap',

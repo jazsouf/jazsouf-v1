@@ -13,8 +13,8 @@ export function ProjectListItem(props: ProjectProps) {
 
   return (
     <div
-      className={`flex flex-col gap-x-5 p-2 transition hover:bg-black/70 xl:flex-row ${
-        odd && 'border-b border-t xl:flex-row-reverse'
+      className={`hover:bg-s-color flex flex-col gap-x-5 p-2 transition xl:flex-row ${
+        odd && 'border-b-color border-b border-t xl:flex-row-reverse'
       }`}
     >
       <div className="w-full xl:w-9/12">
@@ -40,7 +40,7 @@ function TextBox({ project }: { project: ShowcaseProject }) {
           {project.title}
         </div>
         {/* Overview  */}
-        <div className="font-serif text-[#F8FBF8]">
+        <div className="text-t-color font-serif">
           <CustomPortableText value={project.overview as PortableTextBlock[]} />
         </div>
       </div>

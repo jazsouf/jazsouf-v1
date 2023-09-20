@@ -14,13 +14,13 @@ export function Header(props: HeaderProps) {
     <div className={`${centered ? 'text-center' : 'w-5/6 lg:w-4/5'}`}>
       {/* Title */}
       {title && title !== 'JAZSOUF' && (
-        <div className=" font-sans text-3xl font-bold tracking-tight text-[#ffffff55] md:text-7xl">
+        <div className=" text-a-color/10 font-sans text-2xl tracking-widest md:text-5xl">
           {title}
         </div>
       )}
       {/* Description */}
       {description && (
-        <div className="space-y-4 pt-5 text-left font-sans text-2xl tracking-wide text-[#F8FBF8] [text-wrap:pretty] md:text-4xl">
+        <div className="text-t-color space-y-4 pt-5 text-left font-serif text-xl tracking-wide [text-wrap:pretty] md:text-2xl">
           <CustomPortableText value={description} />
         </div>
       )}

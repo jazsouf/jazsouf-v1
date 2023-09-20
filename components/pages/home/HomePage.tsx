@@ -18,7 +18,7 @@ export function HomePage({ data }: HomePageProps) {
       {title && <Header centered title={title} description={overview} />}
       {/* Showcase projects */}
       {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="mx-auto max-w-[100rem] border-l border-r border-t">
+        <div className="border-b-color mx-auto max-w-[100rem] border-l border-r border-t">
           {showcaseProjects.map((project, key) => {
             const href = resolveHref(project._type, project.slug)
             if (!href) {
