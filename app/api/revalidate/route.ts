@@ -43,14 +43,18 @@ export async function POST(req: NextRequest) {
     }
 
     revalidateTag(body._type)
+    console.log(body?._type || 'no type')
+    console.log(body?.slug || 'no slug')
+
     if (body.slug) {
       revalidateTag(`${body._type}:${body.slug}`)
+      console.log('revalidate', body.slug)
     }
     return NextResponse.json({
       status: 200,
       revalidated: true,
       now: Date.now(),
-      body,
+      body
     })
   } catch (err: any) {
     console.error(err)

@@ -1,6 +1,6 @@
 import 'tailwindcss/tailwind.css'
 
-import { mono, sans, serif } from 'fonts/font'
+import { mono, sans, serif } from 'fonts/_font'
 
 export default async function RootLayout({
   children
@@ -10,7 +10,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable} bg-p-color`}
+      className={`${mono.variable} ${sans.variable} ${serif.variable} bg-s-color`}
     >
       <body>{children}</body>
     </html>
