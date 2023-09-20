@@ -1,5 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types'
 import { CustomPortableText } from 'components/shared/CustomPortableText'
+import Link from 'next/link'
 import type { SettingsPayload } from 'types'
 
 interface FooterProps {
@@ -16,6 +17,12 @@ export default function Footer(props: FooterProps) {
           value={footer}
         />
       )}
+      <p>
+        <Link href={'http://creativecommons.org/licenses/by-nc/4.0/'}>
+          CC BY-NC 4.0
+        </Link>{' '}
+        {new Date().getFullYear()} © Soufiane El Jazouli
+      </p>
     </footer>
   )
 }
