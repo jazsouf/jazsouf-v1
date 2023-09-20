@@ -20,17 +20,17 @@ export default defineType({
           type: 'reference',
           to: [
             {
-              type: 'home',
+              type: 'home'
             },
             {
-              type: 'page',
+              type: 'page'
             },
             {
-              type: 'project',
-            },
-          ],
-        },
-      ],
+              type: 'project'
+            }
+          ]
+        }
+      ]
     }),
     defineField({
       name: 'footer',
@@ -52,13 +52,18 @@ export default defineType({
                     name: 'href',
                     type: 'url',
                     title: 'Url',
-                  },
-                ],
-              },
-            ],
-          },
-        }),
-      ],
+                    validation: (Rule) =>
+                      Rule.uri({
+                        allowRelative: true,
+                        scheme: ['http', 'https', 'mailto', 'tel']
+                      })
+                  }
+                ]
+              }
+            ]
+          }
+        })
+      ]
     }),
     defineField({
       name: 'ogImage',
@@ -66,15 +71,15 @@ export default defineType({
       type: 'image',
       description: 'Displayed on social cards and search engine results.',
       options: {
-        hotspot: true,
-      },
-    }),
+        hotspot: true
+      }
+    })
   ],
   preview: {
     prepare() {
       return {
-        title: 'Menu Items',
+        title: 'Menu Items'
       }
-    },
-  },
+    }
+  }
 })
