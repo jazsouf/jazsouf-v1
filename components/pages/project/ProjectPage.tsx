@@ -38,7 +38,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
             classesWrapper="relative aspect-[16/9]"
           />
 
-          <div className="divide-inherit grid grid-cols-1 divide-y text-white [text-wrap:balance] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          <div className="divide-inherit grid grid-cols-1 divide-y text-[#F8FAF5] [text-wrap:pretty] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
             {/* Duration */}
             {!!(startYear && endYear) && (
               <div className="p-3 lg:p-4">
@@ -88,7 +88,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
         {/* Description */}
         {description && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-xl text-gray-400"
+            paragraphClasses="font-serif max-w-3xl text-xl text-[##F8FBF8]"
             value={description}
           />
         )}

@@ -16,11 +16,10 @@ export function Page({ data }: PageProps) {
         {/* Header */}
         <Header title={title} description={overview} />
         <div className=" h-1 py-2"></div>
-
         {/* Body */}
         {body && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-400 text-xl lg:text-2xl"
+            paragraphClasses="font-serif tracking-widest font-thin max-w-3xl text-[#F8FBF8] text-xl lg:text-4xl py-2"
             value={body}
           />
         )}

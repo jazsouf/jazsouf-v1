@@ -9,7 +9,7 @@ export default function Footer(props: FooterProps) {
   const { data } = props
   const footer = data?.footer || ([] as PortableTextBlock[])
   return (
-    <footer className="bottom-0 mt-2 w-full border-t bg-[#16160E] py-4  text-center text-white">
+    <footer className="bottom-0 mt-2 w-full border-t bg-[#101010] py-4  text-center text-[#F8FAF5]">
       {footer && (
         <CustomPortableText
           paragraphClasses="text-md md:text-xl"

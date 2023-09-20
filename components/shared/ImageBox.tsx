@@ -1,5 +1,7 @@
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
+import { colorBlur } from 'utility_functions/colorsBlur'
+import { getImageDimensions } from '@sanity/asset-utils'
 
 interface ImageBoxProps {
   image?: { asset?: any }
@@ -22,15 +24,16 @@ export default function ImageBox({
     image && urlForImage(image)?.height(height).width(width).fit('crop').url()
 
   return (
-    <div className={`w-full overflow-hidden bg-gray-500 ${classesWrapper}`}>
+    <div className={`w-full overflow-hidden bg-[#F8FBF8] ${classesWrapper}`}>
       {imageUrl && (
         <Image
-          className="absolute h-full w-full"
+          className={`absolute h-full w-full`}
           alt={alt}
           width={width}
           height={height}
           sizes={size}
           src={imageUrl}
+          placeholder={colorBlur(46, 41, 48)}
         />
       )}
     </div>

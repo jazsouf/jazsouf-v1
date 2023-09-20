@@ -71,7 +71,12 @@ export default defineType({
                   {
                     name: 'href',
                     type: 'url',
-                    title: 'Url'
+                    title: 'Url',
+                    validation: (Rule) =>
+                      Rule.uri({
+                        allowRelative: true,
+                        scheme: ['http', 'https', 'mailto', 'tel']
+                      })
                   }
                 ]
               }

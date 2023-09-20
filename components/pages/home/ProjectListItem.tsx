@@ -40,7 +40,7 @@ function TextBox({ project }: { project: ShowcaseProject }) {
           {project.title}
         </div>
         {/* Overview  */}
-        <div className="font-serif text-gray-400">
+        <div className="font-serif text-[#F8FBF8]">
           <CustomPortableText value={project.overview as PortableTextBlock[]} />
         </div>
       </div>
