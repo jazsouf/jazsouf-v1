@@ -26,7 +26,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
 
   return (
     <div>
-      <div className="mb-20 space-y-6">
+      <div className="animate-smooth-fade-in mb-20 space-y-6">
         {/* Header */}
         <Header title={title} description={overview} />
 
