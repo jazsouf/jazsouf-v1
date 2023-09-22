@@ -31,7 +31,7 @@ export function TimelineItem({
           />
         </div>
         {/* Vertical line */}
-        {!isLast && <div className="bg-p-color mt-2 w-px grow self-center" />}
+        {!isLast && <div className="bg-p-color w-px grow self-center pt-1" />}
       </div>
       <div className="flex-initial pl-4">
         {/* Title */}

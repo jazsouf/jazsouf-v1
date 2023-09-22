@@ -3,6 +3,8 @@ import 'server-only'
 import type { QueryParams } from '@sanity/client'
 import { client } from 'lib/sanity.client'
 import {
+  artBySlugQuery,
+  artPaths,
   homePageQuery,
   homePageTitleQuery,
   pagePaths,
@@ -13,6 +15,7 @@ import {
 } from 'lib/sanity.queries'
 import { draftMode } from 'next/headers'
 import type {
+  ArtPayload,
   HomePagePayload,
   PagePayload,
   ProjectPayload,
@@ -85,6 +88,14 @@ export function getProjectBySlug(slug: string) {
   })
 }
 
+export function getArtBySlug(slug: string) {
+  return sanityFetch<ArtPayload | null>({
+    query: artBySlugQuery,
+    params: { slug },
+    tags: [`art:${slug}`]
+  })
+}
+
 export function getHomePage() {
   return sanityFetch<HomePagePayload | null>({
     query: homePageQuery,
@@ -109,6 +120,13 @@ export function getPagesPaths() {
 export function getProjectsPaths() {
   return client.fetch<string[]>(
     projectPaths,
+    {},
+    { token, perspective: 'published' }
+  )
+}
+export function getArtsPaths() {
+  return client.fetch<string[]>(
+    artPaths,
     {},
     { token, perspective: 'published' }
   )

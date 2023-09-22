@@ -45,8 +45,20 @@ export const projectBySlugQuery = groq`
   }
 `
 
+export const artBySlugQuery = groq`*[_type == "art" && slug.current == $slug][0] {
+_id,
+"slug": slug.current,
+image,
+overview,
+title,
+}`
+
 export const projectPaths = groq`
   *[_type == "project" && slug.current != null].slug.current
+`
+
+export const artPaths = groq`
+  *[_type == "art" && slug.current != null].slug.current
 `
 
 export const pagePaths = groq`

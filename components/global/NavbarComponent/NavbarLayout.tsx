@@ -9,7 +9,7 @@ export default function Navbar(props: NavbarProps) {
   const { data } = props
   const menuItems = data?.menuItems || ([] as MenuItem[])
   return (
-    <div className="bg-s-color border-b-color sticky top-0 z-10 flex flex-wrap items-center gap-x-5 border-b px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
+    <div className="bg-s-color border-b-color top-0 z-10 flex w-full flex-row-reverse flex-wrap items-center gap-x-5 border-b px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
       {menuItems &&
         menuItems.map((menuItem, key) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug)

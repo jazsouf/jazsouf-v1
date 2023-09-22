@@ -10,9 +10,10 @@ import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import Iframe, {
   defineUrlResolver,
-  IframeOptions,
+  IframeOptions
 } from 'sanity-plugin-iframe-pane'
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
+import art from 'schemas/documents/art'
 import page from 'schemas/documents/page'
 import project from 'schemas/documents/project'
 import duration from 'schemas/objects/duration'
@@ -29,11 +30,13 @@ export const PREVIEWABLE_DOCUMENT_TYPES = [
   home.name,
   page.name,
   project.name,
+  art.name
 ] satisfies string[]
 
 export const PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS = [
   page.name,
   project.name,
+  art.name
 ] satisfies typeof PREVIEWABLE_DOCUMENT_TYPES
 
 // Used to generate URLs for drafts and live previews
@@ -41,12 +44,12 @@ export const PREVIEW_BASE_URL = '/api/draft'
 
 export const urlResolver = defineUrlResolver({
   base: PREVIEW_BASE_URL,
-  requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS,
+  requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS
 })
 
 export const iframeOptions = {
   url: urlResolver,
-  urlSecretId: previewSecretId,
+  urlSecretId: previewSecretId
 } satisfies IframeOptions
 
 export default defineConfig({
@@ -64,10 +67,11 @@ export default defineConfig({
       duration,
       page,
       project,
+      art,
       // Objects
       milestone,
-      timeline,
-    ],
+      timeline
+    ]
   },
   plugins: [
     deskTool({
@@ -83,12 +87,12 @@ export default defineConfig({
             // Default form view
             S.view.form(),
             // Preview
-            S.view.component(Iframe).options(iframeOptions).title('Preview'),
+            S.view.component(Iframe).options(iframeOptions).title('Preview')
           ])
         }
 
         return null
-      },
+      }
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([home.name, settings.name]),
@@ -97,12 +101,12 @@ export default defineConfig({
       base: PREVIEW_BASE_URL,
       requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS,
       urlSecretId: previewSecretId,
-      matchTypes: PREVIEWABLE_DOCUMENT_TYPES,
+      matchTypes: PREVIEWABLE_DOCUMENT_TYPES
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion }),
-  ],
+    visionTool({ defaultApiVersion: apiVersion })
+  ]
 })

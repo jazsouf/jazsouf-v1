@@ -15,12 +15,12 @@ const MotionPage = ({
     setKey((prevKey) => prevKey + 1)
   }, [])
   const fadeInDown = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -5 },
     visible: {
       opacity: 1,
-      y: 0,
+      y: [-5, 3, -2, 0],
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         ease: [0.43, 0.13, 0.23, 0.96]
       }
     }

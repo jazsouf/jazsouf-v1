@@ -43,6 +43,14 @@ export interface PagePayload {
   title?: string
   slug?: string
 }
+export interface ArtPayload {
+  body?: PortableTextBlock[]
+  name?: string
+  overview?: PortableTextBlock[]
+  title?: string
+  slug?: string
+  image?: Image
+}
 
 export interface ProjectPayload {
   client?: string

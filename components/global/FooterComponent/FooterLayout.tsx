@@ -10,14 +10,14 @@ export default function Footer(props: FooterProps) {
   const { data } = props
   const footer = data?.footer || ([] as PortableTextBlock[])
   return (
-    <footer className="bg-s-color text-l-color border-b-color bottom-0 mt-2 w-full border-t  py-4 text-center">
+    <footer className="bg-s-color text-l-color border-b-color bottom-0 w-full border-t  py-4 text-center">
       {footer && (
         <CustomPortableText
           paragraphClasses="text-md md:text-xl"
           value={footer}
         />
       )}
-      <p>
+      <p className="text-xs">
         <Link href={'http://creativecommons.org/licenses/by-nc/4.0/'}>
           CC BY-NC 4.0
         </Link>{' '}

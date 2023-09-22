@@ -26,7 +26,7 @@ export default async function IndexRoute({
         {/* @ts-expect-error Server Component */}
         <NavbarComponent />
       </Suspense>
-      <div className="mt-24 flex-grow px-4 md:px-16 lg:px-32">
+      <div className="flex-grow px-4 pt-14 md:px-16 lg:px-32">
         <Suspense>{children}</Suspense>
       </div>
       <Suspense>
