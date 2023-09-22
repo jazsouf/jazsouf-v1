@@ -2,6 +2,7 @@ import { CustomPortableText } from 'components/shared/CustomPortableText'
 import { Header } from 'components/shared/Header'
 import type { PagePayload } from 'types'
 
+import MotionPage from './MotionPage'
 export interface PageProps {
   data: PagePayload | null
 }
@@ -18,9 +19,14 @@ export function Page({ data }: PageProps) {
         <div className=" h-1 py-2"></div>
         {/* Body */}
         {body && (
-          <CustomPortableText
-            paragraphClasses="font-serif tracking-wide font-thin max-w-3xl text-t-color text-xl lg:text-2xl"
-            value={body}
+          <MotionPage
+            classname=""
+            content={
+              <CustomPortableText
+                paragraphClasses="font-serif tracking-wide font-thin max-w-3xl text-t-color text-lg lg:text-xl"
+                value={body}
+              />
+            }
           />
         )}
       </div>

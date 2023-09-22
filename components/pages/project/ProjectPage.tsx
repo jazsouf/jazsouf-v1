@@ -26,7 +26,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
 
   return (
     <div>
-      <div className="animate-smooth-fade-in mb-20 space-y-6">
+      <div className="animate-fade-in mb-20 space-y-6">
         {/* Header */}
         <Header title={title} description={overview} />
 
@@ -62,10 +62,10 @@ export function ProjectPage({ data }: ProjectPageProps) {
                 {site && (
                   <Link
                     target="_blank"
-                    className="text-md break-words md:text-sm"
+                    className="text-md hover:text-ah-color text-a-color break-words underline md:text-sm"
                     href={site}
                   >
-                    {site}
+                    {title}
                   </Link>
                 )}
               </div>

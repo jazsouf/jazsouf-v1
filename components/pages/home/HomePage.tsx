@@ -24,7 +24,7 @@ export function HomePage({ data }: HomePageProps) {
         </span>
       </h2>
       {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="border-b-color mx-auto !mt-0 max-w-[100rem] border-l border-r border-t">
+        <div className="border-b-color mx-auto !mt-0 max-w-[100rem] border">
           {showcaseProjects.map((project, key) => {
             const href = resolveHref(project._type, project.slug)
             if (!href) {

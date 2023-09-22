@@ -36,7 +36,7 @@ module.exports = {
       },
       hardFadeIn: {
         '0%': { opacity: '0', filter: 'brightness(1)' },
-        '10%': { opacity: '1', filter: 'brightness(2)' },
+        '10%': { opacity: '1', filter: 'brightness(1.1)' },
         '100%': { opacity: '1', filter: 'brightness(1)' }
       },
       smoothFadeIn: {
