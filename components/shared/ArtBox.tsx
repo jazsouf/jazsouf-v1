@@ -14,18 +14,20 @@ interface ArtBoxProps {
 export default function ArtBox({
   image,
   alt = 'Art image',
-  size = '100vw'
+  size = '100vw',
 }: ArtBoxProps) {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const { height, width, aspectRatio } = getImageDimensions(
-    image?.asset?._ref as string
+    image?.asset?._ref as string,
   )
   const imageUrl =
     image && urlForImage(image)?.height(height).width(width).url()
   const containerBasic = `max-h-[1200px] flex-grow place-items-center grid h-auto min-w-[60vw]`
 
-  const containerClasses = isLoaded ? 'animate-fade-in opacity-1' : 'opacity-0 '
+  const containerClasses = isLoaded
+    ? 'animate-smooth-fade-in opacity-1'
+    : 'opacity-0'
   const overContainerClasses = isLoaded ? '' : 'bg-p-color'
 
   const parentSizes =

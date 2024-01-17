@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 const MotionDiv = ({
   classname,
-  content
+  content,
 }: {
   classname: string
   content: any
@@ -21,9 +21,9 @@ const MotionDiv = ({
       y: [3, -2, 1, 0],
       transition: {
         duration: 0.8,
-        ease: [0.43, 0.13, 0.23, 0.96]
-      }
-    }
+        ease: [0.43, 0.13, 0.23, 0.96],
+      },
+    },
   }
   return (
     <motion.div
