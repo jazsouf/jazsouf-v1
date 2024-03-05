@@ -12,8 +12,8 @@ module.exports = {
       serif: 'var(--serif)',
     },
     colors: {
-      'p-color': '#2B1A17',
-      's-color': '#3E2723',
+      'p-color': '#000000',
+      's-color': '#0B0B0B',
       'a-color': '#FFD700',
       'ah-color': '#B87333',
       't-color': '#F5F5F5',

@@ -20,7 +20,7 @@ const MotionDiv = ({
       opacity: 1,
       y: [3, -2, 1, 0],
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.43, 0.13, 0.23, 0.96],
       },
     },

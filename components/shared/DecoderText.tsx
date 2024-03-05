@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import ClientOnly from './ClientOnly'
+import { set } from 'sanity'
 
 const getRandomChar = () => {
   const randomCode = Math.floor(Math.random() * 26) + 65 // ASCII codes for A-Z
@@ -27,12 +28,12 @@ const DecodeChar = ({ char }) => {
       current++
     }
 
-    const timer = setInterval(increment, 10)
+    const timer = setInterval(increment, 5)
 
     return () => clearInterval(timer)
   }, [char, currentChar])
 
-  return <motion.span>{currentChar}</motion.span>
+  return <span>{currentChar}</span>
 }
 
 const DecoderText = ({ text }) => {

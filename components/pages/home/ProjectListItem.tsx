@@ -36,7 +36,7 @@ function TextBox({ project }: { project: ShowcaseProject }) {
     <div className="relative  flex w-full flex-col justify-between p-3 xl:pt-0">
       <div>
         {/* Title */}
-        <div className="mb-2 pt-2 text-xl font-extrabold tracking-tight md:text-3xl">
+        <div className="mb-2 pt-2 text-xl font-extrabold md:text-3xl">
           {project.title}
         </div>
         {/* Overview  */}

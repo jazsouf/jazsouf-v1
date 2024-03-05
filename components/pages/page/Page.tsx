@@ -23,7 +23,7 @@ export function Page({ data }: PageProps) {
             classname=""
             content={
               <CustomPortableText
-                paragraphClasses="font-serif tracking-wide font-thin max-w-3xl text-t-color text-lg lg:text-xl"
+                paragraphClasses="font-serif font-thin max-w-3xl text-t-color text-lg lg:text-xl"
                 value={body}
               />
             }

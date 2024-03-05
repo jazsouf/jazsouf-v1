@@ -16,14 +16,14 @@ export function Header(props: HeaderProps) {
   return (
     <div className={`${centered ? 'text-center' : 'w-5/6 lg:w-4/5'}`}>
       {title && (
-        <h1 className=" text-ah-color text-left font-sans text-2xl tracking-widest md:text-5xl">
+        <h1 className=" text-ah-color text-left font-sans text-2xl md:text-5xl font-bold">
           <DecoderText text={title?.toLocaleUpperCase()} />
         </h1>
       )}
 
       {description && (
         <MotionDiv
-          classname="text-t-color space-y-4 pt-5 text-left font-serif text-xl [text-wrap:pretty] md:text-2xl"
+          classname="text-t-color space-y-4 pt-5 text-left font-serif text-md [text-wrap:pretty] md:text-xl max-w-xl"
           content={<CustomPortableText value={description} />}
         />
       )}

@@ -21,7 +21,7 @@ export default function Navbar(props: NavbarProps) {
               key={key}
               className={`hover:text-ah-color font-sans ${
                 menuItem?._type === 'home'
-                  ? 'text-a-color font-bold tracking-wide md:text-3xl'
+                  ? 'text-a-color font-bold md:text-3xl'
                   : 'text-a-color/70 md:text-xl'
               }`}
               href={href}
