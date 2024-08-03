@@ -12,7 +12,7 @@ export function ProjectListItem(props: ProjectProps) {
   const { project, odd } = props;
 
   return (
-    <div className="hover:bg-p-color animate-hard-fade-in flex flex-col p-2 gap-2 transition">
+    <div className="hover:bg-ah-color animate-hard-fade-in flex flex-col p-4 gap-2 transition">
       <div className="w-full">
         <ImageBox
           image={project.coverImage}
