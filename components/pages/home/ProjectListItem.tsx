@@ -1,34 +1,30 @@
-import type { PortableTextBlock } from '@portabletext/types'
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import ImageBox from 'components/shared/ImageBox'
-import type { ShowcaseProject } from 'types'
+import type { PortableTextBlock } from "@portabletext/types";
+import { CustomPortableText } from "components/shared/CustomPortableText";
+import ImageBox from "components/shared/ImageBox";
+import type { ShowcaseProject } from "types";
 
 interface ProjectProps {
-  project: ShowcaseProject
-  odd: number
+  project: ShowcaseProject;
+  odd: number;
 }
 
 export function ProjectListItem(props: ProjectProps) {
-  const { project, odd } = props
+  const { project, odd } = props;
 
   return (
-    <div
-      className={`hover:bg-s-color animate-hard-fade-in flex flex-col gap-x-5 p-2 transition xl:flex-row ${
-        odd && 'border-b-color border-b border-t xl:flex-row-reverse'
-      }`}
-    >
-      <div className="w-full xl:w-9/12">
+    <div className="hover:bg-p-color animate-hard-fade-in flex flex-col p-2 gap-2 transition">
+      <div className="w-full">
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative aspect-[16/9]"
+          classesWrapper="relative aspect-[16/9] border-[0.5px]"
         />
       </div>
-      <div className="flex xl:w-1/4">
+      <div className="flex overflow-clip">
         <TextBox project={project} />
       </div>
     </div>
-  )
+  );
 }
 
 function TextBox({ project }: { project: ShowcaseProject }) {
@@ -40,18 +36,18 @@ function TextBox({ project }: { project: ShowcaseProject }) {
           {project.title}
         </div>
         {/* Overview  */}
-        <div className="text-t-color font-serif">
+        <div className="text-t-color font-mono">
           <CustomPortableText value={project.overview as PortableTextBlock[]} />
         </div>
       </div>
       {/* Tags */}
-      <div className="mt-4 flex flex-row gap-x-2">
-        {project.tags?.map((tag, key) => (
-          <div className="text-sm font-medium lowercase md:text-lg" key={key}>
+      <div className="mt-2 flex flex-row gap-x-2">
+        {project.tags?.map((tag) => (
+          <div className="text-sm font-medium lowercase" key={tag}>
             #{tag}
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }

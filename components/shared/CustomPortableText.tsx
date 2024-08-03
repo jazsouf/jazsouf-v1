@@ -1,21 +1,21 @@
-import { PortableText, PortableTextComponents } from '@portabletext/react'
-import type { PortableTextBlock } from '@portabletext/types'
-import ImageBox from 'components/shared/ImageBox'
-import { TimelineSection } from 'components/shared/TimelineSection'
-import { Image } from 'sanity'
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
+import ImageBox from "components/shared/ImageBox";
+import { TimelineSection } from "components/shared/TimelineSection";
+import type { Image } from "sanity";
 
 export function CustomPortableText({
   paragraphClasses,
-  value
+  value,
 }: {
-  paragraphClasses?: string
-  value: PortableTextBlock[]
+  paragraphClasses?: string;
+  value: PortableTextBlock[];
 }) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <p className={paragraphClasses}>{children}</p>
-      }
+        return <p className={paragraphClasses}>{children}</p>;
+      },
     },
     marks: {
       link: ({ children, value }) => {
@@ -27,14 +27,14 @@ export function CustomPortableText({
           >
             {children}
           </a>
-        )
-      }
+        );
+      },
     },
     types: {
       image: ({
-        value
+        value,
       }: {
-        value: Image & { alt?: string; caption?: string }
+        value: Image & { alt?: string; caption?: string };
       }) => {
         return (
           <div className="my-6 space-y-2">
@@ -44,19 +44,19 @@ export function CustomPortableText({
               classesWrapper="relative aspect-[16/9]"
             />
             {value?.caption && (
-              <div className="text-t-color font-sans text-sm">
+              <div className="text-t-color font-mono text-sm">
                 {value.caption}
               </div>
             )}
           </div>
-        )
+        );
       },
       timeline: ({ value }) => {
-        const { items } = value || {}
-        return <TimelineSection timelines={items} />
-      }
-    }
-  }
+        const { items } = value || {};
+        return <TimelineSection timelines={items} />;
+      },
+    },
+  };
 
-  return <PortableText components={components} value={value} />
+  return <PortableText components={components} value={value} />;
 }

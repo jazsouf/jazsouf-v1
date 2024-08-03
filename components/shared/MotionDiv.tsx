@@ -1,19 +1,19 @@
-'use client'
-import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+"use client";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const MotionDiv = ({
   classname,
   content,
 }: {
-  classname: string
-  content: any
+  classname: string;
+  content: any;
 }) => {
-  const [key, setKey] = useState(0)
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
-    setKey((prevKey) => prevKey + 1)
-  }, [])
+    setKey((prevKey) => prevKey + 1);
+  }, []);
   const fadeInUp = {
     hidden: { opacity: 0, y: 5 },
     visible: {
@@ -24,18 +24,18 @@ const MotionDiv = ({
         ease: [0.43, 0.13, 0.23, 0.96],
       },
     },
-  }
+  };
   return (
     <motion.div
       key={key}
-      initial={'hidden'}
+      initial={"hidden"}
       animate="visible"
       variants={fadeInUp}
       className={classname}
     >
       {content}
     </motion.div>
-  )
-}
+  );
+};
 
-export default MotionDiv
+export default MotionDiv;

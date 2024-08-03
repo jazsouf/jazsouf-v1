@@ -1,6 +1,6 @@
-import clsx, { ClassValue } from 'clsx'
-import { twMerge } from 'tw-merge'
+import clsx, { type ClassValue } from "clsx";
+import { twMerge } from "tw-merge";
 
 export default function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }

@@ -1,11 +1,11 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Header } from 'components/shared/Header'
-import ImageBox from 'components/shared/ImageBox'
-import Link from 'next/link'
-import type { ProjectPayload } from 'types'
+import { CustomPortableText } from "components/shared/CustomPortableText";
+import { Header } from "components/shared/Header";
+import ImageBox from "components/shared/ImageBox";
+import Link from "next/link";
+import type { ProjectPayload } from "types";
 
 export interface ProjectPageProps {
-  data: ProjectPayload | null
+  data: ProjectPayload | null;
 }
 
 export function ProjectPage({ data }: ProjectPageProps) {
@@ -18,11 +18,13 @@ export function ProjectPage({ data }: ProjectPageProps) {
     overview,
     site,
     tags,
-    title
-  } = data ?? {}
+    title,
+  } = data ?? {};
 
-  const startYear = new Date(duration?.start!).getFullYear()
-  const endYear = duration?.end ? new Date(duration?.end).getFullYear() : ''
+  const startYear = duration?.start
+    ? new Date(duration.start).getFullYear()
+    : null;
+  const endYear = duration?.end ? new Date(duration.end).getFullYear() : null;
 
   return (
     <div>
@@ -62,7 +64,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
                 {site && (
                   <Link
                     target="_blank"
-                    className="text-md hover:text-ah-color text-a-color break-words underline md:text-sm"
+                    className="text-md hover:text-ah-color text-a-color break-words underline md:text-sm transition"
                     href={site}
                   >
                     {title}
@@ -75,8 +77,8 @@ export function ProjectPage({ data }: ProjectPageProps) {
             <div className="p-3 lg:p-4">
               <div className="text-xs md:text-sm">Tags</div>
               <div className="text-md flex flex-row flex-wrap md:text-lg">
-                {tags?.map((tag, key) => (
-                  <div key={key} className="mr-1 break-words ">
+                {tags?.map((tag) => (
+                  <div key={tag} className="mr-1 break-words ">
                     #{tag}
                   </div>
                 ))}
@@ -88,14 +90,14 @@ export function ProjectPage({ data }: ProjectPageProps) {
         {/* Description */}
         {description && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-xl text-t-color"
+            paragraphClasses="font-mono max-w-3xl text-xl text-t-color"
             value={description}
           />
         )}
       </div>
       <div className="border-b-color absolute left-0 w-screen border-t" />
     </div>
-  )
+  );
 }
 
-export default ProjectPage
+export default ProjectPage;

@@ -1,15 +1,15 @@
-import { CustomPortableText } from 'components/shared/CustomPortableText'
-import { Header } from 'components/shared/Header'
-import type { PagePayload } from 'types'
+import { CustomPortableText } from "components/shared/CustomPortableText";
+import { Header } from "components/shared/Header";
+import type { PagePayload } from "types";
 
-import MotionPage from './MotionPage'
+import MotionPage from "./MotionPage";
 export interface PageProps {
-  data: PagePayload | null
+  data: PagePayload | null;
 }
 
 export function Page({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { body, overview, title } = data ?? {}
+  const { body, overview, title } = data ?? {};
 
   return (
     <div>
@@ -23,7 +23,7 @@ export function Page({ data }: PageProps) {
             classname=""
             content={
               <CustomPortableText
-                paragraphClasses="font-serif font-thin max-w-3xl text-t-color text-lg lg:text-xl"
+                paragraphClasses="font-mono font-thin max-w-3xl text-t-color text-lg lg:text-xl"
                 value={body}
               />
             }
@@ -31,7 +31,7 @@ export function Page({ data }: PageProps) {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Page
+export default Page;

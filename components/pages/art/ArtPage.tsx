@@ -1,15 +1,15 @@
-import ArtBox from 'components/shared/ArtBox'
-import { Header } from 'components/shared/Header'
-import type { ArtPayload } from 'types'
+import ArtBox from "components/shared/ArtBox";
+import { Header } from "components/shared/Header";
+import type { ArtPayload } from "types";
 
 export interface ArtPageProps {
-  data: ArtPayload | null
+  data: ArtPayload | null;
 }
 
 export function ArtPage({ data }: ArtPageProps) {
   // Default to an empty object to allow previews on non-existent documents
 
-  const { image, overview, title } = data ?? {}
+  const { image, overview, title } = data ?? {};
 
   return (
     <div>
@@ -18,7 +18,7 @@ export function ArtPage({ data }: ArtPageProps) {
         <Header title={title} description={overview} />
       </div>
     </div>
-  )
+  );
 }
 
-export default ArtPage
+export default ArtPage;

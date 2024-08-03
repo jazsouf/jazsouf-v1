@@ -2,60 +2,65 @@
  * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
  */
 
-import { visionTool } from '@sanity/vision'
-import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
-import { pageStructure, singletonPlugin } from 'plugins/settings'
-import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+import { visionTool } from "@sanity/vision";
+import {
+  apiVersion,
+  dataset,
+  previewSecretId,
+  projectId,
+} from "lib/sanity.api";
+import { pageStructure, singletonPlugin } from "plugins/settings";
+import { defineConfig } from "sanity";
+import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import Iframe, {
   defineUrlResolver,
-  IframeOptions
-} from 'sanity-plugin-iframe-pane'
-import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
-import art from 'schemas/documents/art'
-import page from 'schemas/documents/page'
-import project from 'schemas/documents/project'
-import duration from 'schemas/objects/duration'
-import milestone from 'schemas/objects/milestone'
-import timeline from 'schemas/objects/timeline'
-import home from 'schemas/singletons/home'
-import settings from 'schemas/singletons/settings'
+  type IframeOptions,
+} from "sanity-plugin-iframe-pane";
+import { previewUrl } from "sanity-plugin-iframe-pane/preview-url";
+import { deskTool } from "sanity/desk";
+import art from "schemas/documents/art";
+import page from "schemas/documents/page";
+import project from "schemas/documents/project";
+import duration from "schemas/objects/duration";
+import milestone from "schemas/objects/milestone";
+import timeline from "schemas/objects/timeline";
+import home from "schemas/singletons/home";
+import settings from "schemas/singletons/settings";
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Next.js Personal Website with Sanity.io'
+  "Next.js Personal Website with Sanity.io";
 
 export const PREVIEWABLE_DOCUMENT_TYPES = [
   home.name,
   page.name,
   project.name,
-  art.name
-] satisfies string[]
+  art.name,
+] satisfies string[];
 
 export const PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS = [
   page.name,
   project.name,
-  art.name
-] satisfies typeof PREVIEWABLE_DOCUMENT_TYPES
+  art.name,
+] satisfies typeof PREVIEWABLE_DOCUMENT_TYPES;
 
 // Used to generate URLs for drafts and live previews
-export const PREVIEW_BASE_URL = '/api/draft'
+export const PREVIEW_BASE_URL = "/api/draft";
 
 export const urlResolver = defineUrlResolver({
   base: PREVIEW_BASE_URL,
-  requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS
-})
+  requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS,
+});
 
 export const iframeOptions = {
   url: urlResolver,
-  urlSecretId: previewSecretId
-} satisfies IframeOptions
+  urlSecretId: previewSecretId,
+} satisfies IframeOptions;
 
 export default defineConfig({
-  basePath: '/studio',
-  projectId: projectId || '',
-  dataset: dataset || '',
+  basePath: "/studio",
+  projectId: projectId || "",
+  dataset: dataset || "",
   title,
   schema: {
     // If you want more content types, you can add them to this array
@@ -70,8 +75,8 @@ export default defineConfig({
       art,
       // Objects
       milestone,
-      timeline
-    ]
+      timeline,
+    ],
   },
   plugins: [
     deskTool({
@@ -87,12 +92,15 @@ export default defineConfig({
             // Default form view
             S.view.form(),
             // Preview
-            S.view.component(Iframe).options(iframeOptions).title('Preview')
-          ])
+            S.view
+              .component(Iframe)
+              .options(iframeOptions)
+              .title("Preview"),
+          ]);
         }
 
-        return null
-      }
+        return null;
+      },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([home.name, settings.name]),
@@ -101,12 +109,12 @@ export default defineConfig({
       base: PREVIEW_BASE_URL,
       requiresSlug: PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS,
       urlSecretId: previewSecretId,
-      matchTypes: PREVIEWABLE_DOCUMENT_TYPES
+      matchTypes: PREVIEWABLE_DOCUMENT_TYPES,
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion })
-  ]
-})
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
+});
