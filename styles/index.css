@@ -1,7 +1,12 @@
+:root {
+  --mono: "Lucida Sans Typewriter", "Lucida Console", "Bitstream Vera Sans Mono";
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  font-family: var(--mono, monospace);
 }
 
 p:not(:last-child) {

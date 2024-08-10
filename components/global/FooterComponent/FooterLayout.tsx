@@ -13,7 +13,7 @@ export default function Footer(props: FooterProps) {
     <footer className="bg-s-color text-l-color bottom-0 w-full py-4 text-center">
       {footer && (
         <CustomPortableText
-          paragraphClasses="text-md md:text-xl"
+          paragraphClasses="text-md md:text-sm"
           value={footer}
         />
       )}

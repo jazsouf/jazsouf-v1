@@ -6,7 +6,7 @@ export interface ArtPageProps {
   data: ArtPayload | null;
 }
 
-export function ArtPage({ data }: ArtPageProps) {
+export default function ArtPage({ data }: ArtPageProps) {
   // Default to an empty object to allow previews on non-existent documents
 
   const { image, overview, title } = data ?? {};
@@ -20,5 +20,3 @@ export function ArtPage({ data }: ArtPageProps) {
     </div>
   );
 }
-
-export default ArtPage;

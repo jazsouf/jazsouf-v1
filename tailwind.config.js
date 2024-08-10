@@ -1,13 +1,9 @@
-const { theme } = require("@sanity/demo/tailwind");
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    ...theme,
-
     fontFamily: {
-      mono: "var(--mono)",
+      mono: "var(--mono, monospace)",
     },
     colors: {
       "p-color": "#000000",

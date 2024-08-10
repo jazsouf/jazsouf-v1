@@ -1,6 +1,7 @@
 import { resolveHref } from "lib/sanity.links";
 import Link from "next/link";
 import type { MenuItem, SettingsPayload } from "types";
+import NavLink from "./NavLink";
 
 interface NavbarProps {
   data: SettingsPayload;
@@ -15,19 +16,7 @@ export default function Navbar(props: NavbarProps) {
         if (!href) {
           return null;
         }
-        return (
-          <Link
-            key={menuItem.slug}
-            className={`hover:text-ah-color transition font-mono lowercase ${
-              menuItem?._type === "home"
-                ? "text-a-color font-bold md:text-xl"
-                : "text-a-color/90 md:text-xl"
-            }`}
-            href={href}
-          >
-            {menuItem.title}
-          </Link>
-        );
+        return <NavLink key={menuItem.slug} menuItem={menuItem} href={href} />;
       })}
     </div>
   );

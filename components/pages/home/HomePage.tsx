@@ -17,7 +17,7 @@ export function HomePage({ data }: HomePageProps) {
       {/* Header */}
       {title && <Header centered title={title} description={overview} />}
       {/* Showcase projects */}
-      <h2 className="text-ah-color !mt-0 pb-2 pt-6 font-mono italic md:text-xl">
+      <h2 className="text-a-color !mt-0 pb-2 pt-6 font-mono italic md:text-xl">
         Selected Projects{" "}
         <span className="font-mono text-xl font-extrabold md:text-2xl">
           &#8595;
