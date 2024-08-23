@@ -10,16 +10,14 @@ export default async function IndexRoute({
   children: React.ReactNode;
 }) {
   return (
-    <div className=" text-t-color flex min-h-screen flex-col max-w-xl mx-auto px-1">
+    <main className="text-t-color flex min-h-screen flex-col relative">
       <Suspense>
         <NavbarComponent />
       </Suspense>
-      <div className="flex-grow px-2 pt-14">
-        <Suspense>{children}</Suspense>
-      </div>
+      <Suspense>{children}</Suspense>
       <Suspense>
         <FooterComponent />
       </Suspense>
-    </div>
+    </main>
   );
 }

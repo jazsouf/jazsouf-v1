@@ -1,5 +1,4 @@
 import { resolveHref } from "lib/sanity.links";
-import Link from "next/link";
 import type { MenuItem, SettingsPayload } from "types";
 import NavLink from "./NavLink";
 
