@@ -1,6 +1,5 @@
 import { toPlainText } from "@portabletext/react";
-import { Page } from "components/pages/page/Page";
-import PagePreview from "components/pages/page/PagePreview";
+
 import {
   getHomePageTitle,
   getPageBySlug,
@@ -13,8 +12,8 @@ import type { Metadata } from "next";
 import { LiveQuery } from "next-sanity/preview/live-query";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-
-export const runtime = "edge";
+import EditorialPage from "./EditorialPage";
+import EditorialPagePreview from "./EditorialPagePreview";
 
 type Props = {
   params: { slug: string };
@@ -55,9 +54,9 @@ export default async function PageSlugRoute({ params }: Props) {
       query={pagesBySlugQuery}
       params={params}
       initialData={data}
-      as={PagePreview}
+      as={EditorialPagePreview}
     >
-      <Page data={data} />
+      <EditorialPage data={data} />
     </LiveQuery>
   );
 }

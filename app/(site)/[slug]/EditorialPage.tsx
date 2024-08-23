@@ -2,12 +2,12 @@ import { CustomPortableText } from "components/shared/CustomPortableText";
 import { Header } from "components/shared/Header";
 import type { PagePayload } from "types";
 
-import MotionPage from "./MotionPage";
+import MotionPage from "../../../components/shared/MotionPage";
 export interface PageProps {
   data: PagePayload | null;
 }
 
-export function Page({ data }: PageProps) {
+export default function EditorialPage({ data }: PageProps) {
   // Default to an empty object to allow previews on non-existent documents
   const { body, overview, title } = data ?? {};
 
@@ -16,7 +16,7 @@ export function Page({ data }: PageProps) {
       <div className="pb-14">
         {/* Header */}
         <Header title={title} description={overview} />
-        <div className=" h-1 py-2"></div>
+        <div className=" h-1 py-2" />
         {/* Body */}
         {body && (
           <MotionPage
@@ -33,5 +33,3 @@ export function Page({ data }: PageProps) {
     </div>
   );
 }
-
-export default Page;

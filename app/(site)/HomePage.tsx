@@ -1,8 +1,8 @@
-import { ProjectListItem } from "components/pages/home/ProjectListItem";
 import { Header } from "components/shared/Header";
 import { resolveHref } from "lib/sanity.links";
 import Link from "next/link";
 import type { HomePagePayload } from "types";
+import { ProjectListItem } from "./ProjectListItem";
 
 export interface HomePageProps {
   data: HomePagePayload | null;

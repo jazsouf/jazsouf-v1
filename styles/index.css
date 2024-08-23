@@ -1,5 +1,6 @@
 :root {
   --mono: "Lucida Sans Typewriter", "Lucida Console", "Bitstream Vera Sans Mono";
+  --main-gradient : background: conic-gradient(from 0deg at 50% 50%, #2727af, #692cb6, #a034a9, #cf418e, #f2596a, #ff7d3c, #ffa900, #fad726); 
 }
 
 html {

@@ -1,6 +1,5 @@
 import { toPlainText } from "@portabletext/react";
-import { ProjectPage } from "components/pages/project/ProjectPage";
-import ProjectPreview from "components/pages/project/ProjectPreview";
+
 import {
   getHomePageTitle,
   getProjectBySlug,
@@ -12,8 +11,8 @@ import type { Metadata } from "next";
 import { LiveQuery } from "next-sanity/preview/live-query";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-
-export const runtime = "edge";
+import ProjectPage from "./ProjectPage";
+import ProjectPagePreview from "./ProjectPagePreview";
 
 type Props = {
   params: { slug: string };
@@ -53,7 +52,7 @@ export default async function ProjectSlugRoute({ params }: Props) {
       query={projectBySlugQuery}
       params={params}
       initialData={data}
-      as={ProjectPreview}
+      as={ProjectPagePreview}
     >
       <ProjectPage data={data} />
     </LiveQuery>

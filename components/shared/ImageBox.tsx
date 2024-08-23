@@ -1,9 +1,10 @@
 import { urlForImage } from "lib/sanity.image";
 import Image from "next/image";
+import type { Image as ImageType } from "sanity";
 import { colorBlur } from "utility_functions/colorsBlur";
 
 interface ImageBoxProps {
-  image?: { asset?: any };
+  image?: ImageType;
   alt?: string;
   width?: number;
   height?: number;
@@ -25,7 +26,7 @@ export default function ImageBox({
     <div className={`bg-s-color w-full overflow-hidden ${classesWrapper}`}>
       {imageUrl && (
         <Image
-          className={`absolute h-full w-full`}
+          className="absolute h-full w-full"
           alt={alt}
           width={width}
           height={height}
