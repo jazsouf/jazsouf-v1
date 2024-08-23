@@ -1,19 +1,13 @@
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
-    remotePatterns: [
-      { hostname: "cdn.sanity.io" },
-      { hostname: "source.unsplash.com" },
-    ],
+    remotePatterns: [{ hostname: "cdn.sanity.io" }],
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  experimental: {
-    logging: { level: "verbose" },
   },
 };
 
