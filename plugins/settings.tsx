@@ -3,10 +3,8 @@
  */
 
 import type { DocumentDefinition } from "sanity";
-import { Iframe } from "sanity-plugin-iframe-pane";
-import type { StructureResolver } from "sanity/desk";
 
-import { PREVIEWABLE_DOCUMENT_TYPES, iframeOptions } from "../sanity.config";
+import type { StructureResolver } from "sanity/structure";
 
 export const singletonPlugin = (types: string[]) => {
   return {
@@ -45,7 +43,7 @@ export const pageStructure = (
     // Desktool can understand
     const singletonItems = typeDefArray.map((typeDef) => {
       return S.listItem()
-        .title(typeDef.title!)
+        .title(typeDef.title || "No Title")
         .icon(typeDef.icon)
         .child(
           S.editor()
@@ -56,14 +54,6 @@ export const pageStructure = (
               // Default form view
               S.view.form(),
               // Preview
-              ...(PREVIEWABLE_DOCUMENT_TYPES.includes(typeDef.name as any)
-                ? [
-                    S.view
-                      .component(Iframe)
-                      .options(iframeOptions)
-                      .title("Preview"),
-                  ]
-                : []),
             ]),
         );
     });
