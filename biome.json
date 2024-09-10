@@ -1,12 +1,12 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.2/schema.json",
   "organizeImports": {
-    "ignore": [".next"],
+    "ignore": [".next", "./sanity-cms/types.ts"],
     "enabled": true
   },
   "linter": {
     "enabled": true,
-    "ignore": [".next"],
+    "ignore": [".next", "./sanity-cms/types.ts"],
     "rules": {
       "recommended": true
     }
@@ -14,6 +14,7 @@
   "formatter": {
     "ignore": [".next"],
     "indentStyle": "space",
-    "enabled": true
+    "enabled": true,
+    "lineWidth": 100
   }
 }

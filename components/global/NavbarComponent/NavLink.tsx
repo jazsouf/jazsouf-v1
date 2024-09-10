@@ -1,9 +1,9 @@
 "use client";
 
+import type { MenuItem } from "@/sanity-cms/types";
+import cn from "@/utils/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { MenuItem } from "types";
-import cn from "utility_functions/cn";
 
 export default function NavLink({
   menuItem,

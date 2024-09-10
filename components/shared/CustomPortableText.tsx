@@ -1,15 +1,15 @@
-import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import type { PortableTextBlock } from "@portabletext/types";
-import ImageBox from "components/shared/ImageBox";
-import { TimelineSection } from "components/shared/TimelineSection";
+import type { PAGE_BY_SLUGResult } from "@/sanity-cms/types";
+import { PortableText, type PortableTextComponents } from "next-sanity";
 import type { Image } from "sanity";
+import ImageBox from "./ImageBox";
+import { TimelineSection } from "./TimelineSection";
 
 export function CustomPortableText({
   paragraphClasses,
   value,
 }: {
   paragraphClasses?: string;
-  value: PortableTextBlock[];
+  value: PAGE_BY_SLUGResult["body"];
 }) {
   const components: PortableTextComponents = {
     block: {

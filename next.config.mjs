@@ -1,13 +1,21 @@
 /** @type {import('next').NextConfig} */
 const config = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   images: {
-    remotePatterns: [{ hostname: "cdn.sanity.io" }],
+    formats: ["image/avif", "image/webp"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+      },
+    ],
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    taint: true,
   },
 };
 

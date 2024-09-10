@@ -1,13 +1,9 @@
-import { CustomPortableText } from "components/shared/CustomPortableText";
-import { Header } from "components/shared/Header";
-import type { PagePayload } from "types";
+import { CustomPortableText } from "@/components/shared/CustomPortableText";
+import { Header } from "@/components/shared/Header";
+import MotionPage from "@/components/shared/MotionPage";
+import type { PAGE_BY_SLUGResult } from "@/sanity-cms/types";
 
-import MotionPage from "../../../components/shared/MotionPage";
-export interface PageProps {
-  data: PagePayload | null;
-}
-
-export default function EditorialPage({ data }: PageProps) {
+export default function EditorialPage({ data }: { data: PAGE_BY_SLUGResult }) {
   // Default to an empty object to allow previews on non-existent documents
   const { body, overview, title } = data ?? {};
 

@@ -1,7 +1,7 @@
-import type { PortableTextBlock } from "@portabletext/types";
-import { CustomPortableText } from "components/shared/CustomPortableText";
-import ImageBox from "components/shared/ImageBox";
-import type { ShowcaseProject } from "types";
+import { CustomPortableText } from "@/components/shared/CustomPortableText";
+import ImageBox from "@/components/shared/ImageBox";
+import type { ShowcaseProject } from "@/sanity-cms/types";
+import type { PortableTextBlock } from "next-sanity";
 
 interface ProjectProps {
   project: ShowcaseProject;
@@ -9,7 +9,7 @@ interface ProjectProps {
 }
 
 export function ProjectListItem(props: ProjectProps) {
-  const { project, odd } = props;
+  const { project } = props;
 
   return (
     <div className="hover:bg-ah-color animate-hard-fade-in flex flex-col p-4 gap-2 transition">

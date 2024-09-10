@@ -1,7 +1,7 @@
-import { urlForImage } from "lib/sanity.image";
+import { urlForImage } from "@/sanity-cms/lib/image";
+import { colorBlur } from "@/utils/colorsBlur";
 import Image from "next/image";
 import type { Image as ImageType } from "sanity";
-import { colorBlur } from "utility_functions/colorsBlur";
 
 interface ImageBoxProps {
   image?: ImageType;

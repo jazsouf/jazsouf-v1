@@ -1,5 +1,5 @@
-import ImageBox from "components/shared/ImageBox";
-import type { MilestoneItem } from "types";
+import type { MilestoneItem } from "@/sanity-cms/types";
+import ImageBox from "./ImageBox";
 
 export function TimelineItem({
   isLast,
@@ -17,7 +17,6 @@ export function TimelineItem({
   return (
     <div className={`flex min-h-[200px] font-mono ${!isLast && "pb-2"}`}>
       <div className="flex flex-col">
-        {/* Thumbnail */}
         <div
           className="bg-p-color relative  overflow-hidden"
           style={{ width: "65px", height: "65px" }}
@@ -30,16 +29,15 @@ export function TimelineItem({
             height={65}
           />
         </div>
-        {/* Vertical line */}
+
         {!isLast && <div className="bg-p-color w-px grow self-center pt-1" />}
       </div>
       <div className="flex-initial pl-4">
-        {/* Title */}
         <div className="text-t-color font-bold">{title}</div>
-        {/* Tags */}
+
         <div className="text-t-color text-sm ">
-          {tags?.map((tag, key) => (
-            <span key={key}>
+          {tags?.map((tag) => (
+            <span key={tag + title}>
               {tag}
               <span className="mx-1">●</span>
             </span>

@@ -1,6 +1,6 @@
-import ArtBox from "components/shared/ArtBox";
-import { Header } from "components/shared/Header";
-import type { ArtPayload } from "types";
+import ArtBox from "@/components/shared/ArtBox";
+import { Header } from "@/components/shared/Header";
+import type { ArtPayload } from "@/sanity-cms/types";
 
 export interface ArtPageProps {
   data: ArtPayload | null;

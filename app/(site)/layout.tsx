@@ -1,7 +1,7 @@
 import "styles/index.css";
 
-import { FooterComponent } from "components/global/FooterComponent";
-import { NavbarComponent } from "components/global/NavbarComponent";
+import Footer from "@/components/global/Footer";
+import Navbar from "@/components/global/NavbarComponent/Navbar";
 import { Suspense } from "react";
 
 export default async function IndexRoute({
@@ -12,11 +12,11 @@ export default async function IndexRoute({
   return (
     <main className="text-t-color flex min-h-screen flex-col relative">
       <Suspense>
-        <NavbarComponent />
+        <Navbar />
       </Suspense>
       <Suspense>{children}</Suspense>
       <Suspense>
-        <FooterComponent />
+        <Footer />
       </Suspense>
     </main>
   );

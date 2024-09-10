@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 const MotionDiv = ({
   classname,
-  content,
+  children,
 }: {
   classname: string;
-  content: any;
+  children: React.ReactNode;
 }) => {
   const fadeInUp = {
     hidden: { opacity: 0, y: 5 },
@@ -26,7 +26,7 @@ const MotionDiv = ({
       variants={fadeInUp}
       className={classname}
     >
-      {content}
+      {children}
     </motion.div>
   );
 };

@@ -1,7 +1,7 @@
-import { Header } from "components/shared/Header";
-import { resolveHref } from "lib/sanity.links";
+import { Header } from "@/components/shared/Header";
+import { resolveHref } from "@/sanity-cms/lib/links";
+import type { HomePagePayload } from "@/sanity-cms/types";
 import Link from "next/link";
-import type { HomePagePayload } from "types";
 import { ProjectListItem } from "./ProjectListItem";
 
 export interface HomePageProps {
@@ -14,7 +14,6 @@ export function HomePage({ data }: HomePageProps) {
 
   return (
     <div className="flex flex-col gap-24 px-12 sm:px-20 md:px-[12.5%] pb-32 sm:pb-20">
-      {/* Header */}
       {title && <Header centered title={title} description={overview} />}
       {/* Showcase projects */}
       <h2 className="text-a-color font-mono italic md:text-xl">

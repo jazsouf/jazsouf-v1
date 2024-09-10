@@ -1,14 +1,15 @@
-import { toPlainText } from "@portabletext/react";
+import {
+  getArtBySlug,
+  getArtsPaths,
+  getHomePageTitle,
+} from "@/sanity-cms/lib/fetch";
 
-import { getArtBySlug, getArtsPaths, getHomePageTitle } from "lib/sanity.fetch";
-import { artBySlugQuery } from "lib/sanity.queries";
-import { defineMetadata } from "lib/utils.metadata";
+import { defineMetadata } from "@/utils/metadata";
 import type { Metadata } from "next";
-import { LiveQuery } from "next-sanity/preview/live-query";
+import { toPlainText } from "next-sanity";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import ArtPage from "./ArtPage";
-import ArtPagePreview from "./ArtPagePreview";
 
 type Props = {
   params: { slug: string };
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export async function generateStaticParams() {
   const slugs = await getArtsPaths();
 
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map((slug: string) => ({ slug }));
 }
 
 export default async function ArtSlugRoute({ params }: Props) {
@@ -43,15 +44,5 @@ export default async function ArtSlugRoute({ params }: Props) {
     notFound();
   }
 
-  return (
-    <LiveQuery
-      enabled={draftMode().isEnabled}
-      query={artBySlugQuery}
-      params={params}
-      initialData={data}
-      as={ArtPagePreview}
-    >
-      <ArtPage data={data} />
-    </LiveQuery>
-  );
+  return <ArtPage data={data} />;
 }

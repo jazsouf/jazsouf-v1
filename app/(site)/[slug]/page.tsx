@@ -1,19 +1,10 @@
-import { toPlainText } from "@portabletext/react";
-
-import {
-  getHomePageTitle,
-  getPageBySlug,
-  getPagesPaths,
-  getSettings,
-} from "lib/sanity.fetch";
-import { pagesBySlugQuery } from "lib/sanity.queries";
-import { defineMetadata } from "lib/utils.metadata";
+import { getPageBySlug, getPagesPaths } from "@/sanity-cms/lib/fetch";
+import { defineMetadata } from "@/utils/metadata";
 import type { Metadata } from "next";
-import { LiveQuery } from "next-sanity/preview/live-query";
+import { toPlainText } from "next-sanity";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import EditorialPage from "./EditorialPage";
-import EditorialPagePreview from "./EditorialPagePreview";
 
 type Props = {
   params: { slug: string };
@@ -22,17 +13,12 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
 
-  const [settings, page, homePageTitle] = await Promise.all([
-    getSettings(),
-    getPageBySlug(slug),
-    getHomePageTitle(),
-  ]);
+  const page = await getPageBySlug(slug);
 
   return defineMetadata({
-    baseTitle: homePageTitle ?? undefined,
+    baseTitle: "Souf",
+    title: page?.title ?? undefined,
     description: page?.overview ? toPlainText(page.overview) : "",
-    image: settings?.ogImage,
-    title: page?.title,
   });
 }
 
@@ -48,15 +34,5 @@ export default async function PageSlugRoute({ params }: Props) {
     notFound();
   }
 
-  return (
-    <LiveQuery
-      enabled={draftMode().isEnabled}
-      query={pagesBySlugQuery}
-      params={params}
-      initialData={data}
-      as={EditorialPagePreview}
-    >
-      <EditorialPage data={data} />
-    </LiveQuery>
-  );
+  return <EditorialPage data={data} />;
 }
