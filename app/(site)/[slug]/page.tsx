@@ -30,7 +30,7 @@ export async function generateStaticParams() {
 export default async function PageSlugRoute({ params }: Props) {
   const data = await getPageBySlug(params.slug);
 
-  if (!data && !draftMode().isEnabled) {
+  if (!data) {
     notFound();
   }
 

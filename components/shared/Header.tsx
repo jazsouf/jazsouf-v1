@@ -1,9 +1,9 @@
 import type { PAGE_BY_SLUGResult } from "@/sanity-cms/types";
 import { CustomPortableText } from "./CustomPortableText";
-import MotionDiv from "./MotionDiv";
+
 interface HeaderProps {
   centered?: boolean;
-  description?: PAGE_BY_SLUGResult["body"];
+  description?: NonNullable<PAGE_BY_SLUGResult>["overview"];
   title?: string | null;
 }
 export function Header(props: HeaderProps) {
@@ -14,9 +14,10 @@ export function Header(props: HeaderProps) {
   return (
     <div className="text-left">
       {description && (
-        <MotionDiv classname="text-t-color text-left font-mono text-md [text-wrap:pretty] md:text-xl max-w-xl min-h-[75svh] grid place-items-center">
-          <CustomPortableText value={description} />
-        </MotionDiv>
+        <CustomPortableText
+          value={description}
+          paragraphClasses="text-t-color text-left font-mono text-md [text-wrap:pretty] md:text-xl max-w-xl min-h-[75svh] grid place-items-center"
+        />
       )}
     </div>
   );
