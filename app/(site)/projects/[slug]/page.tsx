@@ -1,8 +1,4 @@
-import {
-  getHomePageTitle,
-  getProjectBySlug,
-  getProjectsPaths,
-} from "@/sanity-cms/lib/fetch";
+import { getHomePageTitle, getProjectBySlug, getProjectsPaths } from "@/sanity-cms/lib/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
 import { draftMode } from "next/headers";
@@ -17,10 +13,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = params;
 
-  const [homePageTitle, project] = await Promise.all([
-    getHomePageTitle(),
-    getProjectBySlug(slug),
-  ]);
+  const [homePageTitle, project] = await Promise.all([getHomePageTitle(), getProjectBySlug(slug)]);
 
   return defineMetadata({
     baseTitle: homePageTitle ?? undefined,
@@ -31,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const slugs: string[] = await getProjectsPaths();
-  return slugs.map((slug) => ({ slug }));
+  const slugs = await getProjectsPaths();
+  return slugs.map((slug) => slug);
 }
 
 export default async function ProjectSlugRoute({ params }: Props) {

@@ -1,4 +1,4 @@
-import { urlForImage } from "@/sanity-cms/lib/image";
+import { urlFor } from "@/sanity-cms/lib/image";
 import type { Metadata } from "next";
 import type { Image } from "sanity";
 
@@ -16,13 +16,9 @@ export function defineMetadata({
   image?: Image;
   title?: string;
 }) {
-  const metaTitle = [
-    ...(title ? [title] : []),
-    ...(baseTitle ? [baseTitle] : []),
-  ].join(" | ");
+  const metaTitle = [...(title ? [title] : []), ...(baseTitle ? [baseTitle] : [])].join(" | ");
 
-  const imageUrl =
-    image && urlForImage(image)?.width(1200).height(627).fit("crop").url();
+  const imageUrl = image && urlFor(image)?.width(1200).height(627).fit("crop").url();
 
   return {
     title: "Soufiane's Space",

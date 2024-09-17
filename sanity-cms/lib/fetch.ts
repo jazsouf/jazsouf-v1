@@ -61,11 +61,11 @@ export function getHomePageTitle() {
 }
 
 export function getPagesPaths() {
-  return client.fetch(PAGE_SLUGS, {}, { token, perspective: "published" });
+  return client.withConfig({ useCdn: false }).fetch(PAGE_SLUGS, {}, { cache: "no-store" });
 }
 export function getProjectsPaths() {
-  return sanityFetch({ query: PROJECT_SLUGS, tags: [] });
+  return client.withConfig({ useCdn: false }).fetch(PROJECT_SLUGS, {}, { cache: "no-store" });
 }
 export function getArtsPaths() {
-  return sanityFetch({ query: ART_SLUGS, tags: [] });
+  return client.withConfig({ useCdn: false }).fetch(ART_SLUGS, {}, { cache: "no-store" });
 }

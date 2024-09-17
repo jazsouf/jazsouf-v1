@@ -1,4 +1,4 @@
-// import "server-only";
+import "server-only";
 
 import { type QueryOptions, type QueryParams, createClient } from "next-sanity";
 
@@ -49,6 +49,6 @@ export async function sanityFetch<const QueryString extends string>({
       tags, // for tag-based revalidation
     },
     cache: isDraftMode ? "no-store" : tags.length ? "force-cache" : undefined,
-    useCdn: !!tags.length,
+    useCdn: !tags.length,
   });
 }

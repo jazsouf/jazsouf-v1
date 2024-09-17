@@ -2,7 +2,7 @@ import { getPageBySlug, getPagesPaths } from "@/sanity-cms/lib/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import type { Metadata } from "next";
 import { toPlainText } from "next-sanity";
-import { draftMode } from "next/headers";
+
 import { notFound } from "next/navigation";
 import EditorialPage from "./EditorialPage";
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const slugs = await getPagesPaths();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map((slug) => slug);
 }
 
 export default async function PageSlugRoute({ params }: Props) {
