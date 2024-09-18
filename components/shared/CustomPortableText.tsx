@@ -1,4 +1,8 @@
-import type { PAGE_BY_SLUGResult } from "@/sanity-cms/types";
+import type {
+  ART_BY_SLUGResult,
+  PAGE_BY_SLUGResult,
+  SETTINGS_QUERYResult,
+} from "@/sanity-cms/types";
 import { PortableText, type PortableTextComponents } from "next-sanity";
 import type { Image } from "sanity";
 import ImageBox from "./ImageBox";
@@ -9,7 +13,10 @@ export function CustomPortableText({
   value,
 }: {
   paragraphClasses?: string;
-  value: PAGE_BY_SLUGResult["body"];
+  value?:
+    | NonNullable<PAGE_BY_SLUGResult>["body"]
+    | NonNullable<ART_BY_SLUGResult>["overview"]
+    | NonNullable<SETTINGS_QUERYResult>["footer"];
 }) {
   const components: PortableTextComponents = {
     block: {
@@ -38,15 +45,9 @@ export function CustomPortableText({
       }) => {
         return (
           <div className="my-6 space-y-2">
-            <ImageBox
-              image={value}
-              alt={value.alt}
-              classesWrapper="relative aspect-[16/9]"
-            />
+            <ImageBox image={value} alt={value.alt} classesWrapper="relative aspect-[16/9]" />
             {value?.caption && (
-              <div className="text-t-color font-mono text-sm">
-                {value.caption}
-              </div>
+              <div className="text-t-color font-mono text-sm">{value.caption}</div>
             )}
           </div>
         );
@@ -58,5 +59,5 @@ export function CustomPortableText({
     },
   };
 
-  return <PortableText components={components} value={value} />;
+  return value && <PortableText components={components} value={value} />;
 }

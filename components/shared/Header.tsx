@@ -1,9 +1,12 @@
-import type { PAGE_BY_SLUGResult } from "@/sanity-cms/types";
+import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
 import { CustomPortableText } from "./CustomPortableText";
 
 interface HeaderProps {
   centered?: boolean;
-  description?: NonNullable<PAGE_BY_SLUGResult>["overview"];
+  description?:
+    | NonNullable<PAGE_BY_SLUGResult>["overview"]
+    | NonNullable<ART_BY_SLUGResult>["overview"]
+    | NonNullable<HOME_PAGEResult>["overview"];
   title?: string | null;
 }
 export function Header(props: HeaderProps) {

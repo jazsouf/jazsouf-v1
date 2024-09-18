@@ -1,29 +1,18 @@
 import { CustomPortableText } from "@/components/shared/CustomPortableText";
 import { Header } from "@/components/shared/Header";
 import ImageBox from "@/components/shared/ImageBox";
-import type { ProjectPayload } from "@/sanity-cms/types";
+import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
 import Link from "next/link";
 
 export interface ProjectPageProps {
-  data: ProjectPayload | null;
+  data: NonNullable<PROJECT_BY_SLUGResult>;
 }
 
 export function ProjectPage({ data }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const {
-    client,
-    coverImage,
-    description,
-    duration,
-    overview,
-    site,
-    tags,
-    title,
-  } = data ?? {};
+  const { client, coverImage, description, duration, overview, site, tags, title } = data ?? {};
 
-  const startYear = duration?.start
-    ? new Date(duration.start).getFullYear()
-    : null;
+  const startYear = duration?.start ? new Date(duration.start).getFullYear() : null;
   const endYear = duration?.end ? new Date(duration.end).getFullYear() : null;
 
   return (
@@ -33,7 +22,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
 
         <div className="border-b-color border">
           <ImageBox
-            image={coverImage}
+            image={coverImage?.asset}
             alt={`Cover image for ${title}`}
             classesWrapper="relative aspect-[16/9]"
           />

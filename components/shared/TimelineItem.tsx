@@ -1,4 +1,4 @@
-import type { MilestoneItem } from "@/sanity-cms/types";
+import type { Milestone } from "@/sanity-cms/types";
 import ImageBox from "./ImageBox";
 
 export function TimelineItem({
@@ -6,12 +6,10 @@ export function TimelineItem({
   milestone,
 }: {
   isLast: boolean;
-  milestone: MilestoneItem;
+  milestone: Milestone;
 }) {
   const { description, duration, image, tags, title } = milestone;
-  const startYear = duration?.start
-    ? new Date(duration.start).getFullYear()
-    : undefined;
+  const startYear = duration?.start ? new Date(duration.start).getFullYear() : undefined;
   const endYear = duration?.end ? new Date(duration.end).getFullYear() : "Now";
 
   return (
@@ -22,7 +20,7 @@ export function TimelineItem({
           style={{ width: "65px", height: "65px" }}
         >
           <ImageBox
-            image={image}
+            image={image?.asset}
             alt={title || "Timeline item icon"}
             size="10vw"
             width={65}

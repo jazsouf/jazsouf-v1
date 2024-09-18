@@ -16,10 +16,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const [homePageTitle, project] = await Promise.all([getHomePageTitle(), getProjectBySlug(slug)]);
 
   return defineMetadata({
-    baseTitle: homePageTitle ?? undefined,
+    baseTitle: homePageTitle?.title ?? "",
     description: project?.overview ? toPlainText(project.overview) : "",
-    image: project?.coverImage,
-    title: project?.title,
+    image: project?.coverImage?.asset,
+    title: project?.title ?? "",
   });
 }
 
