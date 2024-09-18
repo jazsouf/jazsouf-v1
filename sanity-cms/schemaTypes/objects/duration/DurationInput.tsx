@@ -19,10 +19,7 @@ export function DurationInput(props: ObjectInputProps) {
   const start = fieldMembers.find((mem) => mem.name === "start");
   const end = fieldMembers.find((mem) => mem.name === "end");
 
-  const renderField: RenderFieldCallback = useCallback(
-    (props) => props.children,
-    [],
-  );
+  const renderField: RenderFieldCallback = useCallback((props) => props.children, []);
 
   const renderProps = useMemo(
     () => ({ renderField, renderInput, renderItem, renderPreview }),
@@ -31,9 +28,7 @@ export function DurationInput(props: ObjectInputProps) {
 
   return (
     <Flex align="center" gap={3}>
-      <Box flex={1}>
-        {start && <MemberField {...renderProps} member={start} />}
-      </Box>
+      <Box flex={1}>{start && <MemberField {...renderProps} member={start} />}</Box>
       <Box>
         <Text muted>
           <ArrowRightIcon />

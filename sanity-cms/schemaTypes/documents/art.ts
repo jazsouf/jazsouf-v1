@@ -29,8 +29,7 @@ export const art = defineType({
     }),
     defineField({
       name: "overview",
-      description:
-        "Used both for the <meta> description tag for SEO, and project subheader.",
+      description: "Used both for the <meta> description tag for SEO, and project subheader.",
       title: "Overview",
       type: "array",
       of: [

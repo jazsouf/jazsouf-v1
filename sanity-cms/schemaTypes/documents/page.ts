@@ -113,8 +113,7 @@ export const page = defineType({
               name: "alt",
               type: "string",
               title: "Alt text",
-              description:
-                "Alternative text for screenreaders. Falls back on caption if not set",
+              description: "Alternative text for screenreaders. Falls back on caption if not set",
             }),
           ],
         }),

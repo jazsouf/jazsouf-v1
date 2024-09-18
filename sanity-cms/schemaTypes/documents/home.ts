@@ -66,8 +66,7 @@ export const home = defineType({
     defineField({
       name: "showcaseProjects",
       title: "Showcase projects",
-      description:
-        "These are the projects that will appear first on your landing page.",
+      description: "These are the projects that will appear first on your landing page.",
       type: "array",
       of: [
         defineArrayMember({
