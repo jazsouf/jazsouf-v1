@@ -3,7 +3,7 @@ import type {
   PAGE_BY_SLUGResult,
   SETTINGS_QUERYResult,
 } from "@/sanity-cms/types";
-import { PortableText, type PortableTextComponents } from "next-sanity";
+import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
 import type { Image } from "sanity";
 import ImageBox from "./ImageBox";
 import { TimelineSection } from "./TimelineSection";
@@ -59,5 +59,5 @@ export function CustomPortableText({
     },
   };
 
-  return value && <PortableText components={components} value={value} />;
+  return value && <PortableText components={components} value={value as PortableTextBlock[]} />;
 }

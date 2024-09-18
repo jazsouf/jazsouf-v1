@@ -1,7 +1,6 @@
 import { getHomePageTitle, getProjectBySlug, getProjectsPaths } from "@/sanity-cms/lib/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
-import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
 import ProjectPage from "./ProjectPage";
@@ -31,7 +30,7 @@ export async function generateStaticParams() {
 export default async function ProjectSlugRoute({ params }: Props) {
   const data = await getProjectBySlug(params.slug);
 
-  if (!data && !draftMode().isEnabled) {
+  if (!data) {
     notFound();
   }
 
