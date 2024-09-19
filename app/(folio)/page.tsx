@@ -21,5 +21,9 @@ export default async function IndexRoute() {
     return <div>WIP</div>;
   }
 
-  return <HomePage data={data} />;
+  return (
+    <main className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors">
+      <HomePage data={data} />
+    </main>
+  );
 }

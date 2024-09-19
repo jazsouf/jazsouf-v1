@@ -24,7 +24,6 @@ export function defineMetadata({
 
   return {
     title: metaTitle,
-    themeColor: "#000",
     description,
     openGraph: imageUrl
       ? {

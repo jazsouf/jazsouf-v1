@@ -15,11 +15,11 @@ export function Header(props: HeaderProps) {
     return null;
   }
   return (
-    <div className="text-left">
+    <div className="flex justify-center gap-20 pb-4 min-h-[90svh]">
       {description && (
         <CustomPortableText
           value={description}
-          paragraphClasses="text-t-color text-left font-mono text-md [text-wrap:pretty] md:text-xl max-w-xl min-h-[75svh] grid place-items-center"
+          paragraphClasses="text-t-color my-auto text-left font-mono text-md [text-wrap:pretty] md:text-xl max-w-3xl"
         />
       )}
     </div>
