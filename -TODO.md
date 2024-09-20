@@ -2,8 +2,9 @@
 
 ## Current
 
-[ ] Fix Sanity studio after upgrade
-[ ] Get The CSS working for all pages
+[ ] Get one page structure
+[ ] Fix CSS
+[ ] Add Blog Document on Sanity
 
 ## Backlog
 
@@ -16,3 +17,5 @@
 ## Cancelled
 
 ## Done
+[x] Fix Sanity studio after upgrade
+[x] Get The CSS working for all pages

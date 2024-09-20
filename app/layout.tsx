@@ -1,5 +1,5 @@
 import "tailwindcss/tailwind.css";
-
+import "@/app/styles/index.css";
 export default async function RootLayout({
   children,
 }: {
