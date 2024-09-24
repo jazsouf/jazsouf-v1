@@ -31,7 +31,10 @@ html {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   font-family: var(--mono, monospace);
+  font-size: 12px;
+  background: var(--main-gradient);
 }
+
 
 body,
 h1,

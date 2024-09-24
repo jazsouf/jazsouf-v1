@@ -18,11 +18,11 @@ export default async function IndexRoute() {
   const data = await getHomePage();
 
   if (!data) {
-    return <div>WIP</div>;
+    return null;
   }
 
   return (
-    <main className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors">
+    <main className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors bg-p-color">
       <HomePage data={data} />
     </main>
   );

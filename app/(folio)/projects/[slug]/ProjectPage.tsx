@@ -10,16 +10,12 @@ export interface ProjectPageProps {
 
 export function ProjectPage({ data }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { client, coverImage, description, duration, overview, site, tags, title } = data ?? {};
-
-  const startYear = duration?.start ? new Date(duration.start).getFullYear() : null;
-  const endYear = duration?.end ? new Date(duration.end).getFullYear() : null;
+  const { client, coverImage, description, site, tags, title } = data ?? {};
 
   return (
-    <div>
-      <div className="animate-fade-in mb-20 space-y-6">
-        <Header title={title} description={overview} />
-
+    <div className="bg-p-color">
+      <div className="animate-fade-in p-12 pb-32 sm:p-20 md:px-[12.5%]">
+        <h1 className="text-xl text-t-color mb-4">{title}</h1>
         <div className="border-b-color border">
           <ImageBox
             image={coverImage?.asset}
@@ -28,14 +24,6 @@ export function ProjectPage({ data }: ProjectPageProps) {
           />
 
           <div className="divide-inherit text-t-color grid grid-cols-1 divide-y [text-wrap:pretty] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
-            {/* Duration */}
-            {!!(startYear && endYear) && (
-              <div className="p-3 lg:p-4">
-                <div className="text-xs md:text-sm">Date</div>
-                <div className="text-md md:text-lg">{`${startYear}`}</div>
-              </div>
-            )}
-
             {/* Client */}
             {client && (
               <div className="p-3 lg:p-4">
@@ -61,26 +49,26 @@ export function ProjectPage({ data }: ProjectPageProps) {
 
             {/* Tags */}
             <div className="p-3 lg:p-4">
-              <div className="text-xs md:text-sm">Tags</div>
+              <div className="text-xs md:text-sm">Stack</div>
               <div className="text-md flex flex-row flex-wrap md:text-lg">
                 {tags?.map((tag: string) => (
                   <div key={tag} className="mr-1 break-words ">
-                    #{tag}
+                    {tag}
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-
         {description && (
-          <CustomPortableText
-            paragraphClasses="font-mono max-w-3xl text-xl text-t-color"
-            value={description}
-          />
+          <div className="py-3 px-1 lg:py-4">
+            <CustomPortableText
+              paragraphClasses="font-mono max-w-3xl text-xl text-t-color"
+              value={description}
+            />
+          </div>
         )}
       </div>
-      <div className="border-b-color absolute left-0 w-screen border-t" />
     </div>
   );
 }

@@ -5,6 +5,7 @@
 [ ] Get one page structure
 [ ] Fix CSS
 [ ] Add Blog Document on Sanity
+[x] Add ##FFD and #FFA colors
 
 ## Backlog
 
@@ -17,5 +18,6 @@
 ## Cancelled
 
 ## Done
+
 [x] Fix Sanity studio after upgrade
 [x] Get The CSS working for all pages
