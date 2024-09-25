@@ -32,7 +32,7 @@ html {
   overflow-x: hidden;
   font-family: var(--mono, monospace);
   font-size: 12px;
-  background: var(--main-gradient);
+  background: #fad726; 
 }
 
 

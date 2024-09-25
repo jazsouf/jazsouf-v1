@@ -1,5 +1,4 @@
 import { CustomPortableText } from "@/components/shared/CustomPortableText";
-import { Header } from "@/components/shared/Header";
 import ImageBox from "@/components/shared/ImageBox";
 import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
 import Link from "next/link";

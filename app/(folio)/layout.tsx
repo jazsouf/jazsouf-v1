@@ -12,7 +12,11 @@ export default async function IndexRoute({
       <Suspense>
         <Navbar />
       </Suspense>
-      <Suspense>{children}</Suspense>
+      <Suspense>
+        <main className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors bg-p-color">
+          {children}
+        </main>
+      </Suspense>
       <Suspense>
         <Footer />
       </Suspense>

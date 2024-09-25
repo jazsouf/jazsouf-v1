@@ -21,9 +21,5 @@ export default async function IndexRoute() {
     return null;
   }
 
-  return (
-    <main className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors bg-p-color">
-      <HomePage data={data} />
-    </main>
-  );
+  return <HomePage data={data} />;
 }
