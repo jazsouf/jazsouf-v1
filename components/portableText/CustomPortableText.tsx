@@ -1,3 +1,6 @@
+import { TimelineSection } from "@/components/portableText/TimelineSection";
+import ImageBox from "@/components/shared/ImageBox";
+
 import type {
   ART_BY_SLUGResult,
   PAGE_BY_SLUGResult,
@@ -5,8 +8,6 @@ import type {
 } from "@/sanity-cms/types";
 import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
 import type { Image } from "sanity";
-import ImageBox from "./ImageBox";
-import { TimelineSection } from "./TimelineSection";
 
 export function CustomPortableText({
   paragraphClasses,
@@ -28,7 +29,7 @@ export function CustomPortableText({
       link: ({ children, value }) => {
         return (
           <a
-            className="hover:text-lh-color text-l-color underline underline-offset-2 transition"
+            className="hover:text-b-color text-t-color underline underline-offset-2 transition"
             href={value?.href}
             rel="noreferrer noopener"
           >

@@ -1,5 +1,5 @@
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
-import { CustomPortableText } from "./CustomPortableText";
 
 interface HeaderProps {
   centered?: boolean;

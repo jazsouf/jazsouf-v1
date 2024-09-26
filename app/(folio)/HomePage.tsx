@@ -1,4 +1,4 @@
-import { CustomPortableText } from "@/components/shared/CustomPortableText";
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import { Header } from "@/components/shared/Header";
 import { resolveHref } from "@/sanity-cms/lib/links";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
@@ -25,7 +25,7 @@ export default function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> 
                 href={href}
                 className={`border-b border-b-color ${key === 0 && "border-t"}`}
               >
-                <ProjectListItem project={project} odd={key % 2} />
+                <ProjectListItem project={project} />
               </Link>
             );
           })}
@@ -37,7 +37,6 @@ export default function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> 
 
 interface ProjectProps {
   project: NonNullable<HOME_PAGEResult>["showcaseProjects"][number];
-  odd: number;
 }
 
 export function ProjectListItem(props: ProjectProps) {
@@ -56,17 +55,14 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
   return (
     <div className="relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div>
-        {/* Title */}
         <div className="mb-2 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
-        {/* Overview  */}
         <div className="text-t-color font-mono">
           <CustomPortableText value={project.overview} />
         </div>
       </div>
-      {/* Tags */}
       <div className="mt-2 flex flex-row gap-x-2">
         {project.tags?.map((tag) => (
-          <div className="text-sm font-medium lowercase" key={tag}>
+          <div className="text-sm lowercase" key={tag}>
             {tag}
           </div>
         ))}

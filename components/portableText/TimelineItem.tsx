@@ -1,5 +1,5 @@
+import ImageBox from "@/components/shared/ImageBox";
 import type { Milestone } from "@/sanity-cms/types";
-import ImageBox from "./ImageBox";
 
 export function TimelineItem({
   isLast,

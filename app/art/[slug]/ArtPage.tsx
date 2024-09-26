@@ -1,4 +1,4 @@
-import ArtBox from "@/components/shared/ArtBox";
+import ArtBox from "@/app/art/[slug]/ArtBox";
 import { Header } from "@/components/shared/Header";
 import type { ART_BY_SLUGResult } from "@/sanity-cms/types";
 
