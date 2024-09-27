@@ -13,7 +13,7 @@ export function TimelineItem({
   const endYear = duration?.end ? new Date(duration.end).getFullYear() : "Now";
 
   return (
-    <div className={`flex min-h-[200px] font-mono ${!isLast && "pb-2"}`}>
+    <div className={`flex min-h-[200px] ${!isLast && "pb-2"}`}>
       <div className="flex flex-col">
         <div
           className="bg-p-color relative  overflow-hidden"
@@ -43,7 +43,7 @@ export function TimelineItem({
           {startYear} - {endYear}
         </div>
         {/* Description */}
-        <div className="text-t-color pb-5 pt-3 font-mono">{description}</div>
+        <div className="text-t-color pb-5 pt-3">{description}</div>
       </div>
     </div>
   );

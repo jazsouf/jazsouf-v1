@@ -1,5 +1,4 @@
 import "server-only";
-
 import { client, sanityFetch } from "@/sanity-cms/lib/client";
 
 import {
@@ -13,7 +12,6 @@ import {
   PROJECT_SLUGS,
   SETTINGS_QUERY,
 } from "./queries";
-import { token } from "./token";
 
 export function getSettings() {
   return sanityFetch({

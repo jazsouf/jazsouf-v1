@@ -47,9 +47,7 @@ export function CustomPortableText({
         return (
           <div className="my-6 space-y-2">
             <ImageBox image={value} alt={value.alt} classesWrapper="relative aspect-[16/9]" />
-            {value?.caption && (
-              <div className="text-t-color font-mono text-sm">{value.caption}</div>
-            )}
+            {value?.caption && <div className="text-t-color text-sm">{value.caption}</div>}
           </div>
         );
       },

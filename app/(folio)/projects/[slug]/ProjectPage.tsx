@@ -1,4 +1,4 @@
-import { CustomPortableText } from "@/components/shared/CustomPortableText";
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import ImageBox from "@/components/shared/ImageBox";
 import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
 import Link from "next/link";
@@ -62,7 +62,7 @@ export function ProjectPage({ data }: ProjectPageProps) {
         {description && (
           <div className="py-3 px-1 lg:py-4">
             <CustomPortableText
-              paragraphClasses="font-mono max-w-3xl text-xl text-t-color"
+              paragraphClasses="max-w-3xl text-xl text-t-color"
               value={description}
             />
           </div>

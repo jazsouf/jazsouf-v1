@@ -13,7 +13,7 @@ export function TimelineSection({ timelines }: { timelines: TimelineItemType[] }
         const { title, milestones } = timeline;
         return (
           <div className="max-w-[80%] md:max-w-[50%]" key={`${title}-milestones`}>
-            <div className="pb-5 font-mono text-xl font-bold">{title}</div>
+            <div className="pb-5 text-xl font-bold">{title}</div>
 
             {milestones?.map((experience, index) => (
               <div key={`${experience.title}-${index}`}>

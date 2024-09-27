@@ -1,5 +1,4 @@
-import "tailwindcss/tailwind.css";
-import "@/app/styles/index.css";
+import "@/app/globals.css";
 
 import Footer from "@/components/global/Footer";
 import Navbar from "@/components/global/NavbarComponent/Navbar";

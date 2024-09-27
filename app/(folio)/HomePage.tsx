@@ -43,7 +43,7 @@ export function ProjectListItem(props: ProjectProps) {
   const { project } = props;
 
   return (
-    <div className="hover:bg-ah-color animate-hard-fade-in flex flex-col transition">
+    <div className="hover:bg-ah-color animate-fade-in flex flex-col transition">
       <div className="flex overflow-clip">
         <TextBox project={project} />
       </div>
@@ -56,7 +56,7 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
     <div className="relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div>
         <div className="mb-2 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
-        <div className="text-t-color font-mono">
+        <div className="text-t-color">
           <CustomPortableText value={project.overview} />
         </div>
       </div>
