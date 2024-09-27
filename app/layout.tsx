@@ -1,6 +1,4 @@
-import "tailwindcss/tailwind.css";
-import "@/app/styles/index.css";
-export default async function RootLayout({
+export default async function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
