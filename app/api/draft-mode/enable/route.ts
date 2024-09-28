@@ -2,8 +2,8 @@ import { validatePreviewUrl } from "@sanity/preview-url-secret";
 import { draftMode } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 
-import { client } from "@/sanity-cms/lib/client";
-import { token } from "@/sanity-cms/lib/token";
+import { client } from "@/sanity-cms/client";
+import { token } from "@/sanity-cms/token";
 
 const clientWithToken = client.withConfig({ token });
 

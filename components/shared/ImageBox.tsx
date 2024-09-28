@@ -1,4 +1,4 @@
-import { urlFor } from "@/sanity-cms/lib/image";
+import { urlFor } from "@/sanity-cms/image";
 import { colorBlur } from "@/utils/colorsBlur";
 import Image from "next/image";
 import type { Image as ImageType } from "sanity";

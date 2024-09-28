@@ -3,7 +3,7 @@ import "server-only";
 import { type QueryOptions, type QueryParams, createClient } from "next-sanity";
 
 import { draftMode } from "next/headers";
-import { apiVersion, dataset, projectId } from "../env";
+import { apiVersion, dataset, projectId } from "./env";
 import { token } from "./token";
 
 export const client = createClient({

@@ -8,7 +8,10 @@
     "enabled": true,
     "ignore": [".next", "./sanity-cms/types.ts", "node_modules", ".gitignore"],
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "style": {
+        "useConst": "off"
+      }
     }
   },
   "formatter": {

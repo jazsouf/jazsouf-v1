@@ -1,5 +1,5 @@
-import { getSettings } from "@/sanity-cms/lib/fetch";
-import { resolveHref } from "@/sanity-cms/lib/links";
+import { getSettings } from "@/sanity-cms/fetch";
+import { resolveHref } from "@/sanity-cms/links";
 
 import NavLink from "./NavLink";
 

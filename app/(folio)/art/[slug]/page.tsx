@@ -1,4 +1,4 @@
-import { getArtBySlug, getArtsPaths, getHomePageTitle } from "@/sanity-cms/lib/fetch";
+import { getArtBySlug, getArtsPaths, getHomePageTitle } from "@/sanity-cms/fetch";
 
 import { defineMetadata } from "@/utils/metadata";
 import type { Metadata } from "next";

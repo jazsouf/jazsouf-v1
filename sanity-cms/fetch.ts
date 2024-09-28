@@ -1,21 +1,27 @@
 import "server-only";
-import { client, sanityFetch } from "@/sanity-cms/lib/client";
+import { client, sanityFetch } from "@/sanity-cms/client";
 
 import {
   ART_BY_SLUG,
   ART_SLUGS,
+  CATEGORIES,
+  FEATURED_POSTS,
+  FEED_POSTS,
   HOME_PAGE,
   HOME_PAGE_TITLE,
   PAGE_BY_SLUG,
   PAGE_SLUGS,
+  POST,
+  POSTS,
   PROJECT_BY_SLUG,
   PROJECT_SLUGS,
-  SETTINGS_QUERY,
-} from "./queries";
+  SETTINGS,
+  TOTAL_POSTS,
+} from "@/sanity-cms/queries";
 
 export function getSettings() {
   return sanityFetch({
-    query: SETTINGS_QUERY,
+    query: SETTINGS,
     tags: ["settings", "home", "page", "project"],
   });
 }
@@ -66,4 +72,48 @@ export function getProjectsPaths() {
 }
 export function getArtsPaths() {
   return client.withConfig({ useCdn: false }).fetch(ART_SLUGS, {}, { cache: "no-store" });
+}
+
+export function getPostsCount(category?: string) {
+  return sanityFetch({
+    query: TOTAL_POSTS,
+    params: { category: category ?? null },
+  });
+}
+
+export function getPosts(startIndex: number, endIndex: number, category?: string) {
+  return sanityFetch({
+    query: POSTS,
+    params: {
+      startIndex,
+      endIndex,
+      category: category ?? null,
+    },
+  });
+}
+
+export function getFeaturedPosts(quantity: number) {
+  return sanityFetch({
+    query: FEATURED_POSTS,
+    params: { quantity },
+  });
+}
+
+export function getPostsForFeed() {
+  return sanityFetch({
+    query: FEED_POSTS,
+  });
+}
+
+export function getPost(slug: string) {
+  return sanityFetch({
+    query: POST,
+    params: { slug },
+  });
+}
+
+export function getCategories() {
+  return sanityFetch({
+    query: CATEGORIES,
+  });
 }

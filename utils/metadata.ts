@@ -1,4 +1,4 @@
-import { urlFor } from "@/sanity-cms/lib/image";
+import { urlFor } from "@/sanity-cms/image";
 import type { Metadata } from "next";
 import type { Image } from "sanity";
 

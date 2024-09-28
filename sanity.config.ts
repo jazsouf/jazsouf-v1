@@ -6,7 +6,7 @@ import { visionTool } from "@sanity/vision";
 import { apiVersion, dataset, projectId } from "@/sanity-cms/env";
 import { defineConfig } from "sanity";
 
-import { schema } from "@/sanity-cms/schemaTypes";
+import { schema } from "@/sanity-cms/schema";
 
 import { structure } from "@/sanity-cms/structure";
 

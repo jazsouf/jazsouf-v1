@@ -1,6 +1,6 @@
 "use client";
 
-import { urlFor } from "@/sanity-cms/lib/image";
+import { urlFor } from "@/sanity-cms/image";
 import type { ART_BY_SLUGResult } from "@/sanity-cms/types";
 import cn from "@/utils/cn";
 import Image from "next/image";

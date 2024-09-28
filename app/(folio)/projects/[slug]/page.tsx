@@ -1,4 +1,4 @@
-import { getHomePageTitle, getProjectBySlug, getProjectsPaths } from "@/sanity-cms/lib/fetch";
+import { getHomePageTitle, getProjectBySlug, getProjectsPaths } from "@/sanity-cms/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
 import { notFound } from "next/navigation";
