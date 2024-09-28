@@ -26,6 +26,9 @@ export const settingsType = defineType({
             {
               type: "project",
             },
+            {
+              type: "post",
+            },
           ],
         },
       ],

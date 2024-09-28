@@ -1,4 +1,4 @@
-export default async function BlogLayout({
+export default async function WlogLayout({
   children,
 }: {
   children: React.ReactNode;

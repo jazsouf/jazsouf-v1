@@ -9,12 +9,42 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Stay informed with product updates, company news, and insights on how to sell smarter at your company.",
+  title: "Writings log",
+  description: "Read about my life, my work and other stuff.",
 };
 
-const postsPerPage = 5;
+const POSTS_PER_PAGE = 5;
+
+export default async function Wlog({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  let page =
+    "page" in searchParams
+      ? typeof searchParams.page === "string" && Number.parseInt(searchParams.page) > 1
+        ? Number.parseInt(searchParams.page)
+        : notFound()
+      : 1;
+
+  let category = typeof searchParams.category === "string" ? searchParams.category : undefined;
+
+  return (
+    <main className="px-6 md:px-[12.5%] overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
+      <div className="max-w-3xl">
+        <h2 className="mt-24 text-sm font-extrabold md:text-lg">Writings Log</h2>
+        <h1 className="mt-2 text-3xl font-bold md:text-4xl">Life of me</h1>
+        <p className="mt-6 max-w-3xl text-t-color">Posts about life, work, and stuff.</p>
+      </div>
+      {page === 1 && !category && <FeaturedPosts />}
+      <div className="flex flex-col mx-1 max-w-2xl mt-16 pb-24">
+        <Categories selected={category} />
+        <Posts page={page} category={category} />
+        <Pagination page={page} category={category} />
+      </div>
+    </main>
+  );
+}
 
 async function FeaturedPosts() {
   let featuredPosts = await getFeaturedPosts(3);
@@ -24,7 +54,7 @@ async function FeaturedPosts() {
   }
 
   return (
-    <div className="mt-16 bg-gradient-to-t from-gray-100 pb-14">
+    <div className="mt-16 pb-14">
       <div className="container">
         <div className="mx-auto max-w-2xl lg:max-w-7xl">
           <h2 className="text-2xl font-medium tracking-tight">Featured</h2>
@@ -46,7 +76,7 @@ async function FeaturedPosts() {
                     {dayjs(post.publishedAt).format("dddd, MMMM D, YYYY")}
                   </div>
                   <div className="mt-2 text-base/7 font-medium">
-                    <Link href={`/blog/${post.slug}`}>
+                    <Link href={`/wlog/${post.slug}`}>
                       <span className="absolute inset-0" />
                       {post.title}
                     </Link>
@@ -85,7 +115,7 @@ async function Categories({ selected }: { selected?: string }) {
     <div className="flex flex-wrap items-center justify-between gap-2">
       <a
         type="button"
-        href="/blog/feed.xml"
+        href="/wlog/feed.xml"
         className={clsx(
           "inline-flex items-center justify-center px-2 py-[calc(theme(spacing.[1.5])-1px)]",
           "rounded-lg border border-transparent shadow ring-1 ring-black/10",
@@ -102,7 +132,7 @@ async function Categories({ selected }: { selected?: string }) {
 }
 
 async function Posts({ page, category }: { page: number; category?: string }) {
-  let posts = await getPosts((page - 1) * postsPerPage, page * postsPerPage, category);
+  let posts = await getPosts((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE, category);
 
   if (posts.length === 0 && (page > 1 || category)) {
     notFound();
@@ -141,7 +171,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
             <p className="mt-3 text-sm/6 text-gray-500">{post.excerpt}</p>
             <div className="mt-4">
               <Link
-                href={`/blog/${post.slug}`}
+                href={`/wlog/${post.slug}`}
                 className="flex items-center gap-1 text-sm/5 font-medium"
               >
                 <span className="absolute inset-0" />
@@ -169,15 +199,15 @@ async function Pagination({
     if (category) params.set("category", category);
     if (page > 1) params.set("page", page.toString());
 
-    return params.size !== 0 ? `/blog?${params.toString()}` : "/blog";
+    return params.size !== 0 ? `/wlog?${params.toString()}` : "/wlog";
   }
 
   let totalPosts = await getPostsCount(category);
   let hasPreviousPage = page - 1;
   let previousPageUrl = hasPreviousPage ? url(page - 1) : "";
-  let hasNextPage = page * postsPerPage < totalPosts;
+  let hasNextPage = page * POSTS_PER_PAGE < totalPosts;
   let nextPageUrl = hasNextPage ? url(page + 1) : "";
-  let pageCount = Math.ceil(totalPosts / postsPerPage);
+  let pageCount = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
   if (pageCount < 2) {
     return;
@@ -212,36 +242,5 @@ async function Pagination({
         <ChevronRight className="size-4" />
       </Link>
     </div>
-  );
-}
-
-export default async function Blog({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  let page =
-    "page" in searchParams
-      ? typeof searchParams.page === "string" && Number.parseInt(searchParams.page) > 1
-        ? Number.parseInt(searchParams.page)
-        : notFound()
-      : 1;
-
-  let category = typeof searchParams.category === "string" ? searchParams.category : undefined;
-
-  return (
-    <main className="overflow-hidden">
-      <div className="container">
-        <h2 className="mt-16">Blog</h2>
-        <h1 className="mt-2">Life of me</h1>
-        <p className="mt-6 max-w-3xl">Posts about life, work, and stuff.</p>
-      </div>
-      {page === 1 && !category && <FeaturedPosts />}
-      <div className="container mt-16 pb-24">
-        <Categories selected={category} />
-        <Posts page={page} category={category} />
-        <Pagination page={page} category={category} />
-      </div>
-    </main>
   );
 }

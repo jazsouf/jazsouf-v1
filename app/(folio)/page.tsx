@@ -82,7 +82,7 @@ export function ProjectListItem(props: ProjectProps) {
 
 function TextBox({ project }: { project: ProjectProps["project"] }) {
   return (
-    <main className="relative flex w-full flex-col justify-between p-3 xl:pt-0">
+    <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div>
         <div className="mb-2 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
         <div className="text-t-color">

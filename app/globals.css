@@ -1,16 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-p-color: #FFD;
-    --color-s-color: #FFA;
-    --color-a-color: #ff7d3c;
-    --color-ah-color: #ffa900;
+    --color-p-color: #F3EEDB;
+    --color-s-color: #F5EFCC;
+    --color-a-color: #FF7D3C;
+    --color-ah-color: #FFA900;
     --color-t-color: #101010;
-    --color-l-color: #692cb6; 
-    --color-lh-color: #a034a9;
+    --color-l-color: #692CB6; 
+    --color-lh-color: #A034A9;
     --color-bt-color: #CF418E;
     --color-lbt-color: #F2596A;
-    --color-b-color: #2727af;
+    --color-b-color: #2727AF;
 
     --default-transition-duration: 800ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,7 +70,7 @@ html {
   min-width: 360px;
   scrollbar-gutter: stable;
   overflow-x: hidden;
-  background: #ff7d3c;
+  background: var(--color-a-color);
   font-size: 12px;
   line-height: 1.5;
   font-family: var(--sans, sans-serif);
@@ -80,6 +80,7 @@ html {
 body {
   min-height: 100vh;
   min-height: 100svh;
+  background: var(--color-p-color);
 }
 
 pre {

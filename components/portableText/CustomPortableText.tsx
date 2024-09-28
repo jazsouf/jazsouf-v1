@@ -1,11 +1,7 @@
 import { TimelineSection } from "@/components/portableText/TimelineSection";
 import ImageBox from "@/components/shared/ImageBox";
 
-import type {
-  ART_BY_SLUGResult,
-  PAGE_BY_SLUGResult,
-  SETTINGS_QUERYResult,
-} from "@/sanity-cms/types";
+import type { ART_BY_SLUGResult, PAGE_BY_SLUGResult, SETTINGSResult } from "@/sanity-cms/types";
 import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
 import type { Image } from "sanity";
 
@@ -17,7 +13,7 @@ export function CustomPortableText({
   value?:
     | NonNullable<PAGE_BY_SLUGResult>["body"]
     | NonNullable<ART_BY_SLUGResult>["overview"]
-    | NonNullable<SETTINGS_QUERYResult>["footer"];
+    | NonNullable<SETTINGSResult>["footer"];
 }) {
   const components: PortableTextComponents = {
     block: {

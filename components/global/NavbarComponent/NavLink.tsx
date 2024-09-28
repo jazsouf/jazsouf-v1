@@ -1,6 +1,6 @@
 "use client";
 
-import type { SETTINGS_QUERYResult } from "@/sanity-cms/types";
+import type { SETTINGSResult } from "@/sanity-cms/types";
 import cn from "@/utils/cn";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export default function NavLink({
   menuItem,
   href,
-}: { menuItem: NonNullable<SETTINGS_QUERYResult>["menuItems"][number]; href: string }) {
+}: { menuItem: NonNullable<SETTINGSResult>["menuItems"][number]; href: string }) {
   const pathname = usePathname();
   return (
     <Link
