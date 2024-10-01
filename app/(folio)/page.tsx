@@ -30,7 +30,6 @@ import { CustomPortableText } from "@/components/portableText/CustomPortableText
 import { Header } from "@/components/shared/Header";
 import { resolveHref } from "@/sanity-cms/links";
 
-import AnimatedName from "@/components/shared/AnimatedName";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
 import Link from "next/link";
 

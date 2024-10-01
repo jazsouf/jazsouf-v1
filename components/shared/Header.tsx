@@ -15,7 +15,7 @@ export function Header(props: HeaderProps) {
     return null;
   }
   return (
-    <section id="header" className="flex justify-center items-center gap-20 pb-4 min-h-[90svh]">
+    <section id="header" className="pb-4 min-h-[90svh]">
       {description && (
         <CustomPortableText
           value={description}

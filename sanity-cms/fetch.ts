@@ -22,7 +22,7 @@ import {
 export function getSettings() {
   return sanityFetch({
     query: SETTINGS,
-    tags: ["settings", "home", "page", "project"],
+    tags: ["settings", "home", "page", "project", "post"],
   });
 }
 
@@ -78,6 +78,7 @@ export function getPostsCount(category?: string) {
   return sanityFetch({
     query: TOTAL_POSTS,
     params: { category: category ?? null },
+    tags: ["post"],
   });
 }
 
@@ -89,6 +90,7 @@ export function getPosts(startIndex: number, endIndex: number, category?: string
       endIndex,
       category: category ?? null,
     },
+    tags: ["post"],
   });
 }
 
@@ -96,12 +98,14 @@ export function getFeaturedPosts(quantity: number) {
   return sanityFetch({
     query: FEATURED_POSTS,
     params: { quantity },
+    tags: ["post"],
   });
 }
 
 export function getPostsForFeed() {
   return sanityFetch({
     query: FEED_POSTS,
+    tags: ["post"],
   });
 }
 
@@ -109,11 +113,13 @@ export function getPost(slug: string) {
   return sanityFetch({
     query: POST,
     params: { slug },
+    tags: ["post"],
   });
 }
 
 export function getCategories() {
   return sanityFetch({
     query: CATEGORIES,
+    tags: ["post"],
   });
 }
