@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-p-color: #F3EEDB;
-    --color-s-color: #F5EFCC;
+    --color-p-color: #EFEFEF;
+    --color-s-color: #FEFEFE;
     --color-a-color: #FF7D3C;
     --color-ah-color: #FFA900;
     --color-t-color: #101010;
@@ -15,10 +15,10 @@
     --default-transition-duration: 800ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-
-    --animate-fade-in: fade-in 0.5s cubic-bezier(0, 0.3, 0.2, 1);
-    --animate-hard-fade-in: hard-fade-in 0.5s cubic-bezier(0, 0.3, 0.2, 1);
-    --animate-smooth-fade-in: smooth-fade-in 0.5s cubic-bezier(0.4, 0, 0.6, 1);
+    
+    --animate-fade-in: fade-in 0.5s cubic-bezier(1, -0.2, 0.35, 0.95);
+    --animate-hard-fade-in: hard-fade-in 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.11);
+    --animate-smooth-fade-in: smooth-fade-in 0.5s cubic-bezier(0, 0, 0.2, 1);
     
     @keyframes fade-in {
         0% {
@@ -62,19 +62,20 @@
 
 
 :root {
-  --mono: "Lucida Sans Typewriter", "Lucida Console", "Bitstream Vera Sans Mono", "Monaco";
-  --sans: "Inter", sans-serif;
+  --mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  --sans: "Inter", system-ui, sans-serif;
 }
 
 html {
   min-width: 360px;
   scrollbar-gutter: stable;
   overflow-x: hidden;
-  background: var(--color-a-color);
-  font-size: 12px;
+  background: var(--color-s-color);
+  font-size: 13px;
   line-height: 1.5;
   font-family: var(--sans, sans-serif);
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 body {

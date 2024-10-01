@@ -8,8 +8,8 @@
 
 ## Backlog
 
-[ ] Add content to the homepage
-[ ] Add content to the projects page
+[ ] Update content to the homepage
+[ ] Update content to the projects page
 [ ] Write a post on the blog
 
 ## Cancelled

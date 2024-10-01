@@ -15,13 +15,13 @@ export function Header(props: HeaderProps) {
     return null;
   }
   return (
-    <div className="flex justify-center items-center gap-20 pb-4 min-h-[90svh]">
+    <section id="header" className="flex justify-center items-center gap-20 pb-4 min-h-[90svh]">
       {description && (
         <CustomPortableText
           value={description}
           paragraphClasses="text-t-color text-left text-md md:text-xl max-w-3xl"
         />
       )}
-    </div>
+    </section>
   );
 }

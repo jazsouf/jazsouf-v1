@@ -13,7 +13,7 @@ export default async function Navbar() {
     {
       _type: "page",
       slug: "wlog",
-      title: "Wlog",
+      title: "Blog",
     },
   ] satisfies NonNullable<SETTINGSResult>["menuItems"];
 
@@ -25,8 +25,22 @@ export default async function Navbar() {
           if (!href) {
             return null;
           }
-          return <NavLink key={menuItem.slug} menuItem={menuItem} href={href} />;
+          return (
+            <li key={menuItem.slug}>
+              <NavLink menuItem={menuItem} href={href} />
+            </li>
+          );
         })}
+        <li>
+          <NavLink
+            menuItem={{
+              _type: "page",
+              slug: "projects",
+              title: "Projects",
+            }}
+            href={"/#projects"}
+          />
+        </li>
       </ul>
     </nav>
   );

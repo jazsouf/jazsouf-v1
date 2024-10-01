@@ -227,6 +227,11 @@ export type Settings = {
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "project";
+  } | {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "post";
   }>;
   footer?: Array<{
     children?: Array<{
@@ -817,6 +822,10 @@ export type SETTINGSResult = {
     title: string | null;
   } | {
     _type: "page";
+    slug: string | "";
+    title: string | null;
+  } | {
+    _type: "post";
     slug: string | "";
     title: string | null;
   } | {

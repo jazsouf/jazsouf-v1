@@ -1,10 +1,18 @@
-export default function AnimatedName() {
+type Props = {
+  mainName: string;
+  subName?: string;
+};
+
+export default function AnimatedName(props: Props) {
+  const mainName = props.mainName;
+  const subName = props.subName ?? props.mainName;
+
   return (
-    <h1 className="font-medium pt-12 transition-element">
+    <div className="font-medium transition-all">
       <span className="sr-only">Soufiane</span>
       <span aria-hidden="true" className="block overflow-hidden group relative">
         <span className="inline-block transition-all duration-300 ease-in-out group-hover:-translate-y-full">
-          {"Soufiane".split("").map((letter, index) => (
+          {mainName.split("").map((letter, index) => (
             <span
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
@@ -16,7 +24,7 @@ export default function AnimatedName() {
           ))}
         </span>
         <span className="inline-block absolute left-0 top-0 transition-all duration-300 ease-in-out translate-y-full group-hover:translate-y-0">
-          {"@jazsouf".split("").map((letter, index) => (
+          {subName.split("").map((letter, index) => (
             <span
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
@@ -28,6 +36,6 @@ export default function AnimatedName() {
           ))}
         </span>
       </span>
-    </h1>
+    </div>
   );
 }

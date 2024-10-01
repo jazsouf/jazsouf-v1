@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedName from "@/components/shared/AnimatedName";
 import type { SETTINGSResult } from "@/sanity-cms/types";
 import cn from "@/utils/cn";
 import Link from "next/link";
@@ -10,6 +11,9 @@ export default function NavLink({
   href,
 }: { menuItem: NonNullable<SETTINGSResult>["menuItems"][number]; href: string }) {
   const pathname = usePathname();
+  if (!menuItem.title) {
+    return null;
+  }
   return (
     <Link
       key={menuItem.slug}
@@ -17,11 +21,11 @@ export default function NavLink({
         `hover:outline-[0.5px] outline outline-0 lowercase ${
           menuItem?._type === "home" ? "text-a-color md:text-xl" : "text-a-color/90 md:text-xl"
         }`,
-        pathname === href && "outline-[1px] hover:bg-a-color",
+        pathname === href && "outline-[1px]",
       )}
       href={href}
     >
-      {menuItem.title}
+      <AnimatedName mainName={menuItem.title} />
     </Link>
   );
 }

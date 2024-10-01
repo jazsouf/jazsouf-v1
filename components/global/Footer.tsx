@@ -10,11 +10,11 @@ export default async function Footer() {
   return (
     <footer className="border-t relative z-20 border-b-color bg-a-color text-t-color text-center flex flex-col min-h-[100svh] items-center py-6 gap-24 justify-between">
       {footer && <CustomPortableText paragraphClasses="" value={footer} />}
-      <p className="text-xl md:text-3xl text-t-color md:px-[12.5%] px-2 leading-relaxed">
+      <p className="text-xl md:text-3xl text-t-color px-6 md:px-[15%] px-2 leading-relaxed">
         Take a step back. Believe you can change. Look at yourself objectively. Lean into the pain.
-        Confront reality. Cherish mistakes. Fix the machine, not the person. — Aaron Swartz
+        Confront reality. Cherish mistakes. Fix the machine, not the person. — <i>Aaron Swartz</i>
       </p>
-      <p>Copyright © 2024 – Soufiane El Jazouli</p>
+      <p>© 2024 – Soufiane El Jazouli</p>
     </footer>
   );
 }

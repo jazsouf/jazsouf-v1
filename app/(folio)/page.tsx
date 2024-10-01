@@ -30,6 +30,7 @@ import { CustomPortableText } from "@/components/portableText/CustomPortableText
 import { Header } from "@/components/shared/Header";
 import { resolveHref } from "@/sanity-cms/links";
 
+import AnimatedName from "@/components/shared/AnimatedName";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
 import Link from "next/link";
 
@@ -38,29 +39,28 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   const { overview, showcaseProjects = [], title = "" } = data ?? {};
 
   return (
-    <div className="flex flex-col gap-12 p-12 pb-32 sm:p-20 md:px-[12.5%]">
+    <main className="flex flex-col gap-12 p-12 pb-32 px-6 md:px-[20%]">
       {title && overview && <Header centered title={title} description={overview} />}
       {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="flex flex-col">
-          <h2 className="text-2xl uppercase text-t-color pb-2">Selected Projects</h2>
-          {showcaseProjects.map((project, key) => {
-            const href = resolveHref(project._type, project.slug);
-            if (!href) {
-              return null;
-            }
-            return (
-              <Link
-                key={project.slug}
-                href={href}
-                className={`border-b border-b-color ${key === 0 && "border-t"}`}
-              >
-                <ProjectListItem project={project} />
-              </Link>
-            );
-          })}
-        </div>
+        <section className="flex flex-col pt-4" id="projects">
+          <h2 className="text-md lowercase text-t-color opacity-60 pb-4 px-0.5">Some Projects</h2>
+          <ul>
+            {showcaseProjects.map((project) => {
+              return (
+                <li
+                  key={project.slug}
+                  className={
+                    "border-b border-b-color hover:bg-s-color animate-fade-in flex flex-col transition :first-child:border-t"
+                  }
+                >
+                  <TextBox project={project} />
+                </li>
+              );
+            })}
+          </ul>
+        </section>
       )}
-    </div>
+    </main>
   );
 }
 
@@ -68,34 +68,27 @@ interface ProjectProps {
   project: NonNullable<HOME_PAGEResult>["showcaseProjects"][number];
 }
 
-export function ProjectListItem(props: ProjectProps) {
-  const { project } = props;
-
-  return (
-    <div className="hover:bg-ah-color animate-fade-in flex flex-col transition">
-      <div className="flex overflow-clip">
-        <TextBox project={project} />
-      </div>
-    </div>
-  );
-}
-
 function TextBox({ project }: { project: ProjectProps["project"] }) {
+  const href = resolveHref(project._type, project.slug);
+  if (!href) {
+    return null;
+  }
   return (
-    <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
-      <div>
-        <div className="mb-2 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
-        <div className="text-t-color">
-          <CustomPortableText value={project.overview} />
-        </div>
+    <Link
+      href={href}
+      className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
+    >
+      <div className="mb-1 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
+      <div className="text-t-color">
+        <CustomPortableText value={project.overview} />
       </div>
       <div className="mt-2 flex flex-row gap-x-2">
         {project.tags?.map((tag) => (
-          <div className="text-sm lowercase" key={tag}>
+          <div className="text-sm lowercase text-t-color opacity-60" key={tag}>
             {tag}
           </div>
         ))}
       </div>
-    </main>
+    </Link>
   );
 }

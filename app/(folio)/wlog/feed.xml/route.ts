@@ -7,7 +7,7 @@ export async function GET(req: Request) {
   let siteUrl = new URL(req.url).origin;
 
   let feed = new Feed({
-    title: "Soufiane's Writings Log",
+    title: "Soufiane's Writing Log",
     description: "Read about my life, my work and other stuff.",
     author: {
       name: "Soufiane El Jazouli",

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "Writings log",
+  title: "Writing log",
   description: "Read about my life, my work and other stuff.",
 };
 
