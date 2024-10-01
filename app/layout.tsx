@@ -1,4 +1,6 @@
-export default async function WlogLayout({
+export const runtime = "edge";
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
