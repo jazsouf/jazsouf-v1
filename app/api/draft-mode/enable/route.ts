@@ -7,8 +7,6 @@ import { token } from "@/sanity-cms/token";
 
 const clientWithToken = client.withConfig({ token });
 
-export const runtime = "edge";
-
 export async function GET(request: NextRequest) {
   if (!process.env.SANITY_API_READ_TOKEN) {
     return new Response("Missing environment variable SANITY_API_READ_TOKEN", {

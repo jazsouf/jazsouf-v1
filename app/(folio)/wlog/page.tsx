@@ -8,8 +8,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export const runtime = "edge";
-
 export const metadata: Metadata = {
   title: "Writing log",
   description: "Read about my life, my work and other stuff.",

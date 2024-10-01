@@ -3,8 +3,6 @@ import { getPostsForFeed } from "@/sanity-cms/fetch";
 import { urlFor } from "@/sanity-cms/image";
 import { Feed } from "feed";
 
-export const runtime = "edge";
-
 export async function GET(req: Request) {
   let siteUrl = new URL(req.url).origin;
 
