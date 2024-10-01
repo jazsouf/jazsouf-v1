@@ -45,7 +45,7 @@ export async function sanityFetch<const QueryString extends string>({
   return client.fetch(query, params, {
     ...queryOptions,
     next: {
-      revalidate: isDraftMode ? 0 : tags.length ? undefined : revalidate, // for simple, time-based revalidation
+      revalidate: isDraftMode ? 0 : tags.length ? undefined : revalidate,
       tags, // for tag-based revalidation
     },
     cache: isDraftMode ? "no-store" : tags.length ? "force-cache" : undefined,

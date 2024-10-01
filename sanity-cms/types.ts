@@ -368,9 +368,9 @@ export type Page = {
     level?: number;
     _type: "block";
     _key: string;
-  } | ({
+  } | {
     _key: string;
-  } & Timeline) | {
+  } & Timeline | {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -440,9 +440,9 @@ export type Project = {
     level?: number;
     _type: "block";
     _key: string;
-  } | ({
+  } | {
     _key: string;
-  } & Timeline) | {
+  } & Timeline | {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -629,9 +629,9 @@ export type HOME_PAGE_TITLEResult = {
 // Query: *[  _type == "page" && slug.current == $slug && defined(_id)][0]{    _id,    body,    overview,    title,    "slug": coalesce(slug.current, ""),  }
 export type PAGE_BY_SLUGResult = {
   _id: string;
-  body: Array<({
+  body: Array<{
     _key: string;
-  } & Timeline) | {
+  } & Timeline | {
     children?: Array<{
       marks?: Array<string>;
       text?: string;
@@ -695,9 +695,9 @@ export type PROJECT_BY_SLUGResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  description: Array<({
+  description: Array<{
     _key: string;
-  } & Timeline) | {
+  } & Timeline | {
     children?: Array<{
       marks?: Array<string>;
       text?: string;

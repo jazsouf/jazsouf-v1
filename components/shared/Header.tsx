@@ -15,11 +15,11 @@ export function Header(props: HeaderProps) {
     return null;
   }
   return (
-    <section id="header" className="pb-4 min-h-[90svh]">
+    <section id="header" className="pb-4 min-h-[90svh] grid place-content-center leading-loose">
       {description && (
         <CustomPortableText
           value={description}
-          paragraphClasses="text-t-color text-left text-md md:text-xl max-w-3xl"
+          paragraphClasses="text-t-color text-left text-md md:text-xl max-w-3xl pt-1.5"
         />
       )}
     </section>
