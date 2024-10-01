@@ -5,7 +5,7 @@ export const structure: StructureResolver = (S, context) =>
   S.list()
     .title("Space")
     .items([
-      S.documentTypeListItem("setting").title("Settings"),
+      S.documentTypeListItem("settings").title("Settings"),
       S.divider(),
       S.documentTypeListItem("home").title("Home"),
       S.divider(),
@@ -14,4 +14,6 @@ export const structure: StructureResolver = (S, context) =>
       S.documentTypeListItem("art").title("Arts"),
       S.divider(),
       S.documentTypeListItem("page").title("Pages"),
+      S.divider(),
+      S.documentTypeListItem("post").title("Posts"),
     ]);

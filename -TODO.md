@@ -10,6 +10,7 @@
 [ ] Update content to the homepage
 [ ] Update content to the projects page
 [ ] Write a post on the blog
+[ ] Add a selection text highligh color
 
 ## Cancelled
 
