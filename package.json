@@ -46,7 +46,6 @@
     "eslint-config-next": "15.0.0-rc.0",
     "typescript": "^5.6.2"
   },
-  "packageManager": "pnpm@9.5.0",
   "overrides": {
     "react": "$react",
     "react-dom": "$react-dom"
