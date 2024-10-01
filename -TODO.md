@@ -3,12 +3,10 @@
 ## Current
 
 [ ] Add an interactive gradient shader on home page
-[ ] Revalidate Tag with a startTransition and group together the server action with the onHandle function cf [https://www.youtube.com/watch?v=idEL0dv2V1A]
+[ ] Update content to the projects page
 
 ## Backlog
 
-[ ] Update content to the homepage
-[ ] Update content to the projects page
 [ ] Write a post on the blog
 [ ] Add a selection text highligh color
 
@@ -23,3 +21,5 @@
 [x] Add ##FFD and #FFA colors
 [x] Get one page structure
 [x] Add Blog Document on Sanity
+[x] Update content to the homepage
+[x] Revalidate Tag with a startTransition and group together the server action with the onHandle function cf [https://www.youtube.com/watch?v=idEL0dv2V1A]

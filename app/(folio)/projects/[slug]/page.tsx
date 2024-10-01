@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
 import { cache } from "react";
 
+export const runtime = "edge";
+
 type Props = {
   params: { slug: string };
 };
