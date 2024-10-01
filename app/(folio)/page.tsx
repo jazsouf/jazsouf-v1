@@ -1,9 +1,8 @@
 import { getHomePage, getSettings } from "@/sanity-cms/fetch";
 import { defineMetadata } from "@/utils/metadata";
-import React from "React";
-import { cache } from "React";
 import { toPlainText } from "next-sanity";
 import type { Metadata } from "next/types";
+import { cache } from "react";
 
 const getCachedHomePage = cache(getHomePage);
 
