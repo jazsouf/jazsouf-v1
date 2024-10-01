@@ -3,7 +3,6 @@
 ## Current
 
 [ ] Add an interactive gradient shader on home page
-[ ] Restyle the Selected Projects list
 [ ] Revalidate Tag with a startTransition and group together the server action with the onHandle function cf [https://www.youtube.com/watch?v=idEL0dv2V1A]
 
 ## Backlog
@@ -16,6 +15,7 @@
 
 ## Done
 
+[x] Restyle the Selected Projects list
 [x] Fix CSS
 [x] Fix Sanity studio after upgrade
 [x] Get The CSS working for all pages

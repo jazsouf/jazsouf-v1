@@ -1,68 +1,66 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-    --color-p-color: #EFEFEF;
-    --color-s-color: #FEFEFE;
-    --color-a-color: #FF7D3C;
-    --color-ah-color: #FFA900;
-    --color-t-color: #101010;
-    --color-l-color: #692CB6; 
-    --color-lh-color: #A034A9;
-    --color-bt-color: #CF418E;
-    --color-lbt-color: #F2596A;
-    --color-b-color: #2727AF;
+  --color-p-color: #fefefe;
+  --color-s-color: #efefef;
+  --color-a-color: #ff7d3c;
+  --color-ah-color: #ffa900;
+  --color-t-color: #101010;
+  --color-l-color: #692cb6;
+  --color-lh-color: #a034a9;
+  --color-bt-color: #cf418e;
+  --color-lbt-color: #f2596a;
+  --color-b-color: #2727af;
 
-    --default-transition-duration: 800ms;
-    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-transition-duration: 800ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-    
-    --animate-fade-in: fade-in 0.5s cubic-bezier(1, -0.2, 0.35, 0.95);
-    --animate-hard-fade-in: hard-fade-in 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.11);
-    --animate-smooth-fade-in: smooth-fade-in 0.5s cubic-bezier(0, 0, 0.2, 1);
-    
-    @keyframes fade-in {
-        0% {
-            mask: "linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat";
-            opacity: 0.2;
-          }
-          100% {
-            mask: "linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat";
-            opacity: 1;
-          }
-        }
-      @keyframes hard-fade-in {
-          0% {
-            opacity: 0;
-            filter: brightness(1);
-          }
-          10% {
-            opacity: 1;
-            filter: brightness(1.1);
-          }
-          100% {
-            opacity: 1;
-            filter: brightness(1);
-          }
-        }
-       
-      @keyframes smooth-fade-in {
-          0% {
-            opacity: 0;
-            clip-path: "inset(5%)";
-            transform: "scale(111.11%)";
-          }
-          100% {
-            opacity: 1;
-            clip-path: "inset(0)";
-            transform: "scale(1)";
-          }
-        }
+  --animate-fade-in: fade-in 0.5s cubic-bezier(1, -0.2, 0.35, 0.95);
+  --animate-hard-fade-in: hard-fade-in 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.11);
+  --animate-smooth-fade-in: smooth-fade-in 0.5s cubic-bezier(0, 0, 0.2, 1);
+
+  @keyframes fade-in {
+    0% {
+      mask: "linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 150% 0 / 400% no-repeat";
+      opacity: 0.2;
+    }
+    100% {
+      mask: "linear-gradient(90deg, #000 25%, #000000e6 50%, #00000000) 0 / 400% no-repeat";
+      opacity: 1;
+    }
+  }
+  @keyframes hard-fade-in {
+    0% {
+      opacity: 0;
+      filter: brightness(1);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(1.1);
+    }
+    100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
   }
 
-
+  @keyframes smooth-fade-in {
+    0% {
+      opacity: 0;
+      clip-path: "inset(5%)";
+      transform: "scale(111.11%)";
+    }
+    100% {
+      opacity: 1;
+      clip-path: "inset(0)";
+      transform: "scale(1)";
+    }
+  }
+}
 
 :root {
-  --mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
   --sans: "Inter", system-ui, sans-serif;
 }
 
@@ -125,8 +123,8 @@ pre code span {
   font-weight: 500;
 }
 
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

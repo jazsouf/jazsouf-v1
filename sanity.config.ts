@@ -10,6 +10,7 @@ import { schema } from "@/sanity-cms/schema";
 
 import { structure } from "@/sanity-cms/structure";
 
+import { originalActionWithRevalidate } from "@/sanity-cms/actions";
 import { structureTool } from "sanity/structure";
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Soufiane's Digital Space";
@@ -28,4 +29,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
   ],
+  document: {
+    actions: (prev) => prev.map((originalAction) => originalActionWithRevalidate(originalAction)),
+  },
 });
