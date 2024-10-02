@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-p-color: #fefefe;
+  --color-p-color: #ffffff;
   --color-s-color: #efefef;
   --color-a-color: #ff7d3c;
   --color-ah-color: #ffa900;
@@ -12,7 +12,7 @@
   --color-lbt-color: #f2596a;
   --color-b-color: #2727af;
 
-  --default-transition-duration: 800ms;
+  --default-transition-duration: 700ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   --animate-fade-in: fade-in 0.5s cubic-bezier(1, -0.2, 0.35, 0.95);
@@ -74,12 +74,19 @@ html {
   font-family: var(--sans, sans-serif);
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+
+  
 }
 
 body {
   min-height: 100vh;
   min-height: 100svh;
   background: var(--color-p-color);
+
+  ::selection {
+    background-color: var(--color-a-color);
+    color: var(--color-s-color);
+  }
 }
 
 pre {

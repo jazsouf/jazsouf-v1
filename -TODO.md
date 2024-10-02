@@ -4,11 +4,9 @@
 
 [ ] Add an interactive gradient shader on home page
 [ ] Update content to the projects page
+[ ] Write a post on the blog
 
 ## Backlog
-
-[ ] Write a post on the blog
-[ ] Add a selection text highligh color
 
 ## Cancelled
 
@@ -23,3 +21,4 @@
 [x] Add Blog Document on Sanity
 [x] Update content to the homepage
 [x] Revalidate Tag with a startTransition and group together the server action with the onHandle function cf [https://www.youtube.com/watch?v=idEL0dv2V1A]
+[x] Add a selection text highligh color
