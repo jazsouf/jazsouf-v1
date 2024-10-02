@@ -1,3 +1,4 @@
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import { getPost } from "@/sanity-cms/fetch";
 import { urlFor } from "@/sanity-cms/image";
 import dayjs from "dayjs";
@@ -70,103 +71,9 @@ export default async function WlogPost({
                 />
               )}
               {post.body && (
-                <PortableText
+                <CustomPortableText
+                  paragraphClasses="my-10 text-base/8 first:mt-0 last:mb-0"
                   value={post.body}
-                  components={{
-                    block: {
-                      normal: ({ children }) => (
-                        <p className="my-10 text-base/8 first:mt-0 last:mb-0">{children}</p>
-                      ),
-                      h2: ({ children }) => (
-                        <h2 className="mb-10 mt-12 text-2xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
-                          {children}
-                        </h2>
-                      ),
-                      h3: ({ children }) => (
-                        <h3 className="mb-10 mt-12 text-xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
-                          {children}
-                        </h3>
-                      ),
-                      blockquote: ({ children }) => (
-                        <blockquote className="my-10 border-l-2 border-l-gray-300 pl-6 text-base/8 text-gray-950 first:mt-0 last:mb-0">
-                          {children}
-                        </blockquote>
-                      ),
-                    },
-                    types: {
-                      code({ value }) {
-                        if (value.language === "html") {
-                          return (
-                            <pre>
-                              <code>{value.code}</code>
-                            </pre>
-                          );
-                        }
-                        const codeHTML = highlight(value.code as string);
-                        return (
-                          <pre>
-                            {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-                            <code dangerouslySetInnerHTML={{ __html: codeHTML }} />
-                          </pre>
-                        );
-                      },
-                      image: ({ value }) => (
-                        <img
-                          alt={value.alt || ""}
-                          src={urlFor(value).width(2000).url()}
-                          className="w-full rounded-2xl"
-                        />
-                      ),
-                      separator: ({ value }) => {
-                        switch (value.style) {
-                          case "line":
-                            return <hr className="my-8 border-t border-gray-200" />;
-                          case "space":
-                            return <div className="my-8" />;
-                          default:
-                            return null;
-                        }
-                      },
-                    },
-                    list: {
-                      bullet: ({ children }) => (
-                        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">
-                          {children}
-                        </ul>
-                      ),
-                      number: ({ children }) => (
-                        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">
-                          {children}
-                        </ol>
-                      ),
-                    },
-                    listItem: {
-                      bullet: ({ children }) => {
-                        return <li className="my-2 pl-2 has-[br]:mb-8">{children}</li>;
-                      },
-                      number: ({ children }) => {
-                        return <li className="my-2 pl-2 has-[br]:mb-8">{children}</li>;
-                      },
-                    },
-                    marks: {
-                      strong: ({ children }) => (
-                        <strong className="font-semibold text-gray-950">{children}</strong>
-                      ),
-                      code: ({ children }) => (
-                        <code className="font-semibold text-gray-700">{children}</code>
-                      ),
-                      link: ({ value, children }) => {
-                        return (
-                          <Link
-                            href={value.href}
-                            className="font-medium text-gray-950 underline decoration-gray-400 underline-offset-4 data-[hover]:decoration-gray-600"
-                          >
-                            {children}
-                          </Link>
-                        );
-                      },
-                    },
-                  }}
                 />
               )}
               <div className="mt-10">
