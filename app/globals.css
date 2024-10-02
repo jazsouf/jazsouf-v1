@@ -62,6 +62,16 @@
   --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
     monospace;
   --sans: "Inter", system-ui, sans-serif;
+
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-property: #0550ae;
+  --sh-entity: #249a97;
+  --sh-jsxliterals: #6266d1;
+  --sh-string: #00a99a;
+  --sh-keyword: #f47067;
+  --sh-comment: #a19595;
 }
 
 html {
@@ -90,10 +100,10 @@ body {
 }
 
 pre {
-  background-color: #16161e;
+  background-color: var(--color-s-color);
   overflow-x: auto;
   padding: 1rem;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   line-height: 1;
 }
 

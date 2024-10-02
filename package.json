@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@sanity/client": "6.22.0",
+    "@sanity/code-input": "^4.1.4",
     "@sanity/icons": "^3.4.0",
     "@sanity/image-url": "1.0.2",
     "@sanity/preview-url-secret": "^1.6.21",
@@ -33,6 +34,7 @@
     "sanity": "^3.58.0",
     "server-only": "0.0.1",
     "styled-components": "6.1.13",
+    "sugar-high": "^0.7.0",
     "tw-merge": "^0.0.1-alpha.3"
   },
   "devDependencies": {
@@ -41,9 +43,9 @@
     "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "10.4.20",
+    "eslint-config-next": "15.0.0-rc.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^4.0.0-alpha.25",
-    "eslint-config-next": "15.0.0-rc.0",
     "typescript": "^5.6.2"
   },
   "overrides": {

@@ -4,9 +4,11 @@
 
 [ ] Add an interactive gradient shader on home page
 [ ] Update content to the projects page
-[ ] Write a post on the blog
+[x] Write a post on the blog
 
 ## Backlog
+
+[ ] Wire up visual editing
 
 ## Cancelled
 

@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { PortableText } from "next-sanity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { highlight } from "sugar-high";
 
 export async function generateMetadata({
   params,
@@ -93,6 +94,22 @@ export default async function WlogPost({
                       ),
                     },
                     types: {
+                      code({ value }) {
+                        if (value.language === "html") {
+                          return (
+                            <pre>
+                              <code>{value.code}</code>
+                            </pre>
+                          );
+                        }
+                        const codeHTML = highlight(value.code as string);
+                        return (
+                          <pre>
+                            {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
+                            <code dangerouslySetInnerHTML={{ __html: codeHTML }} />
+                          </pre>
+                        );
+                      },
                       image: ({ value }) => (
                         <img
                           alt={value.alt || ""}
@@ -136,13 +153,7 @@ export default async function WlogPost({
                         <strong className="font-semibold text-gray-950">{children}</strong>
                       ),
                       code: ({ children }) => (
-                        <>
-                          <span aria-hidden>`</span>
-                          <code className="text-[15px]/8 font-semibold text-gray-950">
-                            {children}
-                          </code>
-                          <span aria-hidden>`</span>
-                        </>
+                        <code className="font-semibold text-gray-700">{children}</code>
                       ),
                       link: ({ value, children }) => {
                         return (
