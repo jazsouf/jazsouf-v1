@@ -92,7 +92,7 @@ body {
   background: var(--color-p-color);
 
   ::selection {
-    background-color: var(--color-b-color);
+    background-color: var(--color-a-color);
     color: var(--color-s-color);
   }
 }
@@ -119,8 +119,8 @@ code {
   font-size: 14px;
   padding: 0.2em 0.4em;
   background-color: var(--color-s-color);
-  ::selection {
-    background-color: var(--color-a-color);
+  &::selection {
+    background-color: var(--color-b-color);
     color: var(--color-s-color);
   }
 }
