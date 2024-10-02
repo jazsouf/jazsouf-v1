@@ -4,10 +4,8 @@ import { urlFor } from "@/sanity-cms/image";
 import dayjs from "dayjs";
 import { ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { PortableText } from "next-sanity";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { highlight } from "sugar-high";
 
 export async function generateMetadata({
   params,
@@ -53,7 +51,7 @@ export default async function WlogPost({
                   <Link
                     key={category.slug}
                     href={`/wlog?category=${category.slug}`}
-                    className="rounded-full border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
+                    className="border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
                   >
                     {category.title}
                   </Link>
@@ -62,12 +60,12 @@ export default async function WlogPost({
             )}
           </div>
           <div className="text-gray-700">
-            <div className="max-w-2xl xl:mx-auto">
+            <div className="max-w-3xl xl:mx-auto">
               {post.mainImage && (
                 <img
                   alt={post.mainImage.alt || ""}
                   src={urlFor(post.mainImage).size(2016, 1344).url()}
-                  className="mb-10 aspect-[3/2] w-full rounded-2xl object-cover shadow-xl"
+                  className="mb-10 aspect-[3/2] w-full object-cover shadow-xl"
                 />
               )}
               {post.body && (

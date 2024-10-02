@@ -83,7 +83,7 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       </div>
       <div className="mt-2 flex flex-row gap-x-2">
         {project.tags?.map((tag) => (
-          <div className="text-sm lowercase text-t-color opacity-60" key={tag}>
+          <div className="text-sm lowercase text-gray-700" key={tag}>
             {tag}
           </div>
         ))}

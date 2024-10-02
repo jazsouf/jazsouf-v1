@@ -37,7 +37,7 @@ export default async function Wlog({
         <p className="mt-6 max-w-3xl text-t-color">Posts about life, work, and stuff.</p>
       </div>
       {page === 1 && !category && <FeaturedPosts />}
-      <div className="flex flex-col mx-1 max-w-2xl mt-16 pb-24">
+      <div className="flex flex-col mx-1 max-w-3xl mt-16 pb-24">
         <Categories selected={category} />
         <Posts page={page} category={category} />
         <Pagination page={page} category={category} />
@@ -56,19 +56,19 @@ async function FeaturedPosts() {
   return (
     <div className="mt-16 pb-14">
       <div className="container">
-        <div className="mx-auto max-w-2xl lg:max-w-7xl">
+        <div className="mx-auto max-w-3xl lg:max-w-7xl">
           <h2 className="text-2xl font-medium tracking-tight">Featured</h2>
           <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-3">
             {featuredPosts.map((post) => (
               <div
                 key={post.slug}
-                className="relative flex flex-col rounded-3xl bg-white p-2 shadow-md shadow-black/5 ring-1 ring-black/5"
+                className="relative flex flex-col bg-white p-2 shadow-md shadow-black/5 ring-1 ring-black/5"
               >
                 {post.mainImage && (
                   <img
                     alt={post.mainImage.alt || ""}
                     src={urlFor(post.mainImage).size(1170, 780).url()}
-                    className="aspect-[3/2] w-full rounded-2xl object-cover"
+                    className="aspect-[3/2] w-full object-cover"
                   />
                 )}
                 <div className="flex flex-1 flex-col p-8">
@@ -118,7 +118,7 @@ async function Categories({ selected }: { selected?: string }) {
         href="/wlog/feed.xml"
         className={clsx(
           "inline-flex items-center justify-center px-2 py-[calc(theme(spacing.[1.5])-1px)]",
-          "rounded-lg border border-transparent shadow ring-1 ring-black/10",
+          " border border-transparent shadow ring-1 ring-black/10",
           "whitespace-nowrap text-sm font-medium text-gray-950",
           "data-[disabled]:bg-transparent data-[hover]:bg-gray-50 data-[disabled]:opacity-40",
           "gap-1",
@@ -147,11 +147,11 @@ async function Posts({ page, category }: { page: number; category?: string }) {
       {posts.map((post) => (
         <div
           key={post.slug}
-          className="relative grid grid-cols-1 border-b border-b-gray-100 py-10 first:border-t first:border-t-gray-200 max-sm:gap-3 sm:grid-cols-3"
+          className="relative grid grid-cols-1 border-b border-b-color py-10 first:border-t first:border-t-b-color max-sm:gap-3 sm:grid-cols-3"
         >
           <div>
             <div className="text-sm/5 max-sm:text-gray-700 sm:font-medium">
-              {dayjs(post.publishedAt).format("dddd, MMMM D, YYYY")}
+              {dayjs(post.publishedAt).format("MMM YYYY")}
             </div>
             {post.author && (
               <div className="mt-2.5 flex items-center gap-3">
@@ -166,9 +166,9 @@ async function Posts({ page, category }: { page: number; category?: string }) {
               </div>
             )}
           </div>
-          <div className="sm:col-span-2 sm:max-w-2xl">
-            <h2 className="text-sm/5 font-medium">{post.title}</h2>
-            <p className="mt-3 text-sm/6 text-gray-500">{post.excerpt}</p>
+          <div className="sm:col-span-2 sm:max-w-3xl">
+            <h2 className="font-medium leading-relaxed">{post.title}</h2>
+            <p className="mt-3 text-sm/6 text-gray-700">{post.excerpt}</p>
             <div className="mt-4">
               <Link
                 href={`/wlog/${post.slug}`}
@@ -176,7 +176,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
               >
                 <span className="absolute inset-0" />
                 Read more
-                <ChevronRight className="size-4 fill-gray-400" />
+                <ChevronRight className="size-3 text-b-color" />
               </Link>
             </div>
           </div>
@@ -227,7 +227,7 @@ async function Pagination({
             href={url(i + 1)}
             data-active={i + 1 === page ? true : undefined}
             className={clsx(
-              "size-7 rounded-lg text-center text-sm/7 font-medium",
+              "size-7 text-center text-sm/7 font-medium",
               "data-[hover]:bg-gray-100",
               "data-[active]:shadow data-[active]:ring-1 data-[active]:ring-black/10",
               "data-[active]:data-[hover]:bg-gray-50",
