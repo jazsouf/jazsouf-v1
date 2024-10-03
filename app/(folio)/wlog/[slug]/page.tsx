@@ -27,6 +27,12 @@ export default async function WlogPost({
   return (
     <main className="overflow-hidden px-6 md:px-[12.5%] ">
       <div className="max-w-3xl">
+        <div className="mt-10">
+          <Link href="/wlog">
+            <ChevronLeft className="size-3" />
+            Back to index
+          </Link>
+        </div>
         <h2 className="mt-24 text-sm font-light md:text-lg">
           {dayjs(post.publishedAt).format("dddd, MMMM D, YYYY")}
         </h2>
@@ -76,8 +82,8 @@ export default async function WlogPost({
               )}
               <div className="mt-10">
                 <Link href="/wlog">
-                  <ChevronLeft className="size-4" />
-                  Back to all writings
+                  <ChevronLeft className="size-3" />
+                  Back to index
                 </Link>
               </div>
             </div>

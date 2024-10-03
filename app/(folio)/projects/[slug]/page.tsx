@@ -45,7 +45,6 @@ export default async function ProjectSlugRoute({ params }: Props) {
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import ImageBox from "@/components/shared/ImageBox";
 import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
-import Link from "next/link";
 
 export interface ProjectPageProps {
   data: NonNullable<PROJECT_BY_SLUGResult>;
@@ -58,7 +57,7 @@ function ProjectPage({ data }: ProjectPageProps) {
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div className="animate-fade-in p-12 pb-32 sm:p-20 md:px-[12.5%]">
-        <h1 className="text-xl text-t-color mb-4">{title}</h1>
+        <h1 className="text-xl text-t-color py-6">{title}</h1>
         <div className="border-b-color border">
           <ImageBox
             image={coverImage?.asset}
@@ -79,13 +78,14 @@ function ProjectPage({ data }: ProjectPageProps) {
               <div className="p-3 lg:p-4">
                 <div className="text-xs md:text-sm">Site</div>
                 {site && (
-                  <Link
+                  <a
                     target="_blank"
+                    rel="noreferrer noopener"
                     className="text-md hover:text-ah-color text-a-color break-words underline md:text-sm transition"
                     href={site}
                   >
                     {title}
-                  </Link>
+                  </a>
                 )}
               </div>
             )}
