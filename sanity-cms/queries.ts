@@ -106,6 +106,10 @@ export const POSTS = defineQuery(/* groq */ `*[
     name,
     image,
   },
+  categories[]->{
+    title,
+    "slug": slug.current,
+  }
 }`);
 
 export const FEATURED_POSTS = defineQuery(/* groq */ `*[

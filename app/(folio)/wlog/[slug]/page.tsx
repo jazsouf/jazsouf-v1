@@ -25,16 +25,14 @@ export default async function WlogPost({
   let post = (await getPost(params.slug)) || notFound();
 
   return (
-    <main className="overflow-hidden px-6 md:px-[12.5%] ">
+    <main className="overflow-hidden px-6 md:px-[20%] ">
       <div className="max-w-3xl">
-        <div className="mt-10">
-          <Link href="/wlog">
-            <ChevronLeft className="size-3" />
-            Back to index
-          </Link>
-        </div>
+        <Link href="/wlog" className="mt-20 flex gap-1.5 items-center">
+          <ChevronLeft className="size-3" />
+          Back to index
+        </Link>
         <h2 className="mt-24 text-sm font-light md:text-lg">
-          {dayjs(post.publishedAt).format("dddd, MMMM D, YYYY")}
+          {dayjs(post.publishedAt).format("MMMM D, YYYY")}
         </h2>
         <h1 className="mt-2 text-2xl font-medium md:text-3xl">{post.title}</h1>
         <div className="mt-16 grid grid-cols-1 gap-8 pb-24 lg:grid-cols-[15rem_1fr] xl:grid-cols-[15rem_1fr_15rem]">
@@ -80,12 +78,10 @@ export default async function WlogPost({
                   value={post.body}
                 />
               )}
-              <div className="mt-10">
-                <Link href="/wlog">
-                  <ChevronLeft className="size-3" />
-                  Back to index
-                </Link>
-              </div>
+              <Link href="/wlog" className="mt-10 flex gap-1.5 items-center">
+                <ChevronLeft className="size-3" />
+                Back to index
+              </Link>
             </div>
           </div>
         </div>

@@ -2,10 +2,12 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center gap-24 p-12 pb-32 sm:p-20 md:px-[12.5%]">
+    <div className="grid place-content-center h-screen gap-14 p-12 pb-32 sm:p-20 md:px-[20%]">
       <h2>Not Found</h2>
       <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
+      <Link href="/" className="border border-b-color hover:bg-ah-color px-1.5 py-0.5 text-t-color">
+        Return Home
+      </Link>
     </div>
   );
 }

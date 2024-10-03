@@ -19,7 +19,7 @@ export default function ErrorPage({
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen gap-24 p-12 pb-32 sm:p-20 md:px-[15%]">
+    <div className="grid place-content-center h-screen gap-14 p-12 pb-32 sm:p-20 md:px-[20%]">
       <p>An error occurred: {error.message}</p>
       <p>
         <button

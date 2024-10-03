@@ -30,7 +30,7 @@ export default async function Wlog({
   let category = typeof searchParams.category === "string" ? searchParams.category : undefined;
 
   return (
-    <main className="px-6 md:px-[12.5%] overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
+    <main className="px-6 md:px-[20%] overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div className="max-w-3xl">
         <h2 className="mt-24 text-sm font-extrabold md:text-lg">Writings Log</h2>
         <h1 className="mt-2 text-3xl font-bold md:text-4xl">Life of me</h1>
@@ -150,6 +150,18 @@ async function Posts({ page, category }: { page: number; category?: string }) {
           className="relative grid grid-cols-1 border-b border-b-color py-10 first:border-t first:border-t-b-color max-sm:gap-3 sm:grid-cols-3"
         >
           <div>
+            {post?.categories && (
+              <div className="text-sm/5 max-sm:text-gray-700 sm:font-medium flex pb-1.5 gap-1.5">
+                {post.categories.map((category) => (
+                  <div
+                    key={category.slug}
+                    className="border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
+                  >
+                    {category.title}
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="text-sm/5 max-sm:text-gray-700 sm:font-medium">
               {dayjs(post.publishedAt).format("MMM YYYY")}
             </div>
@@ -166,20 +178,17 @@ async function Posts({ page, category }: { page: number; category?: string }) {
               </div>
             )}
           </div>
-          <div className="sm:col-span-2 sm:max-w-3xl">
+          <Link href={`/wlog/${post.slug}`} className="sm:col-span-2">
             <h2 className="font-medium leading-relaxed">{post.title}</h2>
             <p className="mt-3 text-sm/6 text-gray-700">{post.excerpt}</p>
             <div className="mt-4">
-              <Link
-                href={`/wlog/${post.slug}`}
-                className="flex items-center gap-1 text-sm/5 font-medium"
-              >
+              <div className="flex items-center gap-1 text-sm/5 font-medium">
                 <span className="absolute inset-0" />
                 Read more
                 <ChevronRight className="size-3 text-b-color" />
-              </Link>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
     </div>

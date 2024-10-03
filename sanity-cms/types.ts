@@ -861,7 +861,7 @@ export type SETTINGSResult = {
 // Query: count(*[  _type == "post"  && defined(slug.current)  && (isFeatured != true || defined($category))  && select(defined($category) => $category in categories[]->slug.current, true)])
 export type TOTAL_POSTSResult = number;
 // Variable: POSTS
-// Query: *[  _type == "post"  && defined(slug.current)  && (isFeatured != true || defined($category))  && select(defined($category) => $category in categories[]->slug.current, true)]|order(publishedAt desc)[$startIndex...$endIndex]{  title,  "slug": slug.current,  publishedAt,  excerpt,  author->{    name,    image,  },}
+// Query: *[  _type == "post"  && defined(slug.current)  && (isFeatured != true || defined($category))  && select(defined($category) => $category in categories[]->slug.current, true)]|order(publishedAt desc)[$startIndex...$endIndex]{  title,  "slug": slug.current,  publishedAt,  excerpt,  author->{    name,    image,  },  categories[]->{    title,    "slug": slug.current,  }}
 export type POSTSResult = Array<{
   title: string | null;
   slug: string | null;
@@ -881,6 +881,10 @@ export type POSTSResult = Array<{
       _type: "image";
     } | null;
   } | null;
+  categories: Array<{
+    title: string | null;
+    slug: string | null;
+  }> | null;
 }>;
 // Variable: FEATURED_POSTS
 // Query: *[  _type == "post"  && isFeatured == true  && defined(slug.current)]|order(publishedAt desc)[0...$quantity]{  title,  "slug": slug.current,  publishedAt,  mainImage,  excerpt,  author->{    name,    image,  },}
@@ -1033,7 +1037,7 @@ declare module "@sanity/client" {
     "*[\n  _type == \"page\" && defined(slug.current)\n]{\n  \"slug\": coalesce(slug.current, \"\")\n}": PAGE_SLUGSResult;
     "*[\n  _type == \"settings\"\n][0]{\n    footer,\n    \"menuItems\":coalesce(\n      menuItems[]->{_type, \"slug\": coalesce(slug.current, \"\"), title},\n      []\n    ),\n    ogImage,\n  }": SETTINGSResult;
     "count(*[\n  _type == \"post\"\n  && defined(slug.current)\n  && (isFeatured != true || defined($category))\n  && select(defined($category) => $category in categories[]->slug.current, true)\n])": TOTAL_POSTSResult;
-    "*[\n  _type == \"post\"\n  && defined(slug.current)\n  && (isFeatured != true || defined($category))\n  && select(defined($category) => $category in categories[]->slug.current, true)\n]|order(publishedAt desc)[$startIndex...$endIndex]{\n  title,\n  \"slug\": slug.current,\n  publishedAt,\n  excerpt,\n  author->{\n    name,\n    image,\n  },\n}": POSTSResult;
+    "*[\n  _type == \"post\"\n  && defined(slug.current)\n  && (isFeatured != true || defined($category))\n  && select(defined($category) => $category in categories[]->slug.current, true)\n]|order(publishedAt desc)[$startIndex...$endIndex]{\n  title,\n  \"slug\": slug.current,\n  publishedAt,\n  excerpt,\n  author->{\n    name,\n    image,\n  },\n  categories[]->{\n    title,\n    \"slug\": slug.current,\n  }\n}": POSTSResult;
     "*[\n  _type == \"post\"\n  && isFeatured == true\n  && defined(slug.current)\n]|order(publishedAt desc)[0...$quantity]{\n  title,\n  \"slug\": slug.current,\n  publishedAt,\n  mainImage,\n  excerpt,\n  author->{\n    name,\n    image,\n  },\n}": FEATURED_POSTSResult;
     "*[\n  _type == \"post\"\n  && defined(slug.current)\n]|order(isFeatured, publishedAt desc){\n  title,\n  \"slug\": slug.current,\n  publishedAt,\n  mainImage,\n  excerpt,\n  author->{\n    name,\n  },\n}": FEED_POSTSResult;
     "*[\n  _type == \"post\"\n  && slug.current == $slug\n][0]{\n  publishedAt,\n  title,\n  mainImage,\n  excerpt,\n  body,\n  author->{\n    name,\n    image,\n  },\n  categories[]->{\n    title,\n    \"slug\": slug.current,\n  }\n}\n": POSTResult;
