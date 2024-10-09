@@ -64,16 +64,13 @@ function ProjectPage({ data }: ProjectPageProps) {
             alt={`Cover image for ${title}`}
             classesWrapper="relative aspect-[16/9]"
           />
-
           <div className="divide-inherit text-t-color grid grid-cols-1 divide-y [text-wrap:pretty] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
-            {/* Client */}
             {client && (
               <div className="p-3 lg:p-4">
                 <div className="text-xs md:text-sm">Client</div>
                 <div className="text-md md:text-lg">{client}</div>
               </div>
             )}
-
             {site && (
               <div className="p-3 lg:p-4">
                 <div className="text-xs md:text-sm">Site</div>
@@ -89,8 +86,6 @@ function ProjectPage({ data }: ProjectPageProps) {
                 )}
               </div>
             )}
-
-            {/* Tags */}
             <div className="p-3 lg:p-4">
               <div className="text-xs md:text-sm">Stack</div>
               <div className="text-md flex flex-row flex-wrap md:text-lg">
@@ -102,15 +97,15 @@ function ProjectPage({ data }: ProjectPageProps) {
               </div>
             </div>
           </div>
+          {description && (
+            <div className="py-3 px-1 lg:py-4">
+              <CustomPortableText
+                paragraphClasses="max-w-3xl text-xl text-t-color"
+                value={description}
+              />
+            </div>
+          )}
         </div>
-        {description && (
-          <div className="py-3 px-1 lg:py-4">
-            <CustomPortableText
-              paragraphClasses="max-w-3xl text-xl text-t-color"
-              value={description}
-            />
-          </div>
-        )}
       </div>
     </main>
   );

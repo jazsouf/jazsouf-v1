@@ -43,13 +43,13 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4" id="projects">
           <h2 className="text-md lowercase text-t-color opacity-60 pb-4 px-0.5">Some Projects</h2>
-          <ul>
+          <ul className="max-w-3xl">
             {showcaseProjects.map((project) => {
               return (
                 <li
                   key={project.slug}
                   className={
-                    "border-b border-b-color hover:bg-s-color animate-fade-in flex flex-col transition :first-child:border-t"
+                    "border-b border-b-color hover:bg-s-color animate-fade-in flex flex-col transition first:border-t"
                   }
                 >
                   <TextBox project={project} />
