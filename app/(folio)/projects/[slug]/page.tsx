@@ -57,40 +57,40 @@ function ProjectPage({ data }: ProjectPageProps) {
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div className="animate-fade-in p-12 pb-32 sm:p-20 md:px-[20%]">
-        <h1 className="border-b-color border text-xl text-t-color py-6">{title}</h1>
         <div className="border-b-color border">
+          <h1 className="border-b-color border-b text-xl text-t-color py-6 px-2.5">{title}</h1>
           <ImageBox
             image={coverImage?.asset}
             alt={`Cover image for ${title}`}
             classesWrapper="relative aspect-[16/9]"
           />
-          <div className="divide-inherit text-t-color grid grid-cols-1 divide-y [text-wrap:pretty] lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          <div className="divide-inherit border-t border-b-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             {client && (
               <div className="p-3 lg:p-4">
-                <div className="text-xs md:text-sm">Client</div>
+                <h2 className="text-xs md:text-sm font-bold">Client</h2>
                 <div className="text-md md:text-lg">{client}</div>
               </div>
             )}
             {site && (
               <div className="p-3 lg:p-4">
-                <div className="text-xs md:text-sm">Site</div>
+                <h2 className="text-xs md:text-sm font-bold">Site</h2>
                 {site && (
                   <a
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="text-md hover:text-ah-color text-a-color break-words underline md:text-sm transition"
+                    className="hover:text-ah-color text-a-color break-words underline text-md md:text-lg transition"
                     href={site}
                   >
-                    {title}
+                    Live
                   </a>
                 )}
               </div>
             )}
             <div className="p-3 lg:p-4">
-              <div className="text-xs md:text-sm">Stack</div>
-              <div className="text-md flex flex-row flex-wrap md:text-lg">
+              <h2 className="text-xs md:text-sm font-bold">Stack</h2>
+              <div className="text-md flex flex-row md:text-lg">
                 {tags?.map((tag: string) => (
-                  <div key={tag} className="mr-1 break-words ">
+                  <div key={tag} className="mr-2.5 break-words">
                     {tag}
                   </div>
                 ))}
@@ -98,7 +98,7 @@ function ProjectPage({ data }: ProjectPageProps) {
             </div>
           </div>
           {description && (
-            <div className="py-3 px-1 lg:py-4">
+            <div className="py-3 px-2.5 lg:py-4 border-t border-b-color">
               <CustomPortableText
                 paragraphClasses="max-w-3xl text-xl text-t-color"
                 value={description}
