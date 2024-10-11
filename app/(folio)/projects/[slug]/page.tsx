@@ -57,7 +57,7 @@ function ProjectPage({ data }: ProjectPageProps) {
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div className="animate-fade-in p-12 pb-32 sm:p-20 md:px-[20%]">
-        <h1 className="text-xl text-t-color py-6">{title}</h1>
+        <h1 className="border-b-color border text-xl text-t-color py-6">{title}</h1>
         <div className="border-b-color border">
           <ImageBox
             image={coverImage?.asset}
