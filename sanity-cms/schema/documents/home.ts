@@ -14,6 +14,7 @@ export const homeType = defineType({
       description: "This field is the title of your personal website.",
       title: "Title",
       type: "string",
+
       validation: (rule) => rule.required(),
     }),
     defineField({

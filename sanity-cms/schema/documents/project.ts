@@ -11,6 +11,10 @@ export const projectType = defineType({
   fields: [
     defineField({
       name: "title",
+      hidden: ({ document }) => {
+        console.log("trial", document);
+        return false;
+      },
       description: "This field is the title of your project.",
       title: "Title",
       type: "string",

@@ -43,16 +43,16 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="relative flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-100px]" />
-          <h2 className="text-md lowercase w-full text-t-color opacity-60 pb-4 px-[20%]">
-            Some Projects
+          <h2 className="text-md lowercase w-full text-t-color text-center opacity-60 pb-4 px-[20%]">
+            Some recent projects
           </h2>
-          <ul className="max-w-5xl">
+          <ul className="w-screen">
             {showcaseProjects.map((project) => {
               return (
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t"
+                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-b-color border-b"
                   }
                 >
                   <TextBox project={project} />
@@ -80,16 +80,11 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       href={href}
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
     >
-      <div className="mb-1 pt-2 text-md font-extrabold md:text-xl">{project.title}</div>
-      <div className="text-t-color">
-        <CustomPortableText value={project.overview} />
-      </div>
-      <div className="mt-2 flex flex-row gap-x-2">
-        {project.tags?.map((tag) => (
-          <div className="text-sm lowercase text-gray-700" key={tag}>
-            {tag}
-          </div>
-        ))}
+      <div className="contents pt-2 md:flex gap-2 items-center justify-between">
+        <div className="text-md font-extrabold md:text-xl">{project.title}</div>
+        <div className="text-t-color">
+          <CustomPortableText value={project.overview} />
+        </div>
       </div>
     </Link>
   );

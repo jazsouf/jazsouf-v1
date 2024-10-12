@@ -4,7 +4,7 @@
     "typegen": "sanity schema extract --path=./sanity-cms/extract.json && sanity typegen generate",
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
-    "dev": "next",
+    "dev": "next --turbo",
     "build": "next build",
     "start": "next start",
     "prod": "next build && next start",
@@ -31,10 +31,10 @@
     "next-sanity": "9.5.0",
     "react": "19.0.0-rc-04bd67a4-20240924",
     "react-dom": "19.0.0-rc-04bd67a4-20240924",
-    "sanity": "^3.58.0",
+    "sanity": "^3.60.0",
     "server-only": "0.0.1",
     "styled-components": "6.1.13",
-    "sugar-high": "^0.7.0",
+    "sugar-high": "^0.7.1",
     "tw-merge": "^0.0.1-alpha.3"
   },
   "devDependencies": {
