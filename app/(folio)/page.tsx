@@ -41,9 +41,11 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
     <main className="flex flex-col gap-12 p-12 pb-32 px-6 md:px-[20%]">
       {title && overview && <Header centered title={title} description={overview} />}
       {showcaseProjects && showcaseProjects.length > 0 && (
-        <section className="relative flex flex-col pt-4">
+        <section className="relative flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-100px]" />
-          <h2 className="text-md lowercase text-t-color opacity-60 pb-4 px-0.5">Some Projects</h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-60 pb-4 px-[20%]">
+            Some Projects
+          </h2>
           <ul className="max-w-5xl">
             {showcaseProjects.map((project) => {
               return (
