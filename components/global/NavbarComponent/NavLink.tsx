@@ -25,7 +25,10 @@ export default function NavLink({
       )}
       href={href}
     >
-      <AnimatedName mainName={menuItem.title} />
+      <AnimatedName
+        mainName={menuItem.title}
+        subName={menuItem.title.toLocaleLowerCase() === "soufiane" ? "@jazsouf" : undefined}
+      />
     </Link>
   );
 }

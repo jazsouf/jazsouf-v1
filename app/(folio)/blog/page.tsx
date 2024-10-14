@@ -118,7 +118,7 @@ async function Categories({ selected }: { selected?: string }) {
         href="/blog/feed.xml"
         className={clsx(
           "inline-flex items-center justify-center px-2 py-[calc(theme(spacing.[1.5])-1px)]",
-          " border border-transparent shadow ring-1 ring-black/10",
+          "border border-transparent shadow ring-1 ring-black/10",
           "whitespace-nowrap text-sm font-medium text-gray-950",
           "data-[disabled]:bg-transparent data-[hover]:bg-gray-50 data-[disabled]:opacity-40",
           "gap-1",
@@ -147,7 +147,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
       {posts.map((post) => (
         <div
           key={post.slug}
-          className="relative grid grid-cols-1 border-b border-b-color py-10 first:border-t first:border-t-b-color max-sm:gap-3 sm:grid-cols-3"
+          className="relative grid grid-cols-1 py-10 first:border-t max-sm:gap-3 sm:grid-cols-3"
         >
           <div>
             {post?.categories && (
@@ -155,7 +155,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
                 {post.categories.map((category) => (
                   <div
                     key={category.slug}
-                    className="border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
+                    className="border border-dotted border-gray-200 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
                   >
                     {category.title}
                   </div>
