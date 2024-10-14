@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 5;
 
-export default async function Wlog({
+export default async function Blog({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -76,7 +76,7 @@ async function FeaturedPosts() {
                     {dayjs(post.publishedAt).format("dddd, MMMM D, YYYY")}
                   </div>
                   <div className="mt-2 text-base/7 font-medium">
-                    <Link href={`/wlog/${post.slug}`}>
+                    <Link href={`/blog/${post.slug}`}>
                       <span className="absolute inset-0" />
                       {post.title}
                     </Link>
@@ -115,7 +115,7 @@ async function Categories({ selected }: { selected?: string }) {
     <div className="flex flex-wrap items-center justify-between gap-2">
       <a
         type="button"
-        href="/wlog/feed.xml"
+        href="/blog/feed.xml"
         className={clsx(
           "inline-flex items-center justify-center px-2 py-[calc(theme(spacing.[1.5])-1px)]",
           " border border-transparent shadow ring-1 ring-black/10",
@@ -178,7 +178,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
               </div>
             )}
           </div>
-          <Link href={`/wlog/${post.slug}`} className="sm:col-span-2">
+          <Link href={`/blog/${post.slug}`} className="sm:col-span-2">
             <h2 className="font-medium leading-relaxed">{post.title}</h2>
             <p className="mt-3 text-sm/6 text-gray-700">{post.excerpt}</p>
             <div className="mt-4">
@@ -208,7 +208,7 @@ async function Pagination({
     if (category) params.set("category", category);
     if (page > 1) params.set("page", page.toString());
 
-    return params.size !== 0 ? `/wlog?${params.toString()}` : "/wlog";
+    return params.size !== 0 ? `/blog?${params.toString()}` : "/blog";
   }
 
   let totalPosts = await getPostsCount(category);

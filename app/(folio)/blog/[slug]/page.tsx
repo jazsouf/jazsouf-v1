@@ -17,7 +17,7 @@ export async function generateMetadata({
   return post ? { title: post.title, description: post.excerpt } : {};
 }
 
-export default async function WlogPost({
+export default async function BlogPost({
   params,
 }: {
   params: { slug: string };
@@ -27,7 +27,7 @@ export default async function WlogPost({
   return (
     <main className="overflow-hidden px-6 md:px-[20%] ">
       <div className="max-w-3xl">
-        <Link href="/wlog" className="mt-20 flex gap-1.5 items-center">
+        <Link href="/blog" className="mt-20 flex gap-1.5 items-center">
           <ChevronLeft className="size-3" />
           Back to index
         </Link>
@@ -54,7 +54,7 @@ export default async function WlogPost({
                 {post.categories.map((category) => (
                   <Link
                     key={category.slug}
-                    href={`/wlog?category=${category.slug}`}
+                    href={`/blog?category=${category.slug}`}
                     className="border border-dotted border-gray-300 bg-gray-50 px-2 text-sm/6 font-medium text-gray-500"
                   >
                     {category.title}
@@ -78,7 +78,7 @@ export default async function WlogPost({
                   value={post.body}
                 />
               )}
-              <Link href="/wlog" className="mt-10 flex gap-1.5 items-center">
+              <Link href="/blog" className="mt-10 flex gap-1.5 items-center">
                 <ChevronLeft className="size-3" />
                 Back to index
               </Link>
