@@ -4,7 +4,7 @@
     "typegen": "sanity schema extract --path=./sanity-cms/extract.json && sanity typegen generate",
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "prod": "next build && next start",
