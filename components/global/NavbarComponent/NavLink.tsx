@@ -27,7 +27,7 @@ export default function NavLink({
     >
       <AnimatedName
         mainName={menuItem.title}
-        subName={menuItem.title.toLocaleLowerCase() === "soufiane" ? "@jazsouf" : undefined}
+        subName={menuItem.title.toLocaleLowerCase() === "soufiane" ? "jazsouf" : undefined}
       />
     </Link>
   );

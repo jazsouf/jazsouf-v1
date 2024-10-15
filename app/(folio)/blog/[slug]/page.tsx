@@ -25,9 +25,9 @@ export default async function BlogPost({
   let post = (await getPost(params.slug)) || notFound();
 
   return (
-    <main className="overflow-hidden px-6 md:px-[20%] ">
+    <main className="overflow-hidden px-6 md:px-[20%] mt-16">
       <div className="max-w-3xl">
-        <Link href="/blog" className="mt-20 flex gap-1.5 items-center">
+        <Link href="/blog" className="mt-10 flex gap-1.5 items-center">
           <ChevronLeft className="size-3" />
           Back to index
         </Link>

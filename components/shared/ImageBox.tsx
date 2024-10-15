@@ -17,10 +17,10 @@ export default function ImageBox({
   alt = "Cover image",
   width = 3500,
   height = 2000,
-  size = "100vw",
+  size = "(max-width: 768px) 90vw, 60vw",
   classesWrapper,
 }: ImageBoxProps) {
-  const imageUrl = image && urlFor(image)?.height(height).width(width).fit("crop").url();
+  const imageUrl = image && urlFor(image)?.fit("crop").url();
   return (
     <div className={`bg-s-color relative w-full overflow-hidden ${classesWrapper}`}>
       {imageUrl && (
@@ -31,7 +31,7 @@ export default function ImageBox({
           height={height}
           sizes={size}
           src={imageUrl}
-          placeholder={colorBlur(46, 41, 48)}
+          placeholder={colorBlur(0, 0, 0)}
         />
       )}
     </div>

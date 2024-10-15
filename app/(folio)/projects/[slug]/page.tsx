@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const slugs = await getProjectsPaths();
-  return slugs.map((slug) => slug);
+  return slugs.map((slug: string) => slug);
 }
 
 export default async function ProjectSlugRoute({ params }: Props) {
@@ -45,6 +45,8 @@ export default async function ProjectSlugRoute({ params }: Props) {
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import ImageBox from "@/components/shared/ImageBox";
 import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 
 export interface ProjectPageProps {
   data: NonNullable<PROJECT_BY_SLUGResult>;
@@ -56,14 +58,21 @@ function ProjectPage({ data }: ProjectPageProps) {
 
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
-      <div className="animate-fade-in p-12 pb-32 sm:p-20 md:px-[20%]">
+      <div className="p-12 pb-32 sm:p-20 md:px-[20%]">
+        <Link href="/#projects" className="mt-10 mb-4 flex gap-1.5 items-center">
+          <ChevronLeft className="size-3" />
+          Back to index
+        </Link>
         <div className="border-b-color border">
           <h1 className="border-b-color border-b text-xl text-t-color py-6 px-2.5">{title}</h1>
-          <ImageBox
-            image={coverImage?.asset}
-            alt={`Cover image for ${title}`}
-            classesWrapper="relative aspect-[16/9]"
-          />
+          <figure className="p-2">
+            <ImageBox
+              image={coverImage?.asset}
+              alt={`Cover image for ${title}`}
+              classesWrapper="relative aspect-[16/9]"
+              size="(max-width: 768px) 90vw, 60vw"
+            />
+          </figure>
           <div className="divide-inherit border-t border-b-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-3 lg:divide-x lg:divide-y-0">
             {client && (
               <div className="p-3 lg:p-4">
@@ -81,7 +90,7 @@ function ProjectPage({ data }: ProjectPageProps) {
                     className="hover:text-ah-color text-a-color break-words underline text-md md:text-lg transition"
                     href={site}
                   >
-                    Live
+                    Visit Live
                   </a>
                 )}
               </div>

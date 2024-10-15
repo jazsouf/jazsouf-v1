@@ -38,21 +38,21 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   const { overview, showcaseProjects = [], title = "" } = data ?? {};
 
   return (
-    <main className="flex flex-col gap-12 p-12 pb-32 px-6 md:px-[20%]">
+    <main className="flex flex-col gap-12 pb-32">
       {title && overview && <Header centered title={title} description={overview} />}
       {showcaseProjects && showcaseProjects.length > 0 && (
-        <section className="relative flex flex-col pt-4 justify-start items-center">
-          <div id="projects" className="absolute translate-y-[-100px]" />
-          <h2 className="text-md lowercase w-full text-t-color text-center opacity-60 pb-4 px-[20%]">
+        <section className="flex flex-col pt-4 justify-start items-center">
+          <div id="projects" className="absolute translate-y-[-160px]" />
+          <h2 className="text-md lowercase w-full text-t-color opacity-60 pb-4 px-2">
             Some recent projects
           </h2>
-          <ul className="w-screen">
+          <ul className="w-full">
             {showcaseProjects.map((project) => {
               return (
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-b-color border-b"
+                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-b-color border-b px-2"
                   }
                 >
                   <TextBox project={project} />
@@ -80,7 +80,7 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       href={href}
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
     >
-      <div className="contents pt-2 md:flex gap-2 items-center justify-between">
+      <div className="contents pt-3 md:flex gap-2 items-center justify-between">
         <div className="text-md font-extrabold md:text-xl">{project.title}</div>
         <div className="text-t-color">
           <CustomPortableText value={project.overview} />

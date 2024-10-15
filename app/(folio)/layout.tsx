@@ -15,7 +15,7 @@ export default async function IndexRoute({
         <Navbar />
       </Suspense>
       <Suspense>
-        <div className="relative flex flex-col gap-10 justify-between min-h-[100svh] transition-colors bg-p-color">
+        <div className="relative flex flex-col gap-10 justify-between min-h-[100svh] bg-p-color">
           {children}
         </div>
       </Suspense>

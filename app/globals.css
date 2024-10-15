@@ -4,13 +4,13 @@
   --color-p-color: #ffffff;
   --color-s-color: #efefef;
   --color-a-color: #ff7d3c;
-  --color-ah-color: #ffa900;
+  --color-ah-color: #2727af;
+  --color-b-color: #2727af;
   --color-t-color: #101010;
   --color-l-color: #692cb6;
   --color-lh-color: #a034a9;
   --color-bt-color: #cf418e;
   --color-lbt-color: #f2596a;
-  --color-b-color: #2727af;
 
   --default-transition-duration: 700ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -209,4 +209,11 @@ textarea:not([rows]) {
 
 :target {
   scroll-margin-block: 5ex;
+}
+
+.webgl-canvas {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100lvh;
 }
