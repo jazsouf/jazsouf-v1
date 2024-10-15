@@ -2,6 +2,7 @@ import "@/app/globals.css";
 
 import Footer from "@/components/global/Footer";
 import Navbar from "@/components/global/NavbarComponent/Navbar";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Suspense } from "react";
 
 export default async function IndexRoute({
@@ -22,6 +23,7 @@ export default async function IndexRoute({
       <Suspense>
         <Footer />
       </Suspense>
+      <SpeedInsights />
     </>
   );
 }
