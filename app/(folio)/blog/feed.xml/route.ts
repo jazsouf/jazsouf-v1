@@ -39,7 +39,7 @@ export async function GET(req: Request) {
     feed.addItem({
       title: post.title,
       id: post.slug,
-      link: `${siteUrl}/wlog/${post.slug}`,
+      link: `${siteUrl}/blog/${post.slug}`,
       content: post.excerpt,
       image: post.mainImage
         ? urlFor(post.mainImage).size(1200, 800).format("jpg").url().replaceAll("&", "&amp;")

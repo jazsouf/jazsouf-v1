@@ -17,12 +17,12 @@ export function Header(props: HeaderProps) {
   return (
     <section
       id="header"
-      className="pb-4 min-h-[90svh] grid place-content-center leading-normal md:leading-loose"
+      className="p-3 min-h-[95svh] grid place-content-center leading-tight md:leading-loose"
     >
       {description && (
         <CustomPortableText
           value={description}
-          paragraphClasses="text-t-color text-left text-md md:text-xl max-w-3xl pt-1.5"
+          paragraphClasses="text-t-color text-left text-lg md:text-xl max-w-3xl pt-1.5"
         />
       )}
     </section>

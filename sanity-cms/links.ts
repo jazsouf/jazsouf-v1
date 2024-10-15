@@ -9,7 +9,7 @@ export function resolveHref(documentType?: string, slug?: string | null): string
     case "art":
       return slug ? `/art/${slug}` : undefined;
     case "post":
-      return slug ? `/wlog/${slug}` : undefined;
+      return slug ? `/blog/${slug}` : undefined;
     default:
       console.warn("Invalid document type:", documentType);
       return undefined;

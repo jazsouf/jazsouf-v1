@@ -110,7 +110,10 @@ export function CustomPortableText({
               rel="noreferrer noopener"
               target="_blank"
             >
-              {children}↗
+              {children}
+              <span className="md:text-sm text-xs">
+                <sup className="inline">↗</sup>
+              </span>
             </a>
           );
         }
