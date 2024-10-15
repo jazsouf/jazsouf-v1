@@ -28,7 +28,7 @@
     "feed": "^4.2.2",
     "lucide-react": "^0.453.0",
     "next": "^15.0.0-canary.169",
-    "next-sanity": "9.5.0",
+    "next-sanity": "9.5.4",
     "react": "19.0.0-rc-04bd67a4-20240924",
     "react-dom": "19.0.0-rc-04bd67a4-20240924",
     "sanity": "3.60.0",

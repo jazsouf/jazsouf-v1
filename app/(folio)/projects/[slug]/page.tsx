@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const slugs = await getProjectsPaths();
-  console.log("static params", slugs);
 
   return slugs.map((slug) => slug.slug);
 }
