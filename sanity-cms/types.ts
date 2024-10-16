@@ -300,6 +300,8 @@ export type Home = {
     _key: string;
     [internalGroqTypeReferenceTo]?: "project";
   }>;
+  services?: Array<string>;
+  stack?: Array<string>;
 };
 
 export type Timeline = {
@@ -423,9 +425,23 @@ export type Project = {
     crop?: SanityImageCrop;
     _type: "image";
   };
+  extraImages?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }>;
   duration?: Duration;
+  year?: string;
   client?: string;
   site?: string;
+  services?: Array<string>;
   tags?: Array<string>;
   description?: Array<{
     children?: Array<{
@@ -578,9 +594,10 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity-cms/queries.ts
 // Variable: HOME_PAGE
-// Query: *[  _type == "home" && defined(_id)][0]{    _id,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      coverImage,      overview,      "slug": coalesce(slug.current, ""),      tags,      title,    },[]    ),    title,  }
+// Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year    },[]),    services,    stack,  }
 export type HOME_PAGEResult = {
   _id: string;
+  title: string | null;
   overview: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -601,6 +618,8 @@ export type HOME_PAGEResult = {
   }> | null;
   showcaseProjects: Array<{
     _type: "project";
+    title: string | null;
+    slug: string | "";
     coverImage: {
       asset?: {
         _ref: string;
@@ -626,11 +645,12 @@ export type HOME_PAGEResult = {
       _type: "block";
       _key: string;
     }> | null;
-    slug: string | "";
+    services: Array<string> | null;
     tags: Array<string> | null;
-    title: string | null;
+    year: string | null;
   }> | Array<never>;
-  title: string | null;
+  services: Array<string> | null;
+  stack: Array<string> | null;
 } | null;
 // Variable: HOME_PAGE_TITLE
 // Query: *[_type == "home"][0]{  title}
@@ -692,10 +712,25 @@ export type PAGE_BY_SLUGResult = {
   slug: string | "";
 } | null;
 // Variable: PROJECT_BY_SLUG
-// Query: *[  _type == "project" && slug.current == $slug && defined(_id)][0]{    _id,    client,    coverImage,    description,    duration,    overview,    site,    "slug": coalesce(slug.current, ""),    tags,    title,  }
+// Query: *[  _type == "project" && slug.current == $slug && defined(_id)][0]{    _id,    title,    "slug": coalesce(slug.current, ""),    overview,    coverImage,    extraImages,    client,    site,    services,    tags,    description,    duration,    year  }
 export type PROJECT_BY_SLUGResult = {
   _id: string;
-  client: string | null;
+  title: string | null;
+  slug: string | "";
+  overview: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: null;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
   coverImage: {
     asset?: {
       _ref: string;
@@ -707,6 +742,22 @@ export type PROJECT_BY_SLUGResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  extraImages: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  client: string | null;
+  site: string | null;
+  services: Array<string> | null;
+  tags: Array<string> | null;
   description: Array<{
     _key: string;
   } & Timeline | {
@@ -741,24 +792,7 @@ export type PROJECT_BY_SLUGResult = {
     _key: string;
   }> | null;
   duration: Duration | null;
-  overview: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal";
-    listItem?: never;
-    markDefs?: null;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
-  site: string | null;
-  slug: string | "";
-  tags: Array<string> | null;
-  title: string | null;
+  year: string | null;
 } | null;
 // Variable: ART_BY_SLUG
 // Query: *[  _type == "art" && slug.current == $slug][0]{  _id,  "slug": coalesce(slug.current, ""),  image,  overview,  title,  }
@@ -1027,10 +1061,10 @@ export type CATEGORIESResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      coverImage,\n      overview,\n      \"slug\": coalesce(slug.current, \"\"),\n      tags,\n      title,\n    },[]\n    ),\n    title,\n  }": HOME_PAGEResult;
+    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    title,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      title,\n      \"slug\": coalesce(slug.current, \"\"),\n      coverImage,\n      overview,\n      services,\n      tags,\n      year\n    },[]),\n    services,\n    stack,\n  }": HOME_PAGEResult;
     "*[_type == \"home\"][0]{\n  title\n}": HOME_PAGE_TITLEResult;
     "*[\n  _type == \"page\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    body,\n    overview,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n  }": PAGE_BY_SLUGResult;
-    "*[\n  _type == \"project\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    client,\n    coverImage,\n    description,\n    duration,\n    overview,\n    site,\n    \"slug\": coalesce(slug.current, \"\"),\n    tags,\n    title,\n  }": PROJECT_BY_SLUGResult;
+    "*[\n  _type == \"project\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n    overview,\n    coverImage,\n    extraImages,\n    client,\n    site,\n    services,\n    tags,\n    description,\n    duration,\n    year\n  }": PROJECT_BY_SLUGResult;
     "*[\n  _type == \"art\" && slug.current == $slug\n][0]{\n  _id,\n  \"slug\": coalesce(slug.current, \"\"),\n  image,\n  overview,\n  title,\n  }": ART_BY_SLUGResult;
     "*[\n  _type == \"project\" && defined(slug.current)\n]{\n  \"slug\": coalesce(slug.current, \"\")\n}": PROJECT_SLUGSResult;
     "*[\n  _type == \"art\" && defined(slug.current)\n]{\n  \"slug\": coalesce(slug.current, \"\")\n}": ART_SLUGSResult;

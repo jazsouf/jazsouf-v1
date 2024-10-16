@@ -4,17 +4,20 @@ export const HOME_PAGE = defineQuery(`*[
   _type == "home" && defined(_id)
 ][0]{
     _id,
+    title,
     overview,
     "showcaseProjects": coalesce(showcaseProjects[]->{
       _type,
+      title,
+      "slug": coalesce(slug.current, ""),
       coverImage,
       overview,
-      "slug": coalesce(slug.current, ""),
+      services,
       tags,
-      title,
-    },[]
-    ),
-    title,
+      year
+    },[]),
+    services,
+    stack,
   }`);
 
 export const HOME_PAGE_TITLE = defineQuery(`*[_type == "home"][0]{
@@ -35,15 +38,18 @@ export const PROJECT_BY_SLUG = defineQuery(`*[
   _type == "project" && slug.current == $slug && defined(_id)
 ][0]{
     _id,
-    client,
+    title,
+    "slug": coalesce(slug.current, ""),
+    overview,
     coverImage,
+    extraImages,
+    client,
+    site,
+    services,
+    tags,
     description,
     duration,
-    overview,
-    site,
-    "slug": coalesce(slug.current, ""),
-    tags,
-    title,
+    year
   }`);
 
 export const ART_BY_SLUG = defineQuery(`*[

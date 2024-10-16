@@ -6,15 +6,9 @@ export const projectType = defineType({
   title: "Project",
   type: "document",
   icon: DocumentIcon,
-  // Uncomment below to have edits publish automatically as you type
-  // liveEdit: true,
   fields: [
     defineField({
       name: "title",
-      hidden: ({ document }) => {
-        console.log("trial", document);
-        return false;
-      },
       description: "This field is the title of your project.",
       title: "Title",
       type: "string",
@@ -71,9 +65,28 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "extraImages",
+      title: "Extra Images",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: "duration",
       title: "Duration",
       type: "duration",
+      deprecated: { reason: "use the year field instead" },
+    }),
+    defineField({
+      name: "year",
+      title: "Year",
+      type: "string",
     }),
     defineField({
       name: "client",
@@ -90,6 +103,7 @@ export const projectType = defineType({
           scheme: ["http", "https", "mailto", "tel"],
         }),
     }),
+    defineField({ name: "services", title: "Services", type: "array", of: [{ type: "string" }] }),
     defineField({
       name: "tags",
       title: "Tags",
@@ -129,10 +143,10 @@ export const projectType = defineType({
           },
           styles: [],
         }),
-        // Custom blocks
         defineArrayMember({
           name: "timeline",
           type: "timeline",
+          deprecated: { reason: "use the year field instead" },
         }),
         defineField({
           type: "image",

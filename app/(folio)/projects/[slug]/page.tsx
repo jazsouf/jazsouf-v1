@@ -55,7 +55,7 @@ export interface ProjectPageProps {
 
 function ProjectPage({ data }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { client, coverImage, description, site, tags, title } = data ?? {};
+  const { client, coverImage, description, site, tags, title, extraImages, year } = data ?? {};
 
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
@@ -74,16 +74,16 @@ function ProjectPage({ data }: ProjectPageProps) {
               size="(max-width: 768px) 90vw, 60vw"
             />
           </figure>
-          <div className="divide-inherit border-t border-b-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+          <div className="divide-inherit border-t border-b-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-4 lg:divide-x lg:divide-y-0">
             {client && (
               <div className="p-3 lg:p-4">
-                <h2 className="text-xs md:text-sm font-bold">Client</h2>
+                <h2 className="text-xs md:text-sm font-bold pb-0.5">Client</h2>
                 <div className="text-md md:text-lg">{client}</div>
               </div>
             )}
             {site && (
               <div className="p-3 lg:p-4">
-                <h2 className="text-xs md:text-sm font-bold">Site</h2>
+                <h2 className="text-xs md:text-sm font-bold pb-0.5">Site</h2>
                 {site && (
                   <a
                     target="_blank"
@@ -97,7 +97,12 @@ function ProjectPage({ data }: ProjectPageProps) {
               </div>
             )}
             <div className="p-3 lg:p-4">
-              <h2 className="text-xs md:text-sm font-bold">Stack</h2>
+              <h2 className="text-xs md:text-sm font-bold pb-0.5">Year</h2>
+              <div className="text-md md:text-lg">{year}</div>
+            </div>
+
+            <div className="p-3 lg:p-4">
+              <h2 className="text-xs md:text-sm font-bold pb-0.5">Stack</h2>
               <div className="text-md flex flex-row md:text-lg">
                 {tags?.map((tag: string) => (
                   <div key={tag} className="mr-2.5 break-words">
@@ -113,6 +118,20 @@ function ProjectPage({ data }: ProjectPageProps) {
                 paragraphClasses="max-w-3xl text-xl text-t-color"
                 value={description}
               />
+            </div>
+          )}
+          {extraImages && (
+            <div className="border-t border-b-color">
+              {extraImages.map((image) => (
+                <figure key={image._key} className="p-2">
+                  <ImageBox
+                    image={image.asset}
+                    alt={`Extra image for ${title}`}
+                    classesWrapper="relative aspect-[16/9]"
+                    size="(max-width: 768px) 90vw, 60vw"
+                  />
+                </figure>
+              ))}
             </div>
           )}
         </div>

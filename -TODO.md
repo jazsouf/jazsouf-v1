@@ -3,8 +3,10 @@
 ## Current
 
 [ ] Add an interactive gradient shader on home page
-[ ] Update content to the projects page
-[x] Write a post on the blog
+[ ] Add expanding accordion section for projects
+[ ] Add section about services provided
+[ ] Add extra media for projects
+[ ] Add hover effect forn projects
 
 ## Backlog
 
@@ -14,6 +16,8 @@
 
 ## Done
 
+[x] Write a post on the blog
+[x] Update content to the projects page
 [x] Restyle the Selected Projects list
 [x] Fix CSS
 [x] Fix Sanity studio after upgrade

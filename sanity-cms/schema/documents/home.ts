@@ -76,6 +76,18 @@ export const homeType = defineType({
         }),
       ],
     }),
+    defineField({
+      name: "services",
+      title: "Services",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+    }),
+    defineField({
+      name: "stack",
+      title: "Stack",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+    }),
   ],
   preview: {
     select: {

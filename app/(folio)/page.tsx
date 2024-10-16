@@ -35,7 +35,7 @@ import Link from "next/link";
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview, showcaseProjects = [], title = "" } = data ?? {};
+  const { overview, showcaseProjects = [], title = "", services } = data ?? {};
 
   return (
     <main className="flex flex-col gap-12 pb-32">
@@ -43,8 +43,8 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-160px]" />
-          <h2 className="text-md lowercase w-full text-t-color opacity-60 pb-4 px-2">
-            Some recent projects
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 px-3">
+            Some recent projects I worked on
           </h2>
           <ul className="w-full">
             {showcaseProjects.map((project) => {
@@ -60,6 +60,16 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
               );
             })}
           </ul>
+        </section>
+      )}
+      {services && (
+        <section className="flex flex-col pt-4 justify-start items-center">
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 px-2">Services</h2>
+          {services.map((service) => (
+            <div key={service} className="text-t-color">
+              {service}
+            </div>
+          ))}
         </section>
       )}
     </main>
@@ -80,11 +90,13 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       href={href}
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
     >
-      <div className="contents pt-3 md:flex gap-2 items-center justify-between">
-        <div className="text-md font-extrabold md:text-xl">{project.title}</div>
-        <div className="text-t-color">
+      <div className="contents pt-3 md:grid gap-2 grid-cols-5 text-left">
+        <div className="text-md font-extrabold md:text-lg">{project.title}</div>
+        <div className="text-t-color opacity-70">{project.services?.join(", ")}</div>
+        <div className="text-t-color col-span-2">
           <CustomPortableText value={project.overview} />
         </div>
+        <div className="text-t-color opacity-70">{project.year}</div>
       </div>
     </Link>
   );
