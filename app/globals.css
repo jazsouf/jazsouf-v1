@@ -211,7 +211,7 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-.webgl-canvas {
+#canvas-container {
   position: fixed;
   top: 0;
   width: 100%;

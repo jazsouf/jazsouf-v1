@@ -14,6 +14,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-three/drei": "^9.114.4",
+    "@react-three/fiber": "^8.17.10",
     "@sanity/client": "6.22.1",
     "@sanity/code-input": "^4.1.4",
     "@sanity/icons": "^3.4.0",
