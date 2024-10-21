@@ -1,6 +1,9 @@
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
-
+import dynamic from "next/dynamic";
+const FluidGradient = dynamic(() => import("../../app/(folio)/FluidGradient"), {
+  loading: () => <div>Loading...</div>,
+});
 interface HeaderProps {
   centered?: boolean;
   description?:
@@ -19,6 +22,7 @@ export function Header(props: HeaderProps) {
       id="header"
       className="p-3 min-h-[95svh] grid place-content-center leading-tight md:leading-loose"
     >
+      <FluidGradient />
       {description && (
         <CustomPortableText
           value={description}

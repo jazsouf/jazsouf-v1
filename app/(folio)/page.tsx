@@ -1,7 +1,6 @@
 import { getHomePage, getSettings } from "@/sanity-cms/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
-import Image from "next/image";
 import type { Metadata } from "next/types";
 import { cache } from "react";
 
@@ -54,7 +53,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-b-color border-b px-2"
+                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-a-color border-b px-2"
                   }
                 >
                   <TextBox project={project} />
@@ -71,7 +70,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
               <ImageBox
                 image={avatar?.asset}
                 alt="my social media avatar"
-                classesWrapper="border border-b-color aspect-square"
+                classesWrapper="border border-a-color aspect-square"
               />
             </div>
           </div>
