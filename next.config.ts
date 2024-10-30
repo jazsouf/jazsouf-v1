@@ -1,5 +1,6 @@
-/** @type {import('next').NextConfig} */
-const config = {
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   logging: {
     fetches: {
       fullUrl: true,
@@ -16,7 +17,8 @@ const config = {
   },
   experimental: {
     taint: true,
+    reactCompiler: true,
   },
 };
 
-export default config;
+export default nextConfig;

@@ -7,22 +7,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  let post = await getPost(params.slug);
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  let post = await getPost((await params).slug);
 
   return post ? { title: post.title, description: post.excerpt } : {};
 }
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  let post = (await getPost(params.slug)) || notFound();
+export default async function BlogPost({ params }: PageProps) {
+  let post = (await getPost((await params).slug)) || notFound();
 
   return (
     <main className="overflow-hidden px-6 md:px-[20%] mt-16">

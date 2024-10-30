@@ -275,6 +275,17 @@ export type Home = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  avatar?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
   overview?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -594,10 +605,21 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity-cms/queries.ts
 // Variable: HOME_PAGE
-// Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year    },[]),    services,    stack,  }
+// Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    avatar,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year    },[]),    services,    stack,  }
 export type HOME_PAGEResult = {
   _id: string;
   title: string | null;
+  avatar: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
   overview: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -1061,7 +1083,7 @@ export type CATEGORIESResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    title,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      title,\n      \"slug\": coalesce(slug.current, \"\"),\n      coverImage,\n      overview,\n      services,\n      tags,\n      year\n    },[]),\n    services,\n    stack,\n  }": HOME_PAGEResult;
+    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    title,\n    avatar,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      title,\n      \"slug\": coalesce(slug.current, \"\"),\n      coverImage,\n      overview,\n      services,\n      tags,\n      year\n    },[]),\n    services,\n    stack,\n  }": HOME_PAGEResult;
     "*[_type == \"home\"][0]{\n  title\n}": HOME_PAGE_TITLEResult;
     "*[\n  _type == \"page\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    body,\n    overview,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n  }": PAGE_BY_SLUGResult;
     "*[\n  _type == \"project\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n    overview,\n    coverImage,\n    extraImages,\n    client,\n    site,\n    services,\n    tags,\n    description,\n    duration,\n    year\n  }": PROJECT_BY_SLUGResult;
