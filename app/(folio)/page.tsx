@@ -63,7 +63,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           </ul>
         </section>
       )}
-      <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl">
+      <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
         {avatar && (
           <div className="col-start-1 flex items-start justify-center">
             <div className="md:size-52 size-28">
@@ -75,7 +75,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
             </div>
           </div>
         )}
-        <section className="col-start-2">
+        <section className="col-start-2 text-center">
           <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 ">Services</h2>
           {services?.map((service) => (
             <div key={service} className="text-t-color">
@@ -83,7 +83,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
             </div>
           ))}
         </section>
-        <section className="col-start-3">
+        <section className="col-start-3 text-center">
           <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4">Stack</h2>
           {stack?.map((item) => (
             <div key={item} className="text-t-color">
