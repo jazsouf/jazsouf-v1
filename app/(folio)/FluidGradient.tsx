@@ -21,8 +21,8 @@ export default function FluidGradient() {
         </defs>
       </svg>
       <div className={styles.gradients}>
-        <div className={styles.g1} />
-        <InteractiveBubble />
+        <div className={styles.circle} />
+        {/* <InteractiveBubble /> */}
       </div>
     </div>
   );

@@ -24,9 +24,8 @@
   min-height: 95vh;
 }
 
-.g1 {
+.circle {
   position: absolute;
-  transform: translate3d(0, 0, 0);
   background: radial-gradient(
       circle at center,
       rgba(var(--color1), 0.8) 0,
@@ -45,7 +44,6 @@
 
 .interactive {
   position: absolute;
-  transform: translate3d(0, 0, 0);
   background: radial-gradient(circle at center, var(--color-p-color) 0, var(--color-p-color) 50%)
     no-repeat;
   mix-blend-mode: var(--blending);

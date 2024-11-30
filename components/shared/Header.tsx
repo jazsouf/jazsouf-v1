@@ -1,6 +1,7 @@
 import FluidGradient from "@/app/(folio)/FluidGradient";
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
+import dynamic from "next/dynamic";
 interface HeaderProps {
   centered?: boolean;
   description?:
@@ -9,6 +10,7 @@ interface HeaderProps {
     | NonNullable<HOME_PAGEResult>["overview"];
   title?: string | null;
 }
+const FuildGradient = dynamic(() => import("../../app/(folio)/FluidGradient"));
 export function Header(props: HeaderProps) {
   const { title, description } = props;
   if (!description && !title) {
