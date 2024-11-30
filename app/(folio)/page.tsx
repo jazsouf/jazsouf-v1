@@ -111,9 +111,9 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
     >
       <div className="contents pt-3 md:grid gap-2 grid-cols-5 text-left">
-        <div className="text-md font-extrabold md:text-lg">{project.title}</div>
+        <div className="text-md font-extrabold md:text-lg flex items-center">{project.title}</div>
         <div className="text-t-color opacity-70">{project.services?.join(", ")}</div>
-        <div className="text-t-color col-span-2">
+        <div className="text-t-color col-span-2 flex items-center">
           <CustomPortableText value={project.overview} />
         </div>
         <div className="text-t-color opacity-70">{project.year}</div>

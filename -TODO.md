@@ -1,21 +1,22 @@
 # TODO
-[ ] Add an interactive gradient shader on home page
+[ ] Test out static studio
+[ ] Wire up visual editing
 
 ## Current
 
 [ ] Add expanding accordion section for projects
 [ ] Add section about services provided
 [ ] Add extra media for projects
-[ ] Add hover effect forn projects
 
 ## Backlog
 
-[ ] Wire up visual editing
 
 ## Cancelled
 
 ## Done
 
+
+[x] Add an interactive gradient shader on home page
 [x] Write a post on the blog
 [x] Update content to the projects page
 [x] Restyle the Selected Projects list
