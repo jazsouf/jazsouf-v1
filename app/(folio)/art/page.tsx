@@ -1,3 +1,3 @@
 export default function ArtRoute() {
-  return <div>ArtPage</div>;
+  return <main>ArtPage</main>;
 }
