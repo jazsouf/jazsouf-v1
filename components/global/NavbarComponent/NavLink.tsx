@@ -18,8 +18,8 @@ export default function NavLink({
     <Link
       key={menuItem.slug}
       className={cn(
-        `hover:outline-[0.5px] outline outline-0 lowercase ${
-          menuItem?._type === "home" ? "text-a-color md:text-xl" : "text-a-color/90 md:text-xl"
+        `hover:outline-[0.5px] lowercase ${
+          menuItem?._type === "home" ? "text-p-color md:text-xl" : "text-a-color/90 md:text-xl"
         }`,
         pathname === href && "outline-[1px]",
       )}

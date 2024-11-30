@@ -65,7 +65,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       )}
       <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
         {avatar && (
-          <div className="col-start-1 flex items-start justify-center">
+          <div className="col-start-1 flex items-center justify-center">
             <div className="md:size-52 size-28">
               <ImageBox
                 image={avatar?.asset}
