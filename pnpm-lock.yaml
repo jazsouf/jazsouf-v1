@@ -20,9 +20,6 @@ importers:
       '@sanity/image-url':
         specifier: 1.1.0
         version: 1.1.0
-      '@sanity/preview-url-secret':
-        specifier: ^2.0.4
-        version: 2.0.4(@sanity/client@6.22.5)
       '@sanity/ui':
         specifier: ^2.9.0
         version: 2.9.0(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react-is@18.3.1)(react@19.0.0-rc-04bd67a4-20240924)(styled-components@6.1.13(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924))
@@ -30,11 +27,8 @@ importers:
         specifier: 3.65.1
         version: 3.65.1(@babel/runtime@7.26.0)(@codemirror/lint@6.8.4)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.3)(codemirror@6.0.1(@lezer/common@1.2.3))(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react-is@18.3.1)(react@19.0.0-rc-04bd67a4-20240924)(styled-components@6.1.13(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924))
       '@tailwindcss/postcss':
-        specifier: ^4.0.0-alpha.25
-        version: 4.0.0-beta.4
-      '@tailwindcss/vite':
         specifier: 4.0.0-beta.4
-        version: 4.0.0-beta.4(@babel/core@7.26.0)(postcss@8.4.49)(svelte@5.2.11)(typescript@5.7.2)(vite@4.5.5(@types/node@22.10.1)(lightningcss@1.28.2))
+        version: 4.0.0-beta.4
       '@vercel/og':
         specifier: 0.6.4
         version: 0.6.4
@@ -83,9 +77,6 @@ importers:
       sugar-high:
         specifier: ^0.7.5
         version: 0.7.5
-      three:
-        specifier: ^0.171.0
-        version: 0.171.0
       tw-merge:
         specifier: ^0.0.1-alpha.3
         version: 0.0.1-alpha.3
@@ -1755,11 +1746,6 @@ packages:
 
   '@tailwindcss/postcss@4.0.0-beta.4':
     resolution: {integrity: sha512-nZZKXG/SRf4+8udSThSMbCduQRen60kWtlkxwLUNpKlJWBkWF7vy/ybJzfgCXwEFxBLuNsnm89o42I3XoifAIw==}
-
-  '@tailwindcss/vite@4.0.0-beta.4':
-    resolution: {integrity: sha512-VpexhM1fzmhT3KfviF3BAOeJ5p0Pc0wW6QkTUI+aiRlIHtaPI9QxNrOvLgkLSqGxucb78ERA0eI2hrcAN6gjWA==}
-    peerDependencies:
-      vite: ^5.2.0
 
   '@tanstack/react-table@8.20.5':
     resolution: {integrity: sha512-WEHopKw3znbUZ61s9i0+i9g8drmDo6asTWbrQh8Us63DAk/M0FkmIqERew6P71HI75ksZ2Pxyuf4vvKh9rAkiA==}
@@ -4123,43 +4109,6 @@ packages:
     peerDependencies:
       react: '>=17.0'
 
-  svelte-preprocess@6.0.3:
-    resolution: {integrity: sha512-PLG2k05qHdhmRG7zR/dyo5qKvakhm8IJ+hD2eFRQmMLHp7X3eJnjeupUtvuRpbNiF31RjVw45W+abDwHEmP5OA==}
-    engines: {node: '>= 18.0.0'}
-    peerDependencies:
-      '@babel/core': ^7.10.2
-      coffeescript: ^2.5.1
-      less: ^3.11.3 || ^4.0.0
-      postcss: ^7 || ^8
-      postcss-load-config: '>=3'
-      pug: ^3.0.0
-      sass: ^1.26.8
-      stylus: '>=0.55'
-      sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
-      svelte: ^4.0.0 || ^5.0.0-next.100 || ^5.0.0
-      typescript: ^5.0.0
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      coffeescript:
-        optional: true
-      less:
-        optional: true
-      postcss:
-        optional: true
-      postcss-load-config:
-        optional: true
-      pug:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      typescript:
-        optional: true
-
   svelte@5.2.11:
     resolution: {integrity: sha512-rAVKne02inlyw//aD1QXuUbxDBNnyW6sagS7JfxzUbGVuJnHrf2WfQdJDYlBq8mOz8NBGQAZdD6KEITd0NUDtA==}
     engines: {node: '>=18'}
@@ -4194,9 +4143,6 @@ packages:
 
   text-decoder@1.2.1:
     resolution: {integrity: sha512-x9v3H/lTKIJKQQe7RPQkLfKAnc9lUTkWDypIQgTzPJAq+5/GCDHonmshfvlsNSj58yyshbIJJDLmU15qNERrXQ==}
-
-  three@0.171.0:
-    resolution: {integrity: sha512-Y/lAXPaKZPcEdkKjh0JOAHVv8OOnv/NDJqm0wjfCzyQmfKxV7zvkwsnBgPBKTzJHToSOhRGQAGbPJObT59B/PQ==}
 
   through2@2.0.5:
     resolution: {integrity: sha512-/mrRod8xqpA+IHSLyGCQ2s8SPHiCDEeQJSep1jqLYeEUClOFG2Qsh+4FU6G9VeqpZnGW/Su8LQGc4YKni5rYSQ==}
@@ -6520,27 +6466,6 @@ snapshots:
       postcss: 8.4.49
       tailwindcss: 4.0.0-beta.4
 
-  '@tailwindcss/vite@4.0.0-beta.4(@babel/core@7.26.0)(postcss@8.4.49)(svelte@5.2.11)(typescript@5.7.2)(vite@4.5.5(@types/node@22.10.1)(lightningcss@1.28.2))':
-    dependencies:
-      '@tailwindcss/node': 4.0.0-beta.4
-      '@tailwindcss/oxide': 4.0.0-beta.4
-      lightningcss: 1.28.2
-      svelte-preprocess: 6.0.3(@babel/core@7.26.0)(postcss@8.4.49)(svelte@5.2.11)(typescript@5.7.2)
-      tailwindcss: 4.0.0-beta.4
-      vite: 4.5.5(@types/node@22.10.1)(lightningcss@1.28.2)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - coffeescript
-      - less
-      - postcss
-      - postcss-load-config
-      - pug
-      - sass
-      - stylus
-      - sugarss
-      - svelte
-      - typescript
-
   '@tanstack/react-table@8.20.5(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924)':
     dependencies:
       '@tanstack/table-core': 8.20.5
@@ -6577,7 +6502,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.0
 
-  '@types/estree@1.0.6': {}
+  '@types/estree@1.0.6':
+    optional: true
 
   '@types/event-source-polyfill@1.0.5': {}
 
@@ -6726,8 +6652,10 @@ snapshots:
   acorn-typescript@1.4.13(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
+    optional: true
 
-  acorn@8.14.0: {}
+  acorn@8.14.0:
+    optional: true
 
   agent-base@7.1.1:
     dependencies:
@@ -6774,7 +6702,8 @@ snapshots:
       tar-stream: 3.1.7
       zip-stream: 6.0.1
 
-  aria-query@5.3.2: {}
+  aria-query@5.3.2:
+    optional: true
 
   array-union@2.1.0: {}
 
@@ -6800,7 +6729,8 @@ snapshots:
       postcss: 8.4.49
       postcss-value-parser: 4.2.0
 
-  axobject-query@4.1.0: {}
+  axobject-query@4.1.0:
+    optional: true
 
   b4a@1.6.7: {}
 
@@ -7373,12 +7303,14 @@ snapshots:
 
   escape-string-regexp@1.0.5: {}
 
-  esm-env@1.2.1: {}
+  esm-env@1.2.1:
+    optional: true
 
   esrap@1.2.2:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
       '@types/estree': 1.0.6
+    optional: true
 
   esutils@2.0.3: {}
 
@@ -7783,6 +7715,7 @@ snapshots:
   is-reference@3.0.3:
     dependencies:
       '@types/estree': 1.0.6
+    optional: true
 
   is-retry-allowed@2.2.0: {}
 
@@ -7925,7 +7858,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  locate-character@3.0.0: {}
+  locate-character@3.0.0:
+    optional: true
 
   locate-path@3.0.0:
     dependencies:
@@ -7980,6 +7914,7 @@ snapshots:
   magic-string@0.30.14:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
+    optional: true
 
   make-dir@1.3.0:
     dependencies:
@@ -9070,14 +9005,6 @@ snapshots:
     dependencies:
       react: 19.0.0-rc-04bd67a4-20240924
 
-  svelte-preprocess@6.0.3(@babel/core@7.26.0)(postcss@8.4.49)(svelte@5.2.11)(typescript@5.7.2):
-    dependencies:
-      svelte: 5.2.11
-    optionalDependencies:
-      '@babel/core': 7.26.0
-      postcss: 8.4.49
-      typescript: 5.7.2
-
   svelte@5.2.11:
     dependencies:
       '@ampproject/remapping': 2.3.0
@@ -9093,6 +9020,7 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.14
       zimmerframe: 1.1.2
+    optional: true
 
   symbol-tree@3.2.4: {}
 
@@ -9141,8 +9069,6 @@ snapshots:
       yallist: 5.0.0
 
   text-decoder@1.2.1: {}
-
-  three@0.171.0: {}
 
   through2@2.0.5:
     dependencies:
@@ -9440,7 +9366,8 @@ snapshots:
 
   yoga-wasm-web@0.3.3: {}
 
-  zimmerframe@1.1.2: {}
+  zimmerframe@1.1.2:
+    optional: true
 
   zip-stream@6.0.1:
     dependencies:

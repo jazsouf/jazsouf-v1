@@ -8,8 +8,6 @@ import {
   FEED_POSTS,
   HOME_PAGE,
   HOME_PAGE_TITLE,
-  PAGE_BY_SLUG,
-  PAGE_SLUGS,
   POST,
   POSTS,
   PROJECT_BY_SLUG,
@@ -24,18 +22,6 @@ type Options = { perspective?: string; stega?: boolean };
 export function getSettings({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: SETTINGS,
-    perspective,
-    stega,
-  });
-}
-
-export function getPageBySlug(
-  slug: string,
-  { perspective = undefined, stega = undefined }: Options,
-) {
-  return sanityFetch({
-    query: PAGE_BY_SLUG,
-    params: { slug },
     perspective,
     stega,
   });
@@ -81,9 +67,6 @@ export function getHomePageTitle({ perspective = undefined, stega = undefined }:
   });
 }
 
-export function getPagesPaths() {
-  return client.withConfig({ useCdn: false }).fetch(PAGE_SLUGS, {}, { cache: "no-store" });
-}
 export function getProjectsPaths() {
   return client.withConfig({ useCdn: false }).fetch(PROJECT_SLUGS, {}, { cache: "no-store" });
 }

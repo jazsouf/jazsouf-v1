@@ -18,11 +18,9 @@
     "@sanity/code-input": "^5.0.0",
     "@sanity/icons": "^3.5.0",
     "@sanity/image-url": "1.1.0",
-    "@sanity/preview-url-secret": "^2.0.4",
     "@sanity/ui": "^2.9.0",
     "@sanity/vision": "3.65.1",
-    "@tailwindcss/postcss": "^4.0.0-alpha.25",
-    "@tailwindcss/vite": "4.0.0-beta.4",
+    "@tailwindcss/postcss": "4.0.0-beta.4",
     "@vercel/og": "0.6.4",
     "@vercel/speed-insights": "^1.1.0",
     "babel-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
@@ -39,7 +37,6 @@
     "sonner": "^1.7.0",
     "styled-components": "6.1.13",
     "sugar-high": "^0.7.5",
-    "three": "^0.171.0",
     "tw-merge": "^0.0.1-alpha.3"
   },
   "devDependencies": {
