@@ -30,12 +30,13 @@ import { CustomPortableText } from "@/components/portableText/CustomPortableText
 import { Header } from "@/components/shared/Header";
 import { resolveHref } from "@/sanity-cms/links";
 
+import ImageBox from "@/components/shared/ImageBox";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
 import Link from "next/link";
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview, showcaseProjects = [], title = "", services } = data ?? {};
+  const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};
 
   return (
     <main className="flex flex-col gap-12 pb-32">
@@ -52,7 +53,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-b-color border-b px-2"
+                    "hover:bg-a-color animate-fade-in flex flex-col transition first:border-t border-a-color border-b px-2"
                   }
                 >
                   <TextBox project={project} />
@@ -62,16 +63,35 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           </ul>
         </section>
       )}
-      {services && (
-        <section className="flex flex-col pt-4 justify-start items-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 px-2">Services</h2>
-          {services.map((service) => (
+      <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
+        {avatar && (
+          <div className="col-start-1 flex items-center justify-center">
+            <div className="md:size-52 size-28">
+              <ImageBox
+                image={avatar?.asset}
+                alt="my social media avatar"
+                classesWrapper="border border-a-color aspect-square"
+              />
+            </div>
+          </div>
+        )}
+        <section className="col-start-2 text-center">
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 ">Services</h2>
+          {services?.map((service) => (
             <div key={service} className="text-t-color">
               {service}
             </div>
           ))}
         </section>
-      )}
+        <section className="col-start-3 text-center">
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4">Stack</h2>
+          {stack?.map((item) => (
+            <div key={item} className="text-t-color">
+              {item}
+            </div>
+          ))}
+        </section>
+      </div>
     </main>
   );
 }

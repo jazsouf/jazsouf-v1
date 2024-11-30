@@ -13,7 +13,7 @@ export default async function Navbar() {
   ] satisfies NonNullable<SETTINGSResult>["menuItems"];
 
   return (
-    <nav className="absolute z-10 top-5 left-10 backdrop-blur-lg shadow-nav sm:shadow-none">
+    <nav className="absolute z-20 top-5 left-10 shadow-nav sm:shadow-none">
       <ul className="flex flex-row sm:flex-col text-left leading-relaxed gap-4 sm:gap-0 px-8 xs:px-12 sm:px-0 py-6 pt-5 xs:py-8 xs:pt-7 sm:py-0 sm:pt-0">
         {menuItems?.map((menuItem) => {
           const href = resolveHref(menuItem?._type, menuItem?.slug);

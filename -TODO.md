@@ -1,8 +1,8 @@
 # TODO
+[ ] Add an interactive gradient shader on home page
 
 ## Current
 
-[ ] Add an interactive gradient shader on home page
 [ ] Add expanding accordion section for projects
 [ ] Add section about services provided
 [ ] Add extra media for projects

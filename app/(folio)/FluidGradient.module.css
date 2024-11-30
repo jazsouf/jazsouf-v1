@@ -1,0 +1,68 @@
+.gradientBg {
+  min-height: 95svh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+  background: linear-gradient(
+    177deg,
+    var(--color-a-color) 10%,
+    var(--color-p-color) 80%,
+    var(--color-p-color) 100%
+  );
+  top: 0;
+  left: 0;
+}
+
+.svg {
+  display: none;
+}
+
+.gradients {
+  filter: url(#goo) blur(30px);
+  transform: translate3d(0, 0, 0);
+  width: 100vw;
+  min-height: 95vh;
+}
+
+.circle {
+  position: absolute;
+  background: radial-gradient(
+      circle at center,
+      rgba(var(--color1), 0.8) 0,
+      rgba(var(--color1), 0) 50%
+    )
+    no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: center center;
+  animation: moveVertical 30s ease infinite;
+  opacity: 1;
+}
+
+.interactive {
+  position: absolute;
+  background: radial-gradient(circle at center, var(--color-p-color) 0, var(--color-p-color) 50%)
+    no-repeat;
+  mix-blend-mode: var(--blending);
+  width: 100px;
+  height: 100px;
+  top: -30px;
+  left: -20px;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translate3d(-5%, -5%);
+  }
+  50% {
+    transform: translate3d(5%, 5%);
+  }
+  100% {
+    transform: translate3d(-5%, -5%);
+  }
+}

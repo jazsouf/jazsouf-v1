@@ -6,12 +6,12 @@ import { toPlainText } from "next-sanity";
 import { notFound } from "next/navigation";
 import ArtPage from "./ArtPage";
 
-type Props = {
-  params: { slug: string };
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
 
   const [homePageTitleData, data] = await Promise.all([getHomePageTitle(), getArtBySlug(slug)]);
 
@@ -28,8 +28,8 @@ export async function generateStaticParams() {
   return slugs.filter(Boolean);
 }
 
-export default async function ArtSlugRoute({ params }: Props) {
-  const data = await getArtBySlug(params.slug);
+export default async function ArtSlugRoute({ params }: PageProps) {
+  const data = await getArtBySlug((await params).slug);
 
   if (!data) {
     notFound();

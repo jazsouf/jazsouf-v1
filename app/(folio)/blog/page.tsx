@@ -8,6 +8,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+type PageProps = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
 export const metadata: Metadata = {
   title: "Writing log",
   description: "Read about my life, my work and other stuff.",
@@ -15,19 +19,16 @@ export const metadata: Metadata = {
 
 const POSTS_PER_PAGE = 5;
 
-export default async function Blog({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default async function Blog({ searchParams }: PageProps) {
   let page =
     "page" in searchParams
       ? typeof searchParams.page === "string" && Number.parseInt(searchParams.page) > 1
         ? Number.parseInt(searchParams.page)
         : notFound()
       : 1;
-
-  let category = typeof searchParams.category === "string" ? searchParams.category : undefined;
+  const searchParamsData = await searchParams;
+  let category =
+    typeof searchParamsData.category === "string" ? searchParamsData.category : undefined;
 
   return (
     <main className="px-6 md:px-[20%] overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
@@ -185,7 +186,7 @@ async function Posts({ page, category }: { page: number; category?: string }) {
               <div className="flex items-center gap-1 text-sm/5 font-medium">
                 <span className="absolute inset-0" />
                 Read more
-                <ChevronRight className="size-3 text-b-color" />
+                <ChevronRight className="size-3 text-a-color" />
               </div>
             </div>
           </Link>

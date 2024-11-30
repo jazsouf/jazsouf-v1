@@ -3,21 +3,16 @@ import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
-import { cache } from "react";
 
-type Props = {
-  params: { slug: string };
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-const getCachedProjectBySlug = cache(getProjectBySlug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const paramsData = await params;
+  const { slug } = paramsData;
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = params;
-
-  const [homePageTitle, project] = await Promise.all([
-    getHomePageTitle(),
-    getCachedProjectBySlug(slug),
-  ]);
+  const [homePageTitle, project] = await Promise.all([getHomePageTitle(), getProjectBySlug(slug)]);
 
   return defineMetadata({
     baseTitle: homePageTitle?.title ?? "",
@@ -29,12 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   const slugs = await getProjectsPaths();
-
-  return slugs.map((slug) => slug.slug);
+  return slugs.filter(Boolean);
 }
 
-export default async function ProjectSlugRoute({ params }: Props) {
-  const data = await getCachedProjectBySlug(params.slug);
+export default async function ProjectSlugRoute({ params }: PageProps) {
+  const paramsData = await params;
+  const data = await getProjectBySlug(paramsData.slug);
 
   if (!data) {
     notFound();
@@ -64,8 +59,8 @@ function ProjectPage({ data }: ProjectPageProps) {
           <ChevronLeft className="size-3" />
           Back to index
         </Link>
-        <div className="border-b-color border">
-          <h1 className="border-b-color border-b text-xl text-t-color py-6 px-2.5">{title}</h1>
+        <div className="border-a-color border">
+          <h1 className="border-a-color border-b text-xl text-t-color py-6 px-2.5">{title}</h1>
           <figure className="p-2">
             <ImageBox
               image={coverImage?.asset}
@@ -74,7 +69,7 @@ function ProjectPage({ data }: ProjectPageProps) {
               size="(max-width: 768px) 90vw, 60vw"
             />
           </figure>
-          <div className="divide-inherit border-t border-b-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-4 lg:divide-x lg:divide-y-0">
+          <div className="divide-inherit border-t border-a-color text-t-color grid grid-cols-1 divide-y text-balance lg:grid-cols-4 lg:divide-x lg:divide-y-0">
             {client && (
               <div className="p-3 lg:p-4">
                 <h2 className="text-xs md:text-sm font-bold pb-0.5">Client</h2>
@@ -113,7 +108,7 @@ function ProjectPage({ data }: ProjectPageProps) {
             </div>
           </div>
           {description && (
-            <div className="py-3 px-2.5 lg:py-4 border-t border-b-color">
+            <div className="py-3 px-2.5 lg:py-4 border-t border-a-color">
               <CustomPortableText
                 paragraphClasses="max-w-3xl text-xl text-t-color"
                 value={description}
@@ -121,7 +116,7 @@ function ProjectPage({ data }: ProjectPageProps) {
             </div>
           )}
           {extraImages && (
-            <div className="border-t border-b-color">
+            <div className="border-t border-a-color">
               {extraImages.map((image) => (
                 <figure key={image._key} className="p-2">
                   <ImageBox

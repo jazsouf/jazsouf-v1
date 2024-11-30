@@ -5,6 +5,7 @@ export const HOME_PAGE = defineQuery(`*[
 ][0]{
     _id,
     title,
+    avatar,
     overview,
     "showcaseProjects": coalesce(showcaseProjects[]->{
       _type,
