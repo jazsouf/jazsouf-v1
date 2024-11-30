@@ -36,6 +36,7 @@
     "react-dom": "19.0.0-rc-04bd67a4-20240924",
     "sanity": "3.65.1",
     "server-only": "0.0.1",
+    "sonner": "^1.7.0",
     "styled-components": "6.1.13",
     "sugar-high": "^0.7.5",
     "three": "^0.171.0",

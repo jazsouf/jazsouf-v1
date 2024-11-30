@@ -1,11 +1,9 @@
 # TODO
-[ ] Test out static studio
-[ ] Wire up visual editing
+
+[ ] Add expanding accordion section for projects
 
 ## Current
 
-[ ] Add expanding accordion section for projects
-[ ] Add section about services provided
 [ ] Add extra media for projects
 
 ## Backlog
@@ -16,6 +14,9 @@
 ## Done
 
 
+[x] Add section about services provided
+[x] Test out static studio
+[x] LiveAPI
 [x] Add an interactive gradient shader on home page
 [x] Write a post on the blog
 [x] Update content to the projects page

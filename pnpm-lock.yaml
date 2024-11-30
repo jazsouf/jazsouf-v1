@@ -74,6 +74,9 @@ importers:
       server-only:
         specifier: 0.0.1
         version: 0.0.1
+      sonner:
+        specifier: ^1.7.0
+        version: 1.7.0(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924)
       styled-components:
         specifier: 6.1.13
         version: 6.1.13(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924)
@@ -3974,6 +3977,12 @@ packages:
 
   slate@0.110.2:
     resolution: {integrity: sha512-4xGULnyMCiEQ0Ml7JAC1A6HVE6MNpPJU7Eq4cXh1LxlrR0dFXC3XC+rNfQtUJ7chHoPkws57x7DDiWiZAt+PBA==}
+
+  sonner@1.7.0:
+    resolution: {integrity: sha512-W6dH7m5MujEPyug3lpI2l3TC3Pp1+LTgK0Efg+IHDrBbtEjyCmCHHo6yfNBOsf1tFZ6zf+jceWwB38baC8yO9g==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -8922,6 +8931,11 @@ snapshots:
       immer: 10.1.1
       is-plain-object: 5.0.0
       tiny-warning: 1.0.3
+
+  sonner@1.7.0(react-dom@19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924))(react@19.0.0-rc-04bd67a4-20240924):
+    dependencies:
+      react: 19.0.0-rc-04bd67a4-20240924
+      react-dom: 19.0.0-rc-04bd67a4-20240924(react@19.0.0-rc-04bd67a4-20240924)
 
   source-map-js@1.2.1: {}
 

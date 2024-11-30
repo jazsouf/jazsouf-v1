@@ -2,8 +2,10 @@ import "@/app/globals.css";
 
 import Footer from "@/components/global/Footer";
 import Navbar from "@/components/global/NavbarComponent/Navbar";
+import { SanityLive } from "@/sanity-cms/live";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Suspense } from "react";
+import { handleLiveError } from "./handleLiveError";
 
 export default async function IndexRoute({
   children,
@@ -12,6 +14,7 @@ export default async function IndexRoute({
 }) {
   return (
     <>
+      <SanityLive onError={handleLiveError} />
       <Suspense>
         <Navbar />
       </Suspense>
