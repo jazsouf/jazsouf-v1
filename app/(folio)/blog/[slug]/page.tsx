@@ -12,13 +12,16 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  let post = await getPost((await params).slug);
+  let { data: post } = await getPost((await params).slug, { stega: false });
 
   return post ? { title: post.title, description: post.excerpt } : {};
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  let post = (await getPost((await params).slug)) || notFound();
+  let { data: post } = await getPost((await params).slug, {});
+  if (!post) {
+    notFound();
+  }
 
   return (
     <main className="overflow-hidden px-6 md:px-[20%] mt-16">
@@ -28,7 +31,7 @@ export default async function BlogPost({ params }: PageProps) {
           Back to index
         </Link>
         <h2 className="mt-24 text-sm font-light md:text-lg">
-          {dayjs(post.publishedAt).format("MMMM D, YYYY")}
+          {dayjs(post?.publishedAt).format("MMMM D, YYYY")}
         </h2>
         <h1 className="mt-2 text-2xl font-medium md:text-3xl">{post.title}</h1>
         <div className="mt-16 grid grid-cols-1 gap-8 pb-24 lg:grid-cols-[15rem_1fr] xl:grid-cols-[15rem_1fr_15rem]">

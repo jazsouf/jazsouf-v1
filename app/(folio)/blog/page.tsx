@@ -48,7 +48,7 @@ export default async function Blog({ searchParams }: PageProps) {
 }
 
 async function FeaturedPosts() {
-  let featuredPosts = await getFeaturedPosts(3);
+  let { data: featuredPosts } = await getFeaturedPosts(3, {});
 
   if (featuredPosts.length === 0) {
     return;
@@ -106,7 +106,7 @@ async function FeaturedPosts() {
 }
 
 async function Categories({ selected }: { selected?: string }) {
-  let categories = await getCategories();
+  let { data: categories } = await getCategories({});
 
   if (categories.length === 0) {
     return;
@@ -133,7 +133,12 @@ async function Categories({ selected }: { selected?: string }) {
 }
 
 async function Posts({ page, category }: { page: number; category?: string }) {
-  let posts = await getPosts((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE, category);
+  let { data: posts } = await getPosts(
+    (page - 1) * POSTS_PER_PAGE,
+    page * POSTS_PER_PAGE,
+    category,
+    {},
+  );
 
   if (posts.length === 0 && (page > 1 || category)) {
     notFound();
@@ -212,7 +217,7 @@ async function Pagination({
     return params.size !== 0 ? `/blog?${params.toString()}` : "/blog";
   }
 
-  let totalPosts = await getPostsCount(category);
+  let { data: totalPosts } = await getPostsCount(category, {});
   let hasPreviousPage = page - 1;
   let previousPageUrl = hasPreviousPage ? url(page - 1) : "";
   let hasNextPage = page * POSTS_PER_PAGE < totalPosts;

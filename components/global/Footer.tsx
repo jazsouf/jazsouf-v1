@@ -2,7 +2,7 @@ import { CustomPortableText } from "@/components/portableText/CustomPortableText
 import { getSettings } from "@/sanity-cms/fetch";
 
 export default async function Footer() {
-  const data = await getSettings();
+  const { data } = await getSettings({});
   if (!data) {
     return null;
   }

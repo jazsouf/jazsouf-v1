@@ -2,12 +2,12 @@ import { getHomePage, getSettings } from "@/sanity-cms/fetch";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
 import type { Metadata } from "next/types";
-import { cache } from "react";
-
-const getCachedHomePage = cache(getHomePage);
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [settings, page] = await Promise.all([getSettings(), getCachedHomePage()]);
+  const [{ data: settings }, { data: page }] = await Promise.all([
+    getSettings({ stega: false }),
+    getHomePage({ stega: false }),
+  ]);
 
   return defineMetadata({
     description: page?.overview ? toPlainText(page.overview) : "",
@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function IndexRoute() {
-  const data = await getCachedHomePage();
+  const { data } = await getHomePage({});
 
   if (!data) {
     return null;

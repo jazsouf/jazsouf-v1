@@ -12,7 +12,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const paramsData = await params;
   const { slug } = paramsData;
 
-  const [homePageTitle, project] = await Promise.all([getHomePageTitle(), getProjectBySlug(slug)]);
+  const [{ data: homePageTitle }, { data: project }] = await Promise.all([
+    getHomePageTitle({ stega: false }),
+    getProjectBySlug(slug, { stega: false }),
+  ]);
 
   return defineMetadata({
     baseTitle: homePageTitle?.title ?? "",
@@ -29,7 +32,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectSlugRoute({ params }: PageProps) {
   const paramsData = await params;
-  const data = await getProjectBySlug(paramsData.slug);
+  const { data } = await getProjectBySlug(paramsData.slug, {});
 
   if (!data) {
     notFound();

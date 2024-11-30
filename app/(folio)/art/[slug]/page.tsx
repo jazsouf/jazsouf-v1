@@ -13,7 +13,10 @@ type PageProps = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const [homePageTitleData, data] = await Promise.all([getHomePageTitle(), getArtBySlug(slug)]);
+  const [{ data: homePageTitleData }, { data }] = await Promise.all([
+    getHomePageTitle({ stega: false }),
+    getArtBySlug(slug, { stega: false }),
+  ]);
 
   return defineMetadata({
     baseTitle: homePageTitleData?.title ?? undefined,
@@ -29,7 +32,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ArtSlugRoute({ params }: PageProps) {
-  const data = await getArtBySlug((await params).slug);
+  const { data } = await getArtBySlug((await params).slug, {});
 
   if (!data) {
     notFound();

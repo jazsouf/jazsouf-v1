@@ -1,5 +1,4 @@
 import "server-only";
-import { client, sanityFetch } from "@/sanity-cms/client";
 
 import {
   ART_BY_SLUG,
@@ -18,49 +17,67 @@ import {
   SETTINGS,
   TOTAL_POSTS,
 } from "@/sanity-cms/queries";
+import { client } from "./client";
+import { sanityFetch } from "./live";
+type Options = { perspective?: string; stega?: boolean };
 
-export function getSettings() {
+export function getSettings({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: SETTINGS,
-    tags: ["settings", "home", "page", "project", "post"],
+    perspective,
+    stega,
   });
 }
 
-export function getPageBySlug(slug: string) {
+export function getPageBySlug(
+  slug: string,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: PAGE_BY_SLUG,
     params: { slug },
-    tags: [`page:${slug}`],
+    perspective,
+    stega,
   });
 }
 
-export function getProjectBySlug(slug: string) {
+export function getProjectBySlug(
+  slug: string,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: PROJECT_BY_SLUG,
     params: { slug },
-    tags: [`project:${slug}`],
+    perspective,
+    stega,
   });
 }
 
-export function getArtBySlug(slug: string) {
+export function getArtBySlug(
+  slug: string,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: ART_BY_SLUG,
     params: { slug },
-    tags: [`art:${slug}`],
+    perspective,
+    stega,
   });
 }
 
-export function getHomePage() {
+export function getHomePage({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: HOME_PAGE,
-    tags: ["home", "project"],
+    perspective,
+    stega,
   });
 }
 
-export function getHomePageTitle() {
+export function getHomePageTitle({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: HOME_PAGE_TITLE,
-    tags: ["home"],
+    perspective,
+    stega,
   });
 }
 
@@ -74,15 +91,24 @@ export function getArtsPaths() {
   return client.withConfig({ useCdn: false }).fetch(ART_SLUGS, {}, { cache: "no-store" });
 }
 
-export function getPostsCount(category?: string) {
+export function getPostsCount(
+  category: string | undefined,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: TOTAL_POSTS,
     params: { category: category ?? null },
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }
 
-export function getPosts(startIndex: number, endIndex: number, category?: string) {
+export function getPosts(
+  startIndex: number,
+  endIndex: number,
+  category: string | undefined,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: POSTS,
     params: {
@@ -90,36 +116,44 @@ export function getPosts(startIndex: number, endIndex: number, category?: string
       endIndex,
       category: category ?? null,
     },
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }
 
-export function getFeaturedPosts(quantity: number) {
+export function getFeaturedPosts(
+  quantity: number,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: FEATURED_POSTS,
     params: { quantity },
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }
 
-export function getPostsForFeed() {
+export function getPostsForFeed({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: FEED_POSTS,
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }
 
-export function getPost(slug: string) {
+export function getPost(slug: string, { perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: POST,
     params: { slug },
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }
 
-export function getCategories() {
+export function getCategories({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: CATEGORIES,
-    tags: ["post"],
+    perspective,
+    stega,
   });
 }

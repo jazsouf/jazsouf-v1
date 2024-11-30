@@ -23,7 +23,7 @@ export async function GET(req: Request) {
     },
   });
 
-  let posts = await getPostsForFeed();
+  let { data: posts } = await getPostsForFeed({});
 
   for (let post of posts) {
     try {
