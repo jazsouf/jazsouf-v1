@@ -25,7 +25,7 @@ export default function ErrorPage({
         <button
           type="reset"
           onClick={handleReset}
-          className="border border-a-color hover:bg-ah-color px-1.5 py-0.5 text-t-color"
+          className="border border-a-color hover:bg-a-color px-1.5 py-0.5 text-t-color"
         >
           Reset
         </button>

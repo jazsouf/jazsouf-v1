@@ -57,12 +57,12 @@
 
 @keyframes moveVertical {
   0% {
-    transform: translateY(-5%);
+    transform: translate3d(-5%, -5%);
   }
   50% {
-    transform: translateY(5%);
+    transform: translate3d(5%, 5%);
   }
   100% {
-    transform: translateY(-5%);
+    transform: translate3d(-5%, -5%);
   }
 }

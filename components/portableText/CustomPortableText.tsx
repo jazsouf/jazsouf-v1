@@ -105,7 +105,7 @@ export function CustomPortableText({
         if (value.href.startsWith("mailto:") || value.href.startsWith("https://")) {
           return (
             <a
-              className="hover:text-a-color text-t-color underline underline-offset-2 transition"
+              className="hover:text-ah-color text-t-color underline underline-offset-2 transition"
               href={value?.href}
               rel="noreferrer noopener"
               target="_blank"
@@ -120,7 +120,7 @@ export function CustomPortableText({
         return (
           <Link
             href={value.href}
-            className="hover:text-a-color text-t-color underline underline-offset-2 transition"
+            className="hover:text-ah-color text-t-color underline underline-offset-2 transition"
           >
             {children}
           </Link>

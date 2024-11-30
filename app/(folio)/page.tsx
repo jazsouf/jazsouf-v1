@@ -53,7 +53,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-s-color animate-fade-in flex flex-col transition first:border-t border-a-color border-b px-2"
+                    "hover:bg-a-color animate-fade-in flex flex-col transition first:border-t border-a-color border-b px-2"
                   }
                 >
                   <TextBox project={project} />
