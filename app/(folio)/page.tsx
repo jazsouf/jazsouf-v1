@@ -1,12 +1,20 @@
-import { getHomePage, getSettings } from "@/sanity-cms/fetch";
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
+import { Header } from "@/components/shared/Header";
+import { resolveHref } from "@/sanity-cms/links";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "next-sanity";
 import type { Metadata } from "next/types";
 
+import ImageBox from "@/components/shared/ImageBox";
+import { sanityFetch } from "@/sanity-cms/live";
+import { HOME_PAGE, SETTINGS } from "@/sanity-cms/queries";
+import type { HOME_PAGEResult } from "@/sanity-cms/types";
+import Link from "next/link";
+
 export async function generateMetadata(): Promise<Metadata> {
   const [{ data: settings }, { data: page }] = await Promise.all([
-    getSettings({ stega: false }),
-    getHomePage({ stega: false }),
+    sanityFetch({ query: SETTINGS, stega: false }),
+    sanityFetch({ query: HOME_PAGE, stega: false }),
   ]);
 
   return defineMetadata({
@@ -17,7 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function IndexRoute() {
-  const { data } = await getHomePage({});
+  const { data }: { data: NonNullable<HOME_PAGEResult> } = await sanityFetch({
+    query: HOME_PAGE,
+  });
 
   if (!data) {
     return null;
@@ -25,14 +35,6 @@ export default async function IndexRoute() {
 
   return <HomePage data={data} />;
 }
-
-import { CustomPortableText } from "@/components/portableText/CustomPortableText";
-import { Header } from "@/components/shared/Header";
-import { resolveHref } from "@/sanity-cms/links";
-
-import ImageBox from "@/components/shared/ImageBox";
-import type { HOME_PAGEResult } from "@/sanity-cms/types";
-import Link from "next/link";
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};

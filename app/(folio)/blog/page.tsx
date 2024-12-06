@@ -2,6 +2,7 @@ import { getCategories, getFeaturedPosts, getPosts, getPostsCount } from "@/sani
 import { urlFor } from "@/sanity-cms/image";
 import { ChevronLeft, ChevronRight, Rss } from "lucide-react";
 
+import type { CATEGORIESResult, FEATURED_POSTSResult, POSTSResult } from "@/sanity-cms/types";
 import { clsx } from "clsx";
 import dayjs from "dayjs";
 import type { Metadata } from "next";
@@ -48,7 +49,7 @@ export default async function Blog({ searchParams }: PageProps) {
 }
 
 async function FeaturedPosts() {
-  let { data: featuredPosts } = await getFeaturedPosts(3, {});
+  let { data: featuredPosts }: { data: FEATURED_POSTSResult } = await getFeaturedPosts(3, {});
 
   if (featuredPosts.length === 0) {
     return;
@@ -106,7 +107,7 @@ async function FeaturedPosts() {
 }
 
 async function Categories({ selected }: { selected?: string }) {
-  let { data: categories } = await getCategories({});
+  let { data: categories }: { data: CATEGORIESResult } = await getCategories({});
 
   if (categories.length === 0) {
     return;
@@ -133,7 +134,7 @@ async function Categories({ selected }: { selected?: string }) {
 }
 
 async function Posts({ page, category }: { page: number; category?: string }) {
-  let { data: posts } = await getPosts(
+  let { data: posts }: { data: POSTSResult } = await getPosts(
     (page - 1) * POSTS_PER_PAGE,
     page * POSTS_PER_PAGE,
     category,

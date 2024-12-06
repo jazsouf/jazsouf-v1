@@ -1,5 +1,3 @@
-import "server-only";
-
 import {
   ART_BY_SLUG,
   ART_SLUGS,
@@ -17,9 +15,14 @@ import {
 } from "@/sanity-cms/queries";
 import { client } from "./client";
 import { sanityFetch } from "./live";
-type Options = { perspective?: string; stega?: boolean };
+type Options = {
+  perspective?: "previewDrafts" | "published" | "drafts";
+  stega?: boolean;
+};
 
-export function getSettings({ perspective = undefined, stega = undefined }: Options) {
+export function getSettings(
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: SETTINGS,
     perspective,
@@ -51,7 +54,9 @@ export function getArtBySlug(
   });
 }
 
-export function getHomePage({ perspective = undefined, stega = undefined }: Options) {
+export function getHomePage(
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: HOME_PAGE,
     perspective,
@@ -59,7 +64,9 @@ export function getHomePage({ perspective = undefined, stega = undefined }: Opti
   });
 }
 
-export function getHomePageTitle({ perspective = undefined, stega = undefined }: Options) {
+export function getHomePageTitle(
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: HOME_PAGE_TITLE,
     perspective,
@@ -68,10 +75,14 @@ export function getHomePageTitle({ perspective = undefined, stega = undefined }:
 }
 
 export function getProjectsPaths() {
-  return client.withConfig({ useCdn: false }).fetch(PROJECT_SLUGS, {}, { cache: "no-store" });
+  return client.withConfig({ useCdn: false }).fetch(PROJECT_SLUGS, {}, {
+    cache: "no-store",
+  });
 }
 export function getArtsPaths() {
-  return client.withConfig({ useCdn: false }).fetch(ART_SLUGS, {}, { cache: "no-store" });
+  return client.withConfig({ useCdn: false }).fetch(ART_SLUGS, {}, {
+    cache: "no-store",
+  });
 }
 
 export function getPostsCount(
@@ -116,7 +127,9 @@ export function getFeaturedPosts(
   });
 }
 
-export function getPostsForFeed({ perspective = undefined, stega = undefined }: Options) {
+export function getPostsForFeed(
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: FEED_POSTS,
     perspective,
@@ -124,7 +137,10 @@ export function getPostsForFeed({ perspective = undefined, stega = undefined }: 
   });
 }
 
-export function getPost(slug: string, { perspective = undefined, stega = undefined }: Options) {
+export function getPost(
+  slug: string,
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: POST,
     params: { slug },
@@ -133,7 +149,9 @@ export function getPost(slug: string, { perspective = undefined, stega = undefin
   });
 }
 
-export function getCategories({ perspective = undefined, stega = undefined }: Options) {
+export function getCategories(
+  { perspective = undefined, stega = undefined }: Options,
+) {
   return sanityFetch({
     query: CATEGORIES,
     perspective,
