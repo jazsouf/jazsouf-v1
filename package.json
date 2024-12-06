@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "typegen": "sanity schema extract --path=./sanity-cms/extract.json && sanity typegen generate",
-    "predev": "npm run typegen",
-    "prebuild": "npm run typegen",
+    "predev": "pnpm run typegen",
+    "prebuild": "pnpm run typegen",
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
@@ -15,6 +15,7 @@
   },
   "@sanity/client": "6.24.1",
   "dependencies": {
+    "@sanity/client": "^6.24.1",
     "@sanity/code-input": "^5.0.0",
     "@sanity/icons": "^3.5.0",
     "@sanity/image-url": "1.1.0",
@@ -42,8 +43,8 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@types/node": "^22.10.1",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "autoprefixer": "10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "4.0.0-beta.4",

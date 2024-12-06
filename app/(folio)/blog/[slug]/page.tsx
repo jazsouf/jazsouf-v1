@@ -1,7 +1,6 @@
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import { getPost } from "@/sanity-cms/fetch";
 import { urlFor } from "@/sanity-cms/image";
-import type { POSTResult } from "@/sanity-cms/types";
 import dayjs from "dayjs";
 import { ChevronLeft } from "lucide-react";
 import type { Metadata } from "next";
@@ -19,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  let { data: post }: { data: NonNullable<POSTResult> } = await getPost((await params).slug, {});
+  let { data: post } = await getPost((await params).slug, {});
   if (!post) {
     notFound();
   }
