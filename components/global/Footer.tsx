@@ -8,13 +8,39 @@ export default async function Footer() {
   }
   const footer = data.footer;
   return (
-    <footer className="border-t relative z-20 border-a-color bg-a-color text-t-color text-center flex flex-col min-h-[100svh] items-center py-6 gap-24 justify-between">
-      {footer && <CustomPortableText paragraphClasses="" value={footer} />}
-      <p className="text-xl md:text-3xl text-t-color px-6 md:px-[20%] leading-relaxed">
-        Take a step back. Believe you can change. Look at yourself objectively. Lean into the pain.
-        Confront reality. Cherish mistakes. Fix the machine, not the person. — <i>Aaron Swartz</i>
-      </p>
-      <p>© 2024 – Soufiane El Jazouli</p>
-    </footer>
+    <div className="relative">
+      <FluidGradient />
+      <footer className="relative z-20 bg-transparent text-t-color text-center flex flex-col min-h-[100svh] py-6 items-center justify-between">
+        {footer && <CustomPortableText paragraphClasses="" value={footer} />}
+        <p className="text-xl md:text-3xl text-t-color px-6 md:px-[20%] leading-relaxed">
+          Take a step back. Believe you can change. Look at yourself objectively. Lean into the
+          pain. Confront reality. Cherish mistakes. Fix the machine, not the person. —{" "}
+          <i>Aaron Swartz</i>
+        </p>
+        <p>© 2024 – Soufiane El Jazouli</p>
+      </footer>
+    </div>
+  );
+}
+
+function FluidGradient() {
+  return (
+    <div className="footerBg">
+      <svg className="hidden" xmlns="http://www.w3.org/2000/svg">
+        <title>Goo</title>
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 10  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -6"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
   );
 }

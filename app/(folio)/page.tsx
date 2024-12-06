@@ -35,7 +35,6 @@ import type { HOME_PAGEResult } from "@/sanity-cms/types";
 import Link from "next/link";
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
-  // Default to an empty object to allow previews on non-existent documents
   const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};
 
   return (

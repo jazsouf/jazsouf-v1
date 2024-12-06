@@ -1,7 +1,5 @@
-import FluidGradient from "@/app/(folio)/FluidGradient";
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
-import dynamic from "next/dynamic";
 interface HeaderProps {
   centered?: boolean;
   description?:
@@ -10,7 +8,7 @@ interface HeaderProps {
     | NonNullable<HOME_PAGEResult>["overview"];
   title?: string | null;
 }
-const FuildGradient = dynamic(() => import("../../app/(folio)/FluidGradient"));
+
 export function Header(props: HeaderProps) {
   const { title, description } = props;
   if (!description && !title) {
@@ -31,5 +29,30 @@ export function Header(props: HeaderProps) {
       </section>
       <FluidGradient />
     </>
+  );
+}
+
+function FluidGradient() {
+  return (
+    <div className="gradientBg">
+      <svg className="hidden" xmlns="http://www.w3.org/2000/svg">
+        <title>Goo</title>
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 10  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -6"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+      <div className="gradients">
+        <div className="circle" />
+      </div>
+    </div>
   );
 }
