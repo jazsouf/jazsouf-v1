@@ -109,7 +109,7 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
   return (
     <Link
       href={href}
-      className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0"
+      className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:py-0"
     >
       <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
         <div className="text-md font-extrabold md:text-lg flex items-center">{project.title}</div>
