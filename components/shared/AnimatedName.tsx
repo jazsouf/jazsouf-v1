@@ -2,7 +2,7 @@ type Props = {
   mainName: string;
   subName?: string;
 };
-
+// from @leerob
 export default function AnimatedName(props: Props) {
   const mainName = props.mainName;
   const subName = props.subName ?? props.mainName;
@@ -10,8 +10,12 @@ export default function AnimatedName(props: Props) {
   return (
     <div className="font-medium transition-all">
       <span className="sr-only">{mainName}</span>
-      <span aria-hidden="true" className="block overflow-hidden group relative" tabIndex={-1}>
-        <span className="inline-block transition-all duration-350 ease-in-out group-hover:-translate-y-full">
+      <span
+        aria-hidden="true"
+        className="group relative block overflow-hidden"
+        tabIndex={-1}
+      >
+        <span className="group-hover:-translate-y-full inline-block transition-all duration-350 ease-in-out">
           {mainName.split("").map((letter, index) => (
             <span
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
@@ -23,10 +27,9 @@ export default function AnimatedName(props: Props) {
             </span>
           ))}
         </span>
-        <span className="inline-block absolute left-0 top-0 transition-all duration-350 ease-in-out translate-y-full group-hover:translate-y-0">
+        <span className="absolute top-0 left-0 inline-block translate-y-full transition-all duration-350 ease-in-out group-hover:translate-y-0">
           {subName.split("").map((letter, index) => (
             <span
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={index}
               className="inline-block"
               style={{ transitionDelay: `${index * 30}ms` }}

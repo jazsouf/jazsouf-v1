@@ -886,7 +886,7 @@ export type SETTINGSResult = {
   }> | null;
   menuItems: Array<never> | Array<{
     _type: "home";
-    slug: null | "";
+    slug: "";
     title: string | null;
   } | {
     _type: "page";

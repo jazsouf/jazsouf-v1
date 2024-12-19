@@ -11,8 +11,8 @@
   --color-lh-color: #a034a9;
   --color-bt-color: #cf418e;
   --color-lbt-color: #f2596a;
-  --color1: 197, 131, 255;
-  --circle-size: 80%;
+  --color1: 21, 10, 94;
+  --circle-size: 85%;
   --blending: hard-light;
 
   --default-transition-duration: 700ms;
@@ -62,13 +62,13 @@
 
   @keyframes move {
     0% {
-      transform: translate3d(-5%, -5%);
+      transform: translate3d(-5%, -15%, 0%);
     }
     50% {
-      transform: translate3d(5%, 5%);
+      transform: translate3d(15%, 5%, 0%);
     }
     100% {
-      transform: translate3d(-5%, -5%);
+      transform: translate3d(-5%, -5%, 0%);
     }
   }
 }
@@ -257,7 +257,7 @@ textarea:not([rows]) {
 }
 
 .gradients {
-  filter: url(#goo) blur(30px);
+  filter: url(#goo) blur(27px);
   transform: translate3d(0, 0, 0);
   width: 100vw;
   min-height: 95vh;
@@ -267,16 +267,15 @@ textarea:not([rows]) {
   position: absolute;
   background: radial-gradient(
       circle at center,
-      rgba(var(--color1), 0.8) 0,
-      rgba(var(--color1), 0) 50%
+      rgba(var(--color1), 0.9) 0,
+      rgba(var(--color1), 0) 55%
     )
     no-repeat;
-  mix-blend-mode: var(--blending);
   width: var(--circle-size);
   height: var(--circle-size);
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: center center;
-  animation: move 20s ease infinite;
-  opacity: 1;
+  animation: move 5s ease infinite;
+  opacity: 0.9;
 }

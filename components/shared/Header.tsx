@@ -1,5 +1,9 @@
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
-import type { ART_BY_SLUGResult, HOME_PAGEResult, PAGE_BY_SLUGResult } from "@/sanity-cms/types";
+import type {
+  ART_BY_SLUGResult,
+  HOME_PAGEResult,
+  PAGE_BY_SLUGResult,
+} from "@/sanity-cms/types";
 interface HeaderProps {
   centered?: boolean;
   description?:
@@ -18,12 +22,12 @@ export function Header(props: HeaderProps) {
     <>
       <section
         id="header"
-        className="p-3 text-center min-h-[95svh] grid place-content-center leading-tight md:leading-loose z-10"
+        className="z-10 grid min-h-[95svh] place-content-center p-3 text-center leading-tight md:leading-loose"
       >
         {description && (
           <CustomPortableText
             value={description}
-            paragraphClasses="text-t-color text-lg md:text-xl max-w-5xl pt-1.5"
+            paragraphClasses="text-white text-lg md:text-xl max-w-5xl pt-1.5"
           />
         )}
       </section>
@@ -39,7 +43,11 @@ function FluidGradient() {
         <title>Goo</title>
         <defs>
           <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
             <feColorMatrix
               in="blur"
               mode="matrix"

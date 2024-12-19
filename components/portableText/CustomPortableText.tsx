@@ -4,12 +4,16 @@ import { TimelineSection } from "@/components/portableText/TimelineSection";
 import ImageBox from "@/components/shared/ImageBox";
 
 import type {
-  ART_BY_SLUGResult,
-  PAGE_BY_SLUGResult,
-  POSTResult,
-  SETTINGSResult,
+    ART_BY_SLUGResult,
+    PAGE_BY_SLUGResult,
+    POSTResult,
+    SETTINGSResult,
 } from "@/sanity-cms/types";
-import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
+import {
+    PortableText,
+    type PortableTextBlock,
+    type PortableTextComponents,
+} from "next-sanity";
 import Link from "next/link";
 
 import { highlight } from "sugar-high";
@@ -29,12 +33,12 @@ export function CustomPortableText({
     block: {
       normal: ({ children }) => <p className={paragraphClasses}>{children}</p>,
       h2: ({ children }) => (
-        <h2 className="mb-10 mt-12 text-2xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
+        <h2 className="mt-12 mb-10 font-medium text-2xl/8 text-gray-950 tracking-tight first:mt-0 last:mb-0">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="mb-10 mt-12 text-xl/8 font-medium tracking-tight text-gray-950 first:mt-0 last:mb-0">
+        <h3 className="mt-12 mb-10 font-medium text-gray-950 text-xl/8 tracking-tight first:mt-0 last:mb-0">
           {children}
         </h3>
       ),
@@ -63,14 +67,20 @@ export function CustomPortableText({
       },
       image: ({ value }) => (
         <figure className="my-2">
-          <ImageBox image={value} alt={value.alt} classesWrapper="relative aspect-[16/9]" />
-          {value?.caption && <div className="text-t-color text-sm">{value.caption}</div>}
+          <ImageBox
+            image={value}
+            alt={value.alt}
+            classesWrapper="relative aspect-[16/9]"
+          />
+          {value?.caption && (
+            <div className="text-sm text-t-color">{value.caption}</div>
+          )}
         </figure>
       ),
       separator: ({ value }) => {
         switch (value.style) {
           case "line":
-            return <hr className="my-8 border-t border-gray-200" />;
+            return <hr className="my-8 border-gray-200 border-t" />;
           case "space":
             return <div className="my-8" />;
           default:
@@ -84,10 +94,14 @@ export function CustomPortableText({
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">{children}</ul>
+        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">
+          {children}
+        </ul>
       ),
       number: ({ children }) => (
-        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">{children}</ol>
+        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">
+          {children}
+        </ol>
       ),
     },
     listItem: {
@@ -99,19 +113,26 @@ export function CustomPortableText({
       },
     },
     marks: {
-      strong: ({ children }) => <strong className="font-semibold text-gray-950">{children}</strong>,
-      code: ({ children }) => <code className="font-semibold text-gray-700">{children}</code>,
+      strong: ({ children }) => (
+        <strong className="font-semibold text-gray-950">{children}</strong>
+      ),
+      code: ({ children }) => (
+        <code className="font-semibold text-gray-700">{children}</code>
+      ),
       link: ({ value, children }) => {
-        if (value.href.startsWith("mailto:") || value.href.startsWith("https://")) {
+        if (
+          value.href.startsWith("mailto:") ||
+          value.href.startsWith("https://")
+        ) {
           return (
             <a
-              className="hover:text-ah-color text-t-color underline underline-offset-2 transition"
+              className="underline underline-offset-2 transition hover:text-a-color"
               href={value?.href}
               rel="noreferrer noopener"
               target="_blank"
             >
               {children}
-              <span className="md:text-sm text-xs">
+              <span className="text-xs md:text-sm">
                 <sup className="inline">↗</sup>
               </span>
             </a>
@@ -120,7 +141,7 @@ export function CustomPortableText({
         return (
           <Link
             href={value.href}
-            className="hover:text-ah-color text-t-color underline underline-offset-2 transition"
+            className=" underline underline-offset-2 transition hover:text-a-color"
           >
             {children}
           </Link>
@@ -129,5 +150,12 @@ export function CustomPortableText({
     },
   };
 
-  return value && <PortableText components={components} value={value as PortableTextBlock[]} />;
+  return (
+    value && (
+      <PortableText
+        components={components}
+        value={value as PortableTextBlock[]}
+      />
+    )
+  );
 }
