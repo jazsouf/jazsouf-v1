@@ -2,25 +2,25 @@
 
 @theme {
   --color-p-color: #ffffff;
-  --color-s-color: #efefef;
-  --color-a-color: #ff7d3c;
-  --color-ah-color: #2727af;
-  --color-b-color: #2727af;
-  --color-t-color: #101010;
-  --color-l-color: #692cb6;
-  --color-lh-color: #a034a9;
-  --color-bt-color: #cf418e;
-  --color-lbt-color: #f2596a;
-  --color1: 21, 10, 94;
-  --circle-size: 85%;
-  --blending: hard-light;
+  --color-s-color: #f5f9fc;
+  --color-a-color: #2999a5;
+  --color-ah-color: #4c5b61;
+  --color-b-color: #4c5b61;
+  --color-t-color: #1e1e24;
+  --color-l-color: #5fb0b7;
+  --color-lh-color: #84b59f;
+  --color-bt-color: #69a297;
+  --color-lbt-color: #a0ced9;
+  --color1: 56, 145, 166;
+  --circle-size: 50%;
+  --blending: difference;
 
   --default-transition-duration: 700ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  --animate-fade-in: fade-in 0.5s cubic-bezier(1, -0.2, 0.35, 0.95);
-  --animate-hard-fade-in: hard-fade-in 0.5s cubic-bezier(0.17, 0.88, 0.32, 1.11);
-  --animate-smooth-fade-in: smooth-fade-in 0.5s cubic-bezier(0, 0, 0.2, 1);
+  --animate-fade-in: fade-in 0.1s cubic-bezier(1, -0.2, 0.35, 0.95);
+  --animate-hard-fade-in: hard-fade-in 0.1s cubic-bezier(0.17, 0.88, 0.32, 1.11);
+  --animate-smooth-fade-in: smooth-fade-in 0.1s cubic-bezier(0, 0, 0.2, 1);
 
   @keyframes fade-in {
     0% {
@@ -74,8 +74,8 @@
 }
 
 :root {
-  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
-    monospace;
+  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
   --sans: "Inter", system-ui, sans-serif;
 
   --sh-class: #2d5e9d;
@@ -227,7 +227,7 @@ textarea:not([rows]) {
 }
 
 .gradientBg {
-  min-height: 95svh;
+  min-height: 100svh;
   width: 100vw;
   position: absolute;
   overflow: hidden;
@@ -254,28 +254,4 @@ textarea:not([rows]) {
   );
   bottom: 0;
   left: 0;
-}
-
-.gradients {
-  filter: url(#goo) blur(27px);
-  transform: translate3d(0, 0, 0);
-  width: 100vw;
-  min-height: 95vh;
-}
-
-.circle {
-  position: absolute;
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--color1), 0.9) 0,
-      rgba(var(--color1), 0) 55%
-    )
-    no-repeat;
-  width: var(--circle-size);
-  height: var(--circle-size);
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: center center;
-  animation: move 5s ease infinite;
-  opacity: 0.9;
 }

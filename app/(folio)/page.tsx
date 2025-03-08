@@ -37,11 +37,20 @@ export default async function IndexRoute() {
 }
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
-  const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};
+  const {
+    overview,
+    showcaseProjects = [],
+    title = "",
+    services,
+    stack,
+    avatar,
+  } = data ?? {};
 
   return (
     <main className="flex flex-col gap-12 pb-32">
-      {title && overview && <Header centered title={title} description={overview} />}
+      {title && overview && (
+        <Header centered title={title} description={overview} />
+      )}
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-160px]" />
@@ -54,7 +63,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-a-color animate-fade-in flex flex-col transition first:border-t border-a-color border-b px-2"
+                    "hover:bg-a-color flex flex-col first:border-t border-a-color border-b px-2"
                   }
                 >
                   <TextBox project={project} />
@@ -77,7 +86,9 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           </div>
         )}
         <section className="col-start-2 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 ">Services</h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4 ">
+            Services
+          </h2>
           {services?.map((service) => (
             <div key={service} className="text-t-color">
               {service}
@@ -85,7 +96,9 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           ))}
         </section>
         <section className="col-start-3 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4">Stack</h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-70 pb-4">
+            Stack
+          </h2>
           {stack?.map((item) => (
             <div key={item} className="text-t-color">
               {item}
@@ -112,8 +125,12 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:py-0"
     >
       <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
-        <div className="text-md font-extrabold md:text-lg flex items-center">{project.title}</div>
-        <div className="text-t-color opacity-70">{project.services?.join(", ")}</div>
+        <div className="text-md font-extrabold md:text-lg flex items-center">
+          {project.title}
+        </div>
+        <div className="text-t-color opacity-70">
+          {project.services?.join(", ")}
+        </div>
         <div className="text-t-color col-span-2 flex items-center">
           <CustomPortableText value={project.overview} />
         </div>

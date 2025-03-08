@@ -14,29 +14,28 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@sanity/client": "^6.24.1",
+    "@sanity/client": "^6.28.3",
     "@sanity/code-input": "^5.1.2",
-    "@sanity/icons": "^3.5.5",
+    "@sanity/icons": "^3.7.0",
     "@sanity/image-url": "1.1.0",
-    "@sanity/ui": "^2.10.12",
-    "@sanity/vision": "3.68.1",
-    "@tailwindcss/postcss": "4.0.0-beta.4",
-    "@vercel/og": "0.6.4",
-    "@vercel/speed-insights": "^1.1.0",
+    "@sanity/ui": "^2.15.2",
+    "@sanity/vision": "3.78.1",
+    "@tailwindcss/postcss": "4.0.12",
+    "@vercel/og": "0.6.5",
+    "@vercel/speed-insights": "^1.2.0",
     "babel-plugin-react-compiler": "beta",
     "clsx": "2.1.1",
     "dayjs": "^1.11.13",
     "feed": "^4.2.2",
-    "lucide-react": "^0.468.0",
-    "next": "^15.1.2",
-    "next-sanity": "9.8.28",
+    "lucide-react": "^0.479.0",
+    "next": "^15.2.1",
+    "next-sanity": "9.9.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "sanity": "3.68.1",
-    "server-only": "0.0.1",
-    "sonner": "^1.7.1",
-    "styled-components": "6.1.13",
-    "sugar-high": "^0.7.5"
+    "sanity": "3.78.1",
+    "sonner": "^2.0.1",
+    "styled-components": "6.1.15",
+    "sugar-high": "^0.9.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -44,21 +43,21 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "next",
+    "postcss": "^8.5.3",
+    "tailwindcss": "4.0.12",
     "typescript": "^5.7.2"
   },
   "packageManager": "pnpm@9.5.0",
   "pnpm": {
-      "peerDependencyRules": {
-        "allowAny": [
-          "react",
-          "react-dom"
-        ]
-      },
-      "overrides": {
-        "@types/react": "$@types/react",
-        "@types/react-dom": "$@types/react-dom"
-      }
+    "peerDependencyRules": {
+      "allowAny": [
+        "react",
+        "react-dom"
+      ]
+    },
+    "overrides": {
+      "@types/react": "$@types/react",
+      "@types/react-dom": "$@types/react-dom"
+    }
   }
 }

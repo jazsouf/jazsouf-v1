@@ -27,40 +27,11 @@ export function Header(props: HeaderProps) {
         {description && (
           <CustomPortableText
             value={description}
-            paragraphClasses="text-white text-lg md:text-xl max-w-5xl pt-1.5"
+            paragraphClasses="text-lg md:text-xl max-w-5xl pt-1.5"
           />
         )}
       </section>
-      <FluidGradient />
+      <div className="gradientBg"></div>
     </>
-  );
-}
-
-function FluidGradient() {
-  return (
-    <div className="gradientBg">
-      <svg className="hidden" xmlns="http://www.w3.org/2000/svg">
-        <title>Goo</title>
-        <defs>
-          <filter id="goo">
-            <feGaussianBlur
-              in="SourceGraphic"
-              stdDeviation="10"
-              result="blur"
-            />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 10  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -6"
-              result="goo"
-            />
-            <feBlend in="SourceGraphic" in2="goo" />
-          </filter>
-        </defs>
-      </svg>
-      <div className="gradients">
-        <div className="circle" />
-      </div>
-    </div>
   );
 }

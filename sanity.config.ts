@@ -14,7 +14,8 @@ import { structure } from "@/sanity-cms/structure";
 
 import { codeInput } from "@sanity/code-input";
 import { structureTool } from "sanity/structure";
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Soufiane's Digital Space";
+const title =
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Soufiane's Digital Space";
 
 export default defineConfig({
   basePath: "/studio",
@@ -26,7 +27,6 @@ export default defineConfig({
     structureTool({
       structure,
     }),
-
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     codeInput(),

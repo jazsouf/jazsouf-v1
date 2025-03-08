@@ -1,18 +1,16 @@
-import "server-only";
-
 import { TimelineSection } from "@/components/portableText/TimelineSection";
 import ImageBox from "@/components/shared/ImageBox";
 
 import type {
-    ART_BY_SLUGResult,
-    PAGE_BY_SLUGResult,
-    POSTResult,
-    SETTINGSResult,
+  ART_BY_SLUGResult,
+  PAGE_BY_SLUGResult,
+  POSTResult,
+  SETTINGSResult,
 } from "@/sanity-cms/types";
 import {
-    PortableText,
-    type PortableTextBlock,
-    type PortableTextComponents,
+  PortableText,
+  type PortableTextBlock,
+  type PortableTextComponents,
 } from "next-sanity";
 import Link from "next/link";
 
