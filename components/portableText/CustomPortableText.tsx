@@ -131,7 +131,7 @@ export function CustomPortableText({
             >
               {children}
               <span className="text-xs md:text-sm">
-                <sup className="inline">↗</sup>
+                <sup className="inline no-underline">↗</sup>
               </span>
             </a>
           );
