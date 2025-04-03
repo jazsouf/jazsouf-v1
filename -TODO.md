@@ -8,6 +8,8 @@
 
 ## Backlog
 
+[ ] Add simple analitics
+
 ## Cancelled
 
 ## Done

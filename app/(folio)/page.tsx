@@ -79,8 +79,10 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
             <div className="md:size-52 size-28">
               <ImageBox
                 image={avatar?.asset}
-                alt="my social media avatar"
+                alt="my social media avatar: a man wearing a purple beanie looking down at his phone"
                 classesWrapper="border border-a-color aspect-square"
+                width={500}
+                height={500}
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import "@/app/globals.css";
 
 import Footer from "@/components/global/Footer";
 import Navbar from "@/components/global/NavbarComponent/Navbar";
+import { SanityLive } from "@/sanity-cms/live";
 import { Suspense } from "react";
 
 export default async function IndexRoute({
@@ -21,6 +22,9 @@ export default async function IndexRoute({
       </Suspense>
       <Suspense>
         <Footer />
+      </Suspense>
+      <Suspense>
+        <SanityLive />
       </Suspense>
     </>
   );
