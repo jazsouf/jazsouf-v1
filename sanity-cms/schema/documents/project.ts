@@ -27,7 +27,8 @@ export const projectType = defineType({
     }),
     defineField({
       name: "overview",
-      description: "Used both for the <meta> description tag for SEO, and project subheader.",
+      description:
+        "Used both for the <meta> description tag for SEO, and project subheader.",
       title: "Overview",
       type: "array",
       of: [
@@ -81,6 +82,7 @@ export const projectType = defineType({
       name: "duration",
       title: "Duration",
       type: "duration",
+      hidden: true,
       deprecated: { reason: "use the year field instead" },
     }),
     defineField({
@@ -103,7 +105,12 @@ export const projectType = defineType({
           scheme: ["http", "https", "mailto", "tel"],
         }),
     }),
-    defineField({ name: "services", title: "Services", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "services",
+      title: "Services",
+      type: "array",
+      of: [{ type: "string" }],
+    }),
     defineField({
       name: "tags",
       title: "Tags",
@@ -172,7 +179,8 @@ export const projectType = defineType({
               name: "alt",
               type: "string",
               title: "Alt text",
-              description: "Alternative text for screenreaders. Falls back on caption if not set",
+              description:
+                "Alternative text for screenreaders. Falls back on caption if not set",
             }),
           ],
         }),
