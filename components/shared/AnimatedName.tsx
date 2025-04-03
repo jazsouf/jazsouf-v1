@@ -10,11 +10,7 @@ export default function AnimatedName(props: Props) {
   return (
     <div className="font-medium transition-all">
       <span className="sr-only">{mainName}</span>
-      <span
-        aria-hidden="true"
-        className="group relative block overflow-hidden"
-        tabIndex={-1}
-      >
+      <span aria-hidden="true" className="group relative block overflow-hidden" tabIndex={-1}>
         <span className="group-hover:-translate-y-full inline-block transition-all duration-350 ease-in-out">
           {mainName.split("").map((letter, index) => (
             <span

@@ -49,10 +49,7 @@
   "packageManager": "pnpm@9.5.0",
   "pnpm": {
     "peerDependencyRules": {
-      "allowAny": [
-        "react",
-        "react-dom"
-      ]
+      "allowAny": ["react", "react-dom"]
     },
     "overrides": {
       "@types/react": "$@types/react",

@@ -20,10 +20,7 @@ type Options = {
   stega?: boolean;
 };
 
-export function getSettings({
-  perspective = undefined,
-  stega = undefined,
-}: Options) {
+export function getSettings({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: SETTINGS,
   });
@@ -49,19 +46,13 @@ export function getArtBySlug(
   });
 }
 
-export function getHomePage({
-  perspective = undefined,
-  stega = undefined,
-}: Options) {
+export function getHomePage({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: HOME_PAGE,
   });
 }
 
-export function getHomePageTitle({
-  perspective = undefined,
-  stega = undefined,
-}: Options) {
+export function getHomePageTitle({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: HOME_PAGE_TITLE,
   });
@@ -122,29 +113,20 @@ export function getFeaturedPosts(
   });
 }
 
-export function getPostsForFeed({
-  perspective = undefined,
-  stega = undefined,
-}: Options) {
+export function getPostsForFeed({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: FEED_POSTS,
   });
 }
 
-export function getPost(
-  slug: string,
-  { perspective = undefined, stega = undefined }: Options,
-) {
+export function getPost(slug: string, { perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: POST,
     params: { slug },
   });
 }
 
-export function getCategories({
-  perspective = undefined,
-  stega = undefined,
-}: Options) {
+export function getCategories({ perspective = undefined, stega = undefined }: Options) {
   return sanityFetch({
     query: CATEGORIES,
   });

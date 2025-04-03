@@ -35,8 +35,7 @@ export const settingsType = defineType({
     }),
     defineField({
       name: "footer",
-      description:
-        "This is a block of text that will be displayed at the bottom of the page.",
+      description: "This is a block of text that will be displayed at the bottom of the page.",
       title: "Footer Info",
       type: "array",
       of: [

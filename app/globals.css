@@ -74,8 +74,8 @@
 }
 
 :root {
-  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
-    "DejaVu Sans Mono", monospace;
+  --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono",
+    monospace;
   --sans: "Inter", system-ui, sans-serif;
 
   --sh-class: #2d5e9d;

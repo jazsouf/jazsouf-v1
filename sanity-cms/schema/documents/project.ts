@@ -27,8 +27,7 @@ export const projectType = defineType({
     }),
     defineField({
       name: "overview",
-      description:
-        "Used both for the <meta> description tag for SEO, and project subheader.",
+      description: "Used both for the <meta> description tag for SEO, and project subheader.",
       title: "Overview",
       type: "array",
       of: [
@@ -179,8 +178,7 @@ export const projectType = defineType({
               name: "alt",
               type: "string",
               title: "Alt text",
-              description:
-                "Alternative text for screenreaders. Falls back on caption if not set",
+              description: "Alternative text for screenreaders. Falls back on caption if not set",
             }),
           ],
         }),

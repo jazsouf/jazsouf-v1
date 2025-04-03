@@ -31,7 +31,7 @@ export function Header(props: HeaderProps) {
           />
         )}
       </section>
-      <div className="gradientBg"></div>
+      <div className="gradientBg" />
     </>
   );
 }
