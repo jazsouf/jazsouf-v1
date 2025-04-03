@@ -37,20 +37,11 @@ export default async function IndexRoute() {
 }
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
-  const {
-    overview,
-    showcaseProjects = [],
-    title = "",
-    services,
-    stack,
-    avatar,
-  } = data ?? {};
+  const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};
 
   return (
     <main className="flex flex-col gap-12 pb-32">
-      {title && overview && (
-        <Header centered title={title} description={overview} />
-      )}
+      {title && overview && <Header centered title={title} description={overview} />}
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-160px]" />
@@ -88,9 +79,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           </div>
         )}
         <section className="col-start-2 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">
-            Services
-          </h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">Services</h2>
           {services?.map((service) => (
             <div key={service} className="text-t-color">
               {service}
@@ -98,9 +87,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           ))}
         </section>
         <section className="col-start-3 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">
-            Stack
-          </h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">Stack</h2>
           {stack?.map((item) => (
             <div key={item} className="text-t-color">
               {item}
@@ -127,18 +114,12 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:py-0"
     >
       <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
-        <div className="text-md font-extrabold md:text-lg flex items-center">
-          {project.title}
-        </div>
-        <div className="text-t-color opacity-80">
-          {project.services?.join(", ")}
-        </div>
+        <div className="text-md font-extrabold md:text-lg flex items-center">{project.title}</div>
+        <div className="text-t-color opacity-80">{project.services?.join(", ")}</div>
         <div className="text-t-color col-span-2 flex items-center">
           <CustomPortableText value={project.overview} />
         </div>
-        <div className="text-t-color opacity-80 flex items-center">
-          {project.year}
-        </div>
+        <div className="text-t-color opacity-80 flex items-center">{project.year}</div>
       </div>
     </Link>
   );

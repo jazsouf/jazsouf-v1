@@ -16,7 +16,7 @@ export function defineMetadata({
   image?: Image;
   title?: string;
 }) {
-  const imageUrl = image && urlFor({ image, width: 1200, height: 627 });
+  const imageUrl = image && urlFor(image).width(1200).height(627).fit("crop").url();
   const metaTitle = [
     ...(title ? [title] : ["Soufiane's Space"]),
     ...(baseTitle ? [baseTitle] : []),
