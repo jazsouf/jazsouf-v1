@@ -7,7 +7,11 @@ import type {
   POSTResult,
   SETTINGSResult,
 } from "@/sanity-cms/types";
-import { PortableText, type PortableTextBlock, type PortableTextComponents } from "next-sanity";
+import {
+  PortableText,
+  type PortableTextBlock,
+  type PortableTextComponents,
+} from "@portabletext/react";
 import Link from "next/link";
 
 import { highlight } from "sugar-high";
@@ -61,8 +65,14 @@ export function CustomPortableText({
       },
       image: ({ value }) => (
         <figure className="my-2">
-          <ImageBox image={value} alt={value.alt} classesWrapper="relative aspect-[16/9]" />
-          {value?.caption && <div className="text-sm text-t-color">{value.caption}</div>}
+          <ImageBox
+            image={value}
+            alt={value.alt}
+            classesWrapper="relative aspect-[16/9]"
+          />
+          {value?.caption && (
+            <div className="text-sm text-t-color">{value.caption}</div>
+          )}
         </figure>
       ),
       separator: ({ value }) => {
@@ -82,10 +92,14 @@ export function CustomPortableText({
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">{children}</ul>
+        <ul className="list-disc pl-4 text-base/8 marker:text-gray-400">
+          {children}
+        </ul>
       ),
       number: ({ children }) => (
-        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">{children}</ol>
+        <ol className="list-decimal pl-4 text-base/8 marker:text-gray-400">
+          {children}
+        </ol>
       ),
     },
     listItem: {
@@ -97,10 +111,17 @@ export function CustomPortableText({
       },
     },
     marks: {
-      strong: ({ children }) => <strong className="font-semibold text-gray-950">{children}</strong>,
-      code: ({ children }) => <code className="font-semibold text-gray-700">{children}</code>,
+      strong: ({ children }) => (
+        <strong className="font-semibold text-gray-950">{children}</strong>
+      ),
+      code: ({ children }) => (
+        <code className="font-semibold text-gray-700">{children}</code>
+      ),
       link: ({ value, children }) => {
-        if (value.href.startsWith("mailto:") || value.href.startsWith("https://")) {
+        if (
+          value.href.startsWith("mailto:") ||
+          value.href.startsWith("https://")
+        ) {
           return (
             <a
               className="transition hover:text-a-color"
@@ -127,5 +148,12 @@ export function CustomPortableText({
     },
   };
 
-  return value && <PortableText components={components} value={value as PortableTextBlock[]} />;
+  return (
+    value && (
+      <PortableText
+        components={components}
+        value={value as PortableTextBlock[]}
+      />
+    )
+  );
 }

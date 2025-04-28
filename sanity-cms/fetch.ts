@@ -1,6 +1,5 @@
 import {
   ART_BY_SLUG,
-  ART_SLUGS,
   CATEGORIES,
   FEATURED_POSTS,
   FEED_POSTS,
@@ -12,75 +11,61 @@ import {
   PROJECT_SLUGS,
   SETTINGS,
   TOTAL_POSTS,
-} from "@/sanity-cms/queries";
+} from "@/sanity-cms/groq";
+import type { QueryParams } from "next-sanity";
 import { client } from "./client";
-import { sanityFetch } from "./live";
 type Options = {
   perspective?: "previewDrafts" | "published" | "drafts";
   stega?: boolean;
-};
+} | void;
 
-export function getSettings({ perspective = undefined, stega = undefined }: Options) {
+export async function sanityFetch({
+  query,
+  params = {},
+}: {
+  query: string;
+  params?: QueryParams;
+}) {
+  return { data: await client.fetch(query, params) };
+}
+
+export function getSettings(options: Options) {
   return sanityFetch({
     query: SETTINGS,
   });
 }
 
-export function getProjectBySlug(
-  slug: string,
-  { perspective = undefined, stega = undefined }: Options,
-) {
+export function getProjectBySlug(slug: string, options: Options) {
   return sanityFetch({
     query: PROJECT_BY_SLUG,
     params: { slug },
   });
 }
 
-export function getArtBySlug(
-  slug: string,
-  { perspective = undefined, stega = undefined }: Options,
-) {
+export function getArtBySlug(slug: string, options: Options) {
   return sanityFetch({
     query: ART_BY_SLUG,
     params: { slug },
   });
 }
 
-export function getHomePage({ perspective = undefined, stega = undefined }: Options) {
+export function getHomePage(options: Options) {
   return sanityFetch({
     query: HOME_PAGE,
   });
 }
 
-export function getHomePageTitle({ perspective = undefined, stega = undefined }: Options) {
+export function getHomePageTitle(options: Options) {
   return sanityFetch({
     query: HOME_PAGE_TITLE,
   });
 }
 
 export function getProjectsPaths() {
-  return client.withConfig({ useCdn: false }).fetch(
-    PROJECT_SLUGS,
-    {},
-    {
-      cache: "no-store",
-    },
-  );
-}
-export function getArtsPaths() {
-  return client.withConfig({ useCdn: false }).fetch(
-    ART_SLUGS,
-    {},
-    {
-      cache: "no-store",
-    },
-  );
+  return sanityFetch({ query: PROJECT_SLUGS });
 }
 
-export function getPostsCount(
-  category: string | undefined,
-  { perspective = undefined, stega = undefined }: Options,
-) {
+export function getPostsCount(category: string | undefined, options: Options) {
   return sanityFetch({
     query: TOTAL_POSTS,
     params: { category: category ?? null },
@@ -91,7 +76,7 @@ export function getPosts(
   startIndex: number,
   endIndex: number,
   category: string | undefined,
-  { perspective = undefined, stega = undefined }: Options,
+  options: Options,
 ) {
   return sanityFetch({
     query: POSTS,
@@ -103,30 +88,27 @@ export function getPosts(
   });
 }
 
-export function getFeaturedPosts(
-  quantity: number,
-  { perspective = undefined, stega = undefined }: Options,
-) {
+export function getFeaturedPosts(quantity: number, options: Options) {
   return sanityFetch({
     query: FEATURED_POSTS,
     params: { quantity },
   });
 }
 
-export function getPostsForFeed({ perspective = undefined, stega = undefined }: Options) {
+export function getPostsForFeed(options: Options) {
   return sanityFetch({
     query: FEED_POSTS,
   });
 }
 
-export function getPost(slug: string, { perspective = undefined, stega = undefined }: Options) {
+export function getPost(slug: string, options: Options) {
   return sanityFetch({
     query: POST,
     params: { slug },
   });
 }
 
-export function getCategories({ perspective = undefined, stega = undefined }: Options) {
+export function getCategories(options: Options) {
   return sanityFetch({
     query: CATEGORIES,
   });

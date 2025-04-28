@@ -615,7 +615,7 @@ export type Code = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Post | Author | Category | BlockContent | Settings | Home | Timeline | Milestone | Page | Project | Duration | Art | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Code;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: sanity-cms/queries.ts
+// Source: sanity-cms/groq.ts
 // Variable: HOME_PAGE
 // Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    avatar,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year    },[]),    services,    stack,  }
 export type HOME_PAGEResult = {

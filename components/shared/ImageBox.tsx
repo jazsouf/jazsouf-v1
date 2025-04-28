@@ -1,7 +1,6 @@
-import { urlFor } from "@/sanity-cms/image";
 import { colorBlur } from "@/utils/colorsBlur";
-import Image from "next/image";
 import type { Image as ImageType } from "sanity";
+import { SanityImage } from "./SanityImage";
 
 interface ImageBoxProps {
   image?: ImageType;
@@ -20,17 +19,18 @@ export default function ImageBox({
   size = "(max-width: 768px) 90vw, 60vw",
   classesWrapper,
 }: ImageBoxProps) {
-  const imageUrl = image && urlFor(image).width(width).height(height).fit("crop").url();
   return (
-    <div className={`bg-s-color relative w-full overflow-hidden ${classesWrapper}`}>
-      {imageUrl && (
-        <Image
+    <div
+      className={`bg-s-color relative w-full overflow-hidden ${classesWrapper}`}
+    >
+      {image && (
+        <SanityImage
           className="absolute h-full w-full"
           alt={alt}
           width={width}
           height={height}
           sizes={size}
-          src={imageUrl}
+          src={image}
           placeholder={colorBlur(255, 125, 60)}
         />
       )}

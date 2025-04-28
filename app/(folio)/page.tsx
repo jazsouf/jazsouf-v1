@@ -2,19 +2,21 @@ import { CustomPortableText } from "@/components/portableText/CustomPortableText
 import { Header } from "@/components/shared/Header";
 import { resolveHref } from "@/sanity-cms/links";
 import { defineMetadata } from "@/utils/metadata";
-import { toPlainText } from "next-sanity";
+import { toPlainText } from "@portabletext/react";
 import type { Metadata } from "next/types";
 
 import ImageBox from "@/components/shared/ImageBox";
-import { sanityFetch } from "@/sanity-cms/live";
-import { HOME_PAGE, SETTINGS } from "@/sanity-cms/queries";
+import { sanityFetch } from "@/sanity-cms/fetch";
+import { HOME_PAGE, SETTINGS } from "@/sanity-cms/groq";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
 import Link from "next/link";
 
+export const dynamic = "force-static";
+
 export async function generateMetadata(): Promise<Metadata> {
   const [{ data: settings }, { data: page }] = await Promise.all([
-    sanityFetch({ query: SETTINGS, stega: false }),
-    sanityFetch({ query: HOME_PAGE, stega: false }),
+    sanityFetch({ query: SETTINGS }),
+    sanityFetch({ query: HOME_PAGE }),
   ]);
 
   return defineMetadata({
@@ -37,11 +39,20 @@ export default async function IndexRoute() {
 }
 
 function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
-  const { overview, showcaseProjects = [], title = "", services, stack, avatar } = data ?? {};
+  const {
+    overview,
+    showcaseProjects = [],
+    title = "",
+    services,
+    stack,
+    avatar,
+  } = data ?? {};
 
   return (
     <main className="flex flex-col gap-12 pb-32">
-      {title && overview && <Header centered title={title} description={overview} />}
+      {title && overview && (
+        <Header centered title={title} description={overview} />
+      )}
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-160px]" />
@@ -79,7 +90,9 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           </div>
         )}
         <section className="col-start-2 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">Services</h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">
+            Services
+          </h2>
           {services?.map((service) => (
             <div key={service} className="text-t-color">
               {service}
@@ -87,7 +100,9 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
           ))}
         </section>
         <section className="col-start-3 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">Stack</h2>
+          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">
+            Stack
+          </h2>
           {stack?.map((item) => (
             <div key={item} className="text-t-color">
               {item}
@@ -114,12 +129,18 @@ function TextBox({ project }: { project: ProjectProps["project"] }) {
       className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:py-0"
     >
       <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
-        <div className="text-md font-extrabold md:text-lg flex items-center">{project.title}</div>
-        <div className="text-t-color opacity-80">{project.services?.join(", ")}</div>
+        <div className="text-md font-extrabold md:text-lg flex items-center">
+          {project.title}
+        </div>
+        <div className="text-t-color opacity-80">
+          {project.services?.join(", ")}
+        </div>
         <div className="text-t-color col-span-2 flex items-center">
           <CustomPortableText value={project.overview} />
         </div>
-        <div className="text-t-color opacity-80 flex items-center">{project.year}</div>
+        <div className="text-t-color opacity-80 flex items-center">
+          {project.year}
+        </div>
       </div>
     </Link>
   );
