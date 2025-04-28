@@ -31,7 +31,7 @@ export default function ImageBox({
           height={height}
           sizes={size}
           src={image}
-          placeholder={colorBlur(255, 125, 60)}
+          placeholder={colorBlur(41, 153, 165)}
         />
       )}
     </div>
