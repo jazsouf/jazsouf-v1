@@ -14,8 +14,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  output: "export",
   experimental: {
-    taint: true,
     reactCompiler: true,
   },
 };

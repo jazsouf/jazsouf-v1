@@ -1,6 +1,15 @@
-import { getHomePageTitle, getProjectBySlug, getProjectsPaths } from "@/sanity-cms/fetch";
+import { CustomPortableText } from "@/components/portableText/CustomPortableText";
+import ImageBox from "@/components/shared/ImageBox";
+import {
+  getHomePageTitle,
+  getProjectBySlug,
+  getProjectsPaths,
+} from "@/sanity-cms/fetch";
+import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
 import { defineMetadata } from "@/utils/metadata";
-import { toPlainText } from "next-sanity";
+import { toPlainText } from "@portabletext/react";
+import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next/types";
 
@@ -8,13 +17,15 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const paramsData = await params;
   const { slug } = paramsData;
 
   const [{ data: homePageTitle }, { data: project }] = await Promise.all([
-    getHomePageTitle({ stega: false }),
-    getProjectBySlug(slug, { stega: false }),
+    getHomePageTitle(),
+    getProjectBySlug(slug),
   ]);
 
   return defineMetadata({
@@ -26,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  const slugs = await getProjectsPaths();
+  const { data: slugs } = await getProjectsPaths();
   return slugs.filter(Boolean);
 }
 
@@ -41,29 +52,37 @@ export default async function ProjectSlugRoute({ params }: PageProps) {
   return <ProjectPage data={data} />;
 }
 
-import { CustomPortableText } from "@/components/portableText/CustomPortableText";
-import ImageBox from "@/components/shared/ImageBox";
-import type { PROJECT_BY_SLUGResult } from "@/sanity-cms/types";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
-
 export interface ProjectPageProps {
   data: NonNullable<PROJECT_BY_SLUGResult>;
 }
 
 function ProjectPage({ data }: ProjectPageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { client, coverImage, description, site, tags, title, extraImages, year } = data ?? {};
+  const {
+    client,
+    coverImage,
+    description,
+    site,
+    tags,
+    title,
+    extraImages,
+    year,
+  } = data ?? {};
 
   return (
     <main className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:pt-0">
       <div className="p-12 pb-32 sm:p-20 md:px-[20%]">
-        <Link href="/#projects" className="mt-10 mb-4 flex gap-1.5 items-center">
+        <Link
+          href="/#projects"
+          className="mt-10 mb-4 flex gap-1.5 items-center"
+        >
           <ChevronLeft className="size-3" />
           Back to index
         </Link>
         <div className="border-a-color border">
-          <h1 className="border-a-color border-b text-xl text-t-color py-6 px-2.5">{title}</h1>
+          <h1 className="border-a-color border-b text-xl text-t-color py-6 px-2.5">
+            {title}
+          </h1>
           <figure className="p-2">
             <ImageBox
               image={coverImage?.asset}

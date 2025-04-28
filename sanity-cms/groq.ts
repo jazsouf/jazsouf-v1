@@ -1,4 +1,4 @@
-import { defineQuery } from "next-sanity";
+import { defineQuery } from "groq";
 
 export const HOME_PAGE = defineQuery(`*[
   _type == "home" && defined(_id)
