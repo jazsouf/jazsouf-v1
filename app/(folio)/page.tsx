@@ -1,4 +1,3 @@
-import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import { Header } from "@/components/shared/Header";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "@portabletext/react";
@@ -112,5 +111,3 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
     </main>
   );
 }
-
-
