@@ -15,6 +15,7 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
   const [height, setHeight] = useState("0px");
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Check for user's motion preferences
@@ -42,7 +43,22 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
   }, [isExpanded, prefersReducedMotion]);
 
   const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
+    const newExpandedState = !isExpanded;
+    setIsExpanded(newExpandedState);
+    
+    // Scroll to top when expanding (not when closing)
+    if (newExpandedState && headerRef.current) {
+      const scrollOptions: ScrollIntoViewOptions = {
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      };
+      
+      // Small delay to allow animation to start
+      setTimeout(() => {
+        headerRef.current?.scrollIntoView(scrollOptions);
+      }, prefersReducedMotion ? 0 : 100);
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -67,6 +83,7 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
   return (
     <article className="overflow-hidden relative flex w-full flex-col">
       <header
+        ref={headerRef}
         role="button"
         tabIndex={0}
         onClick={toggleExpanded}
@@ -76,7 +93,7 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
         className={`hover:bg-gray-50/50 flex w-full cursor-pointer focus:outline-none focus:bg-gray-50/70 ${colorTransitionClasses}`}
       >
         <div className="w-full py-4 px-4 md:grid gap-4 grid-cols-12 text-left items-center">
-          <h3 className="text-sm font-medium flex items-center justify-between md:justify-start col-span-3 tracking-tight">
+          <h3 className="text-sm font-medium flex items-center justify-between md:justify-start col-span-12 md:col-span-3 tracking-tight mb-2 md:mb-0">
             <span className="text-gray-900">{project.title}</span>
             <span className={`md:hidden ml-3 text-gray-500 ${iconAnimationClasses}`} 
                   style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
@@ -84,15 +101,15 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
             </span>
           </h3>
           
-          <div className="text-gray-600 text-sm col-span-2 font-normal">
+          <div className="text-gray-600 text-sm col-span-12 md:col-span-2 font-normal mb-2 md:mb-0">
             {project.services?.join(" • ")}
           </div>
           
-          <div className="text-gray-700 col-span-5 flex items-center text-sm leading-relaxed">
+          <div className="text-gray-700 col-span-12 md:col-span-5 flex items-center text-sm leading-relaxed mb-2 md:mb-0">
             <CustomPortableText value={project.overview} />
           </div>
           
-          <div className="text-gray-600 col-span-2 flex items-center justify-between text-sm font-normal">
+          <div className="text-gray-600 col-span-12 md:col-span-2 flex items-center justify-between text-sm font-normal">
             <time dateTime={project.year?.toString()}>
               {project.year}
             </time>
@@ -114,17 +131,17 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
       >
         <div ref={contentRef} className="px-4 py-6">
           {project.coverImage && (
-            <figure className="mb-8">
+            <figure className="mb-8 max-w-5xl mx-auto">
               <ImageBox
                 image={project.coverImage?.asset}
                 alt={`Cover image for ${project.title}`}
-                classesWrapper="relative aspect-[16/9] rounded overflow-hidden"
-                size="(max-width: 768px) 90vw, 60vw"
+                classesWrapper="relative aspect-[16/9] rounded overflow-hidden mb-4"
+                size="(max-width: 768px) 90vw, 70vw"
               />
             </figure>
           )}
           
-          <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+          <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
             {project.client && (
               <div className="space-y-1">
                 <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
@@ -167,7 +184,7 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
                 <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
                   Stack
                 </h4>
-                <ul className="flex flex-wrap gap-2">
+                <ul className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag: string) => (
                     <li key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-normal">
                       {tag}
