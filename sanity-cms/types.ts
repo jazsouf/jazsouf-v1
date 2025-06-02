@@ -617,7 +617,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: sanity-cms/groq.ts
 // Variable: HOME_PAGE
-// Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    avatar,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year    },[]),    services,    stack,  }
+// Query: *[  _type == "home" && defined(_id)][0]{    _id,    title,    avatar,    overview,    "showcaseProjects": coalesce(showcaseProjects[]->{      _type,      title,      "slug": coalesce(slug.current, ""),      coverImage,      overview,      services,      tags,      year,      client,      site,      description,      extraImages    },[]),    services,    stack,  }
 export type HOME_PAGEResult = {
   _id: string;
   title: string | null;
@@ -684,6 +684,55 @@ export type HOME_PAGEResult = {
     services: Array<string> | null;
     tags: Array<string> | null;
     year: string | null;
+    client: string | null;
+    site: string | null;
+    description: Array<{
+      _key: string;
+    } & Timeline | {
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      caption?: string;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }> | null;
+    extraImages: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+    }> | null;
   }> | Array<never>;
   services: Array<string> | null;
   stack: Array<string> | null;
@@ -1110,7 +1159,7 @@ export type CATEGORIESResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    title,\n    avatar,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      title,\n      \"slug\": coalesce(slug.current, \"\"),\n      coverImage,\n      overview,\n      services,\n      tags,\n      year\n    },[]),\n    services,\n    stack,\n  }": HOME_PAGEResult;
+    "*[\n  _type == \"home\" && defined(_id)\n][0]{\n    _id,\n    title,\n    avatar,\n    overview,\n    \"showcaseProjects\": coalesce(showcaseProjects[]->{\n      _type,\n      title,\n      \"slug\": coalesce(slug.current, \"\"),\n      coverImage,\n      overview,\n      services,\n      tags,\n      year,\n      client,\n      site,\n      description,\n      extraImages\n    },[]),\n    services,\n    stack,\n  }": HOME_PAGEResult;
     "*[_type == \"home\"][0]{\n  title\n}": HOME_PAGE_TITLEResult;
     "*[\n  _type == \"page\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    body,\n    overview,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n  }": PAGE_BY_SLUGResult;
     "*[\n  _type == \"project\" && slug.current == $slug && defined(_id)\n][0]{\n    _id,\n    title,\n    \"slug\": coalesce(slug.current, \"\"),\n    overview,\n    coverImage,\n    extraImages,\n    client,\n    site,\n    services,\n    tags,\n    description,\n    duration,\n    year\n  }": PROJECT_BY_SLUGResult;

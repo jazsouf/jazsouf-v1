@@ -1,15 +1,14 @@
 import { CustomPortableText } from "@/components/portableText/CustomPortableText";
 import { Header } from "@/components/shared/Header";
-import { resolveHref } from "@/sanity-cms/links";
 import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "@portabletext/react";
 import type { Metadata } from "next/types";
 
 import ImageBox from "@/components/shared/ImageBox";
+import { ProjectBox } from "@/components/portfolio/ProjectBox";
 import { sanityFetch } from "@/sanity-cms/fetch";
 import { HOME_PAGE, SETTINGS } from "@/sanity-cms/groq";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
-import Link from "next/link";
 
 export const dynamic = "force-static";
 
@@ -65,10 +64,10 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 <li
                   key={project.slug}
                   className={
-                    "hover:bg-a-color flex flex-col first:border-t border-a-color border-b px-2"
+                    "flex flex-col first:border-t border-a-color border-b"
                   }
                 >
-                  <TextBox project={project} />
+                  <ProjectBox project={project} />
                 </li>
               );
             })}
@@ -114,34 +113,4 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
   );
 }
 
-interface ProjectProps {
-  project: NonNullable<HOME_PAGEResult>["showcaseProjects"][number];
-}
 
-function TextBox({ project }: { project: ProjectProps["project"] }) {
-  const href = resolveHref(project._type, project.slug);
-  if (!href) {
-    return null;
-  }
-  return (
-    <Link
-      href={href}
-      className="overflow-hidden relative flex w-full flex-col justify-between p-3 xl:py-0"
-    >
-      <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
-        <div className="text-md font-extrabold md:text-lg flex items-center">
-          {project.title}
-        </div>
-        <div className="text-t-color opacity-80">
-          {project.services?.join(", ")}
-        </div>
-        <div className="text-t-color col-span-2 flex items-center">
-          <CustomPortableText value={project.overview} />
-        </div>
-        <div className="text-t-color opacity-80 flex items-center">
-          {project.year}
-        </div>
-      </div>
-    </Link>
-  );
-}
