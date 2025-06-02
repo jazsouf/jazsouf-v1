@@ -42,22 +42,50 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
     }
   }, [isExpanded, prefersReducedMotion]);
 
+  const smoothScrollToElement = (element: HTMLElement) => {
+    const elementRect = element.getBoundingClientRect();
+    const absoluteElementTop = elementRect.top + window.pageYOffset;
+    const middle = absoluteElementTop - 20; // 20px offset from top
+
+    if (prefersReducedMotion) {
+      window.scrollTo(0, middle);
+      return;
+    }
+
+    // Custom smooth scroll that works consistently across browsers
+    const startPosition = window.pageYOffset;
+    const distance = middle - startPosition;
+    const duration = 800; // 800ms for smoother animation
+    let start: number | null = null;
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const progressPercentage = Math.min(progress / duration, 1);
+
+      // Easing function for smooth animation
+      const ease = 1 - Math.pow(1 - progressPercentage, 3);
+
+      window.scrollTo(0, startPosition + distance * ease);
+
+      if (progress < duration) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
   const toggleExpanded = () => {
     const newExpandedState = !isExpanded;
     setIsExpanded(newExpandedState);
-    
+
     // Scroll to top when expanding (not when closing)
     if (newExpandedState && headerRef.current) {
-      const scrollOptions: ScrollIntoViewOptions = {
-        behavior: prefersReducedMotion ? 'auto' : 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      };
-      
       // Small delay to allow animation to start
       setTimeout(() => {
-        headerRef.current?.scrollIntoView(scrollOptions);
-      }, prefersReducedMotion ? 0 : 100);
+        smoothScrollToElement(headerRef.current!);
+      }, 100);
     }
   };
 
@@ -68,16 +96,16 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
     }
   };
 
-  const animationClasses = prefersReducedMotion 
-    ? "" 
+  const animationClasses = prefersReducedMotion
+    ? ""
     : "transition-all duration-500 ease-out";
 
-  const iconAnimationClasses = prefersReducedMotion 
-    ? "" 
+  const iconAnimationClasses = prefersReducedMotion
+    ? ""
     : "transition-transform duration-300 ease-out";
 
-  const colorTransitionClasses = prefersReducedMotion 
-    ? "" 
+  const colorTransitionClasses = prefersReducedMotion
+    ? ""
     : "transition-colors duration-200";
 
   return (
@@ -95,38 +123,50 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
         <div className="w-full py-4 px-4 md:grid gap-4 grid-cols-12 text-left items-center">
           <h3 className="text-sm font-medium flex items-center justify-between md:justify-start col-span-12 md:col-span-3 tracking-tight mb-2 md:mb-0">
             <span className="text-gray-900">{project.title}</span>
-            <span className={`md:hidden ml-3 text-gray-500 ${iconAnimationClasses}`} 
-                  style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+            <span
+              className={`md:hidden ml-3 text-gray-500 ${iconAnimationClasses}`}
+              style={{
+                transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            >
               <ChevronDown className="size-4" />
             </span>
           </h3>
-          
+
           <div className="text-gray-600 text-sm col-span-12 md:col-span-2 font-normal mb-2 md:mb-0">
             {project.services?.join(" • ")}
           </div>
-          
+
           <div className="text-gray-700 col-span-12 md:col-span-5 flex items-center text-sm leading-relaxed mb-2 md:mb-0">
             <CustomPortableText value={project.overview} />
           </div>
-          
+
           <div className="text-gray-600 col-span-12 md:col-span-2 flex items-center justify-between text-sm font-normal">
-            <time dateTime={project.year?.toString()}>
-              {project.year}
-            </time>
-            <span className={`hidden md:inline ml-3 ${iconAnimationClasses}`} 
-                  style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+            <time dateTime={project.year?.toString()}>{project.year}</time>
+            <span
+              className={`hidden md:inline ml-3 ${iconAnimationClasses}`}
+              style={{
+                transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            >
               <ChevronDown className="size-4 text-gray-500" />
             </span>
           </div>
         </div>
       </header>
-      
+
       <div
         id={`project-details-${project.slug}`}
         className={`border-t border-gray-200/60 bg-gray-50/20 overflow-hidden ${animationClasses}`}
-        style={{ 
-          height, 
-          opacity: prefersReducedMotion ? (isExpanded ? 1 : 0) : (isExpanded ? 1 : 0)
+        style={{
+          height,
+          opacity: prefersReducedMotion
+            ? isExpanded
+              ? 1
+              : 0
+            : isExpanded
+              ? 1
+              : 0,
         }}
       >
         <div ref={contentRef} className="px-4 py-6">
@@ -140,10 +180,10 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
               />
             </figure>
           )}
-          
+
           <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
             {project.client && (
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
                   Client
                 </h4>
@@ -152,9 +192,9 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
                 </div>
               </div>
             )}
-            
+
             {project.site && (
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
                   Live Site
                 </h4>
@@ -169,24 +209,30 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
                 </a>
               </div>
             )}
-            
-            <div className="space-y-1">
+
+            <div className="space-y-2">
               <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
                 Year
               </h4>
-              <time dateTime={project.year?.toString()} className="text-sm text-gray-900 font-normal">
+              <time
+                dateTime={project.year?.toString()}
+                className="text-sm text-gray-900 font-normal"
+              >
                 {project.year}
               </time>
             </div>
-            
+
             {project.tags && project.tags.length > 0 && (
-              <div className="space-y-1">
-                <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
+              <div className="space-y-2">
+                <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 pb-1">
                   Stack
                 </h4>
                 <ul className="flex flex-wrap gap-1.5">
                   {project.tags.map((tag: string) => (
-                    <li key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-normal">
+                    <li
+                      key={tag}
+                      className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-normal"
+                    >
                       {tag}
                     </li>
                   ))}
@@ -194,10 +240,10 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
               </div>
             )}
           </section>
-          
+
           {project.description && (
             <section className="mb-8">
-              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-3">
+              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-4">
                 Description
               </h4>
               <div className="prose prose-sm prose-gray max-w-none">
@@ -208,10 +254,10 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
               </div>
             </section>
           )}
-          
+
           {project.extraImages && project.extraImages.length > 0 && (
             <section>
-              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-4">
+              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-5">
                 Additional Images
               </h4>
               <div className="grid gap-6">
