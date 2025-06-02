@@ -15,7 +15,11 @@ export const HOME_PAGE = defineQuery(`*[
       overview,
       services,
       tags,
-      year
+      year,
+      client,
+      site,
+      description,
+      extraImages
     },[]),
     services,
     stack,
