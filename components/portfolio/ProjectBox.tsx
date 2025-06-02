@@ -13,13 +13,33 @@ interface ProjectProps {
 export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [height, setHeight] = useState("0px");
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check for user's motion preferences
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
     if (contentRef.current) {
-      setHeight(isExpanded ? `${contentRef.current.scrollHeight}px` : "0px");
+      if (prefersReducedMotion) {
+        // Instant transition for reduced motion
+        setHeight(isExpanded ? "auto" : "0px");
+      } else {
+        // Smooth animation for normal motion
+        setHeight(isExpanded ? `${contentRef.current.scrollHeight}px` : "0px");
+      }
     }
-  }, [isExpanded]);
+  }, [isExpanded, prefersReducedMotion]);
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
@@ -32,6 +52,18 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
     }
   };
 
+  const animationClasses = prefersReducedMotion 
+    ? "" 
+    : "transition-all duration-500 ease-out";
+
+  const iconAnimationClasses = prefersReducedMotion 
+    ? "" 
+    : "transition-transform duration-300 ease-out";
+
+  const colorTransitionClasses = prefersReducedMotion 
+    ? "" 
+    : "transition-colors duration-200";
+
   return (
     <article className="overflow-hidden relative flex w-full flex-col">
       <header
@@ -41,25 +73,32 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
         onKeyDown={handleKeyDown}
         aria-expanded={isExpanded}
         aria-controls={`project-details-${project.slug}`}
-        className="hover:bg-a-color flex w-full flex-col justify-between p-3 xl:py-0 cursor-pointer transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-a-color focus:ring-inset"
+        className={`hover:bg-gray-50/50 flex w-full cursor-pointer focus:outline-none focus:bg-gray-50/70 ${colorTransitionClasses}`}
       >
-        <div className="contents py-1 md:grid gap-2 grid-cols-5 text-left">
-          <h3 className="text-md font-extrabold md:text-lg flex items-center justify-between md:justify-start">
-            <span>{project.title}</span>
-            <span className="md:hidden transition-transform duration-300" style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+        <div className="w-full py-4 px-4 md:grid gap-4 grid-cols-12 text-left items-center">
+          <h3 className="text-sm font-medium flex items-center justify-between md:justify-start col-span-3 tracking-tight">
+            <span className="text-gray-900">{project.title}</span>
+            <span className={`md:hidden ml-3 text-gray-500 ${iconAnimationClasses}`} 
+                  style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
               <ChevronDown className="size-4" />
             </span>
           </h3>
-          <div className="text-t-color opacity-80">
-            {project.services?.join(", ")}
+          
+          <div className="text-gray-600 text-sm col-span-2 font-normal">
+            {project.services?.join(" • ")}
           </div>
-          <div className="text-t-color col-span-2 flex items-center">
+          
+          <div className="text-gray-700 col-span-5 flex items-center text-sm leading-relaxed">
             <CustomPortableText value={project.overview} />
           </div>
-          <div className="text-t-color opacity-80 flex items-center justify-between">
-            <time dateTime={project.year?.toString()}>{project.year}</time>
-            <span className="hidden md:inline transition-transform duration-300" style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-              <ChevronDown className="size-4" />
+          
+          <div className="text-gray-600 col-span-2 flex items-center justify-between text-sm font-normal">
+            <time dateTime={project.year?.toString()}>
+              {project.year}
+            </time>
+            <span className={`hidden md:inline ml-3 ${iconAnimationClasses}`} 
+                  style={{ transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+              <ChevronDown className="size-4 text-gray-500" />
             </span>
           </div>
         </div>
@@ -67,57 +106,70 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
       
       <div
         id={`project-details-${project.slug}`}
-        className="border-t border-a-color bg-bg-color transition-all duration-500 ease-in-out overflow-hidden"
-        style={{ height, opacity: isExpanded ? 1 : 0 }}
+        className={`border-t border-gray-200/60 bg-gray-50/20 overflow-hidden ${animationClasses}`}
+        style={{ 
+          height, 
+          opacity: prefersReducedMotion ? (isExpanded ? 1 : 0) : (isExpanded ? 1 : 0)
+        }}
       >
-        <div ref={contentRef} className="p-3">
+        <div ref={contentRef} className="px-4 py-6">
           {project.coverImage && (
-            <figure className="mb-4">
+            <figure className="mb-8">
               <ImageBox
                 image={project.coverImage?.asset}
                 alt={`Cover image for ${project.title}`}
-                classesWrapper="relative aspect-[16/9]"
+                classesWrapper="relative aspect-[16/9] rounded overflow-hidden"
                 size="(max-width: 768px) 90vw, 60vw"
               />
             </figure>
           )}
           
-          <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mb-4">
+          <section className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
             {project.client && (
-              <div>
-                <h4 className="text-xs md:text-sm font-bold pb-0.5 text-t-color opacity-80">Client</h4>
-                <div className="text-md md:text-lg text-t-color">{project.client}</div>
+              <div className="space-y-1">
+                <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
+                  Client
+                </h4>
+                <div className="text-sm text-gray-900 font-normal">
+                  {project.client}
+                </div>
               </div>
             )}
             
             {project.site && (
-              <div>
-                <h4 className="text-xs md:text-sm font-bold pb-0.5 text-t-color opacity-80">Site</h4>
+              <div className="space-y-1">
+                <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
+                  Live Site
+                </h4>
                 <a
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="hover:text-ah-color text-a-color break-words underline text-md md:text-lg transition-colors duration-200"
+                  className={`hover:text-blue-700 text-blue-600 break-words underline underline-offset-2 decoration-1 text-sm font-normal ${colorTransitionClasses}`}
                   href={project.site}
                   aria-label={`Visit live site for ${project.title} (opens in new tab)`}
                 >
-                  Visit Live
+                  Visit Live →
                 </a>
               </div>
             )}
             
-            <div>
-              <h4 className="text-xs md:text-sm font-bold pb-0.5 text-t-color opacity-80">Year</h4>
-              <time dateTime={project.year?.toString()} className="text-md md:text-lg text-t-color">
+            <div className="space-y-1">
+              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
+                Year
+              </h4>
+              <time dateTime={project.year?.toString()} className="text-sm text-gray-900 font-normal">
                 {project.year}
               </time>
             </div>
             
             {project.tags && project.tags.length > 0 && (
-              <div>
-                <h4 className="text-xs md:text-sm font-bold pb-0.5 text-t-color opacity-80">Stack</h4>
-                <ul className="text-md flex flex-wrap gap-2 md:text-lg text-t-color">
+              <div className="space-y-1">
+                <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500">
+                  Stack
+                </h4>
+                <ul className="flex flex-wrap gap-2">
                   {project.tags.map((tag: string) => (
-                    <li key={tag} className="break-words">
+                    <li key={tag} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded font-normal">
                       {tag}
                     </li>
                   ))}
@@ -127,25 +179,31 @@ export function ProjectBox({ project }: { project: ProjectProps["project"] }) {
           </section>
           
           {project.description && (
-            <section className="mb-4">
-              <h4 className="text-xs md:text-sm font-bold pb-2 text-t-color opacity-80">Description</h4>
-              <CustomPortableText
-                paragraphClasses="text-lg text-t-color"
-                value={project.description}
-              />
+            <section className="mb-8">
+              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-3">
+                Description
+              </h4>
+              <div className="prose prose-sm prose-gray max-w-none">
+                <CustomPortableText
+                  paragraphClasses="text-sm leading-relaxed text-gray-700 mb-3"
+                  value={project.description}
+                />
+              </div>
             </section>
           )}
           
           {project.extraImages && project.extraImages.length > 0 && (
             <section>
-              <h4 className="text-xs md:text-sm font-bold pb-2 text-t-color opacity-80">Additional Images</h4>
-              <div className="grid gap-4">
+              <h4 className="text-xs uppercase tracking-wide font-medium text-gray-500 mb-4">
+                Additional Images
+              </h4>
+              <div className="grid gap-6">
                 {project.extraImages.map((image, index) => (
-                  <figure key={image._key}>
+                  <figure key={image._key} className="group">
                     <ImageBox
                       image={image.asset}
                       alt={`Additional image ${index + 1} for ${project.title}`}
-                      classesWrapper="relative aspect-[16/9]"
+                      classesWrapper="relative aspect-[16/9] rounded overflow-hidden group-hover:shadow-sm transition-shadow duration-300"
                       size="(max-width: 768px) 90vw, 60vw"
                     />
                   </figure>
