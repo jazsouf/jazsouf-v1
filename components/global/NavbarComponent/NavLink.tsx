@@ -22,14 +22,20 @@ export default function NavLink({
       key={menuItem.slug}
       className={clsx(
         "lowercase hover:outline-[0.5px]",
-        menuItem?._type === "home" ? "text-p-color md:text-xl" : "text-a-color/90 md:text-xl",
+        menuItem?._type === "home"
+          ? "text-p-color md:text-xl"
+          : "text-a-color/90 md:text-xl",
         pathname === href && "outline-[1px]",
       )}
       href={href}
     >
       <AnimatedName
         mainName={menuItem.title}
-        subName={menuItem.title.toLocaleLowerCase() === "soufiane" ? "home" : undefined}
+        subName={
+          menuItem.title.toLocaleLowerCase() === "soufiane"
+            ? "jazouli"
+            : undefined
+        }
       />
     </Link>
   );

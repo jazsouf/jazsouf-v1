@@ -54,8 +54,8 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {showcaseProjects && showcaseProjects.length > 0 && (
         <section className="flex flex-col pt-4 justify-start items-center">
           <div id="projects" className="absolute translate-y-[-160px]" />
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 px-3">
-            Some recent projects I worked on
+          <h2 className="text-md lowercase w-full text-t-color pb-4 px-3">
+            Some projects I worked on
           </h2>
           <ul className="w-full">
             {showcaseProjects.map((project) => {

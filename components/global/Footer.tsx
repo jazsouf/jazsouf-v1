@@ -13,11 +13,9 @@ export default async function Footer() {
       <footer className="relative z-20 bg-transparent text-t-color text-center flex flex-col min-h-[100svh] py-6 items-center justify-between">
         {footer && <CustomPortableText paragraphClasses="" value={footer} />}
         <p className="text-xl md:text-3xl text-t-color px-6 md:px-[20%] leading-relaxed">
-          Take a step back. Believe you can change. Look at yourself objectively. Lean into the
-          pain. Confront reality. Cherish mistakes. Fix the machine, not the person. —{" "}
-          <i>Aaron Swartz</i>
+          Make beautiful things that speak to people
         </p>
-        <p>© 2024 – Soufiane El Jazouli</p>
+        <p>© 2025 – Soufiane El Jazouli</p>
       </footer>
     </div>
   );
@@ -30,7 +28,11 @@ function FluidGradient() {
         <title>Goo</title>
         <defs>
           <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
             <feColorMatrix
               in="blur"
               mode="matrix"
