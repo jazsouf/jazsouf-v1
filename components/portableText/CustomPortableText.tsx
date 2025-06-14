@@ -139,7 +139,7 @@ export function CustomPortableText({
         return (
           <Link
             href={value.href}
-            className=" underline underline-offset-2 transition hover:text-a-color"
+            className=" underline underline-offset-2 transition hover:text-a-color scroll-smooth"
           >
             {children}
           </Link>
