@@ -74,20 +74,7 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
         </section>
       )}
       <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
-        {avatar && (
-          <div className="col-start-1 flex items-center justify-center">
-            <div className="md:size-52 size-28">
-              <ImageBox
-                image={avatar?.asset}
-                alt="my social media avatar: a man wearing a purple beanie looking down at his phone"
-                classesWrapper="border border-a-color aspect-square"
-                width={500}
-                height={500}
-              />
-            </div>
-          </div>
-        )}
-        <section className="col-start-2 text-center">
+        <section className="col-start-1 text-center">
           <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">
             Services
           </h2>
@@ -97,6 +84,22 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
             </div>
           ))}
         </section>
+        {avatar && (
+          <div className="col-start-2 flex items-center justify-center">
+            <figure className="md:size-52 size-28">
+              <ImageBox
+                image={avatar?.asset}
+                alt="my face trying to debugs"
+                classesWrapper="border border-a-color aspect-square"
+                width={500}
+                height={500}
+              />
+              <figcaption className="text-md lowercase w-full text-t-color opacity-80 pb-4">
+                Me debugging code
+              </figcaption>
+            </figure>
+          </div>
+        )}
         <section className="col-start-3 text-center">
           <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">
             Stack

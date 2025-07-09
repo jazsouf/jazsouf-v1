@@ -1,14 +1,10 @@
 # TODO
 
-[ ] Add expanding accordion section for projects
-
 ## Current
 
-[ ] Add extra media for projects
+[ ] Add simple analytics
 
 ## Backlog
-
-[ ] Add simple analitics
 
 ## Cancelled
 
