@@ -3,7 +3,7 @@
 @theme {
   --color-p-color: #ffffff;
   --color-s-color: #f5f9fc;
-  --color-a-color: #2999a5;
+  --color-a-color: #c5c5c5;
   --color-ah-color: #4c5b61;
   --color-b-color: #4c5b61;
   --color-t-color: #1e1e24;
@@ -76,9 +76,8 @@
 :root {
   --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
-  --sans: Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
-    sans-serif;
-  font-weight: 1000;
+  --sans: system-ui, sans-serif;
+  font-weight: 100;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
