@@ -3,8 +3,8 @@ import { defineMetadata } from "@/utils/metadata";
 import { toPlainText } from "@portabletext/react";
 import type { Metadata } from "next/types";
 
-import ImageBox from "@/components/shared/ImageBox";
 import { ProjectBox } from "@/components/portfolio/ProjectBox";
+import ImageBox from "@/components/shared/ImageBox";
 import { sanityFetch } from "@/sanity-cms/fetch";
 import { HOME_PAGE, SETTINGS } from "@/sanity-cms/groq";
 import type { HOME_PAGEResult } from "@/sanity-cms/types";
@@ -51,41 +51,9 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {title && overview && (
         <Header centered title={title} description={overview} />
       )}
-      {showcaseProjects && showcaseProjects.length > 0 && (
-        <section className="flex flex-col pt-4 justify-start items-center">
-          <div id="projects" className="absolute translate-y-[-160px]" />
-          <h2 className="text-md lowercase w-full text-t-color pb-4 px-3">
-            Some projects I worked on
-          </h2>
-          <ul className="w-full">
-            {showcaseProjects.map((project) => {
-              return (
-                <li
-                  key={project.slug}
-                  className={
-                    "flex flex-col first:border-t border-a-color border-b"
-                  }
-                >
-                  <ProjectBox project={project} />
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )}
-      <div className="grid grid-cols-3 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
-        <section className="col-start-1 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4 ">
-            Services
-          </h2>
-          {services?.map((service) => (
-            <div key={service} className="text-t-color">
-              {service}
-            </div>
-          ))}
-        </section>
+      <div className="grid grid-cols-1 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
         {avatar && (
-          <div className="col-start-2 flex items-center justify-center">
+          <div className="flex items-center justify-center">
             <figure className="md:size-52 size-28">
               <ImageBox
                 image={avatar?.asset}
@@ -94,22 +62,12 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
                 width={500}
                 height={500}
               />
-              <figcaption className="text-md lowercase w-full text-t-color opacity-80 pb-4">
-                Me debugging code
+              <figcaption className="text-sm lowercase w-full text-t-color opacity-70 pb-2">
+                Me not paying attention during a meeting
               </figcaption>
             </figure>
           </div>
         )}
-        <section className="col-start-3 text-center">
-          <h2 className="text-md lowercase w-full text-t-color opacity-80 pb-4">
-            Stack
-          </h2>
-          {stack?.map((item) => (
-            <div key={item} className="text-t-color">
-              {item}
-            </div>
-          ))}
-        </section>
       </div>
     </main>
   );

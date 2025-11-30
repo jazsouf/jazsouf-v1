@@ -76,7 +76,7 @@
 :root {
   --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
     "DejaVu Sans Mono", monospace;
-  --sans: system-ui, sans-serif;
+  --sans: Helvetica, system-ui, sans-serif;
   font-weight: 100;
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
