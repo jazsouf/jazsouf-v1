@@ -51,24 +51,6 @@ function HomePage({ data }: { data: NonNullable<HOME_PAGEResult> }) {
       {title && overview && (
         <Header centered title={title} description={overview} />
       )}
-      <div className="grid grid-cols-1 gap-4 pb-4 px-2 text-lg md:text-xl text-center">
-        {avatar && (
-          <div className="flex items-center justify-center">
-            <figure className="md:size-52 size-28">
-              <ImageBox
-                image={avatar?.asset}
-                alt="my face trying to debugs"
-                classesWrapper="border border-a-color aspect-square"
-                width={500}
-                height={500}
-              />
-              <figcaption className="text-sm lowercase w-full text-t-color opacity-70 pb-2">
-                Me not paying attention during a meeting
-              </figcaption>
-            </figure>
-          </div>
-        )}
-      </div>
     </main>
   );
 }
