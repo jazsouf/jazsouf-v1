@@ -21,11 +21,9 @@ const extAttrs = (href?: string) =>
         <p class="hero-line">{line.map((span) => (span.href ? <a class="link" href={span.href} {...extAttrs(span.href)}>{span.text}</a> : span.text))}</p>
       ))}
     </section>
-    <div class="gradientBg"></div>
   </main>
 
   <footer class="footer">
-    <div class="footerBg"></div>
     <div class="footer-content">
       <p class="footer-links">{footerLinks.map((link, i) => (<Fragment>{i > 0 ? " | " : ""}<a class="link" href={link.href} {...extAttrs(link.href)}>{link.text}</a></Fragment>))}</p>
       <p class="tagline">{site.tagline}</p>
