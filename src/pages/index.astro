@@ -17,21 +17,9 @@ const extAttrs = (href?: string) =>
 
   <main class="page">
     <section id="header" class="header">
-      {
-        hero.map((line) => (
-          <p class="hero-line">
-            {line.map((span) =>
-              span.href ? (
-                <a class="link" href={span.href} {...extAttrs(span.href)}>
-                  {span.text}
-                </a>
-              ) : (
-                span.text
-              ),
-            )}
-          </p>
-        ))
-      }
+      {hero.map((line) => (
+        <p class="hero-line">{line.map((span) => (span.href ? <a class="link" href={span.href} {...extAttrs(span.href)}>{span.text}</a> : span.text))}</p>
+      ))}
     </section>
     <div class="gradientBg"></div>
   </main>
@@ -39,18 +27,7 @@ const extAttrs = (href?: string) =>
   <footer class="footer">
     <div class="footerBg"></div>
     <div class="footer-content">
-      <p class="footer-links">
-        {
-          footerLinks.map((link, i) => (
-            <Fragment>
-              {i > 0 && " | "}
-              <a class="link" href={link.href} {...extAttrs(link.href)}>
-                {link.text}
-              </a>
-            </Fragment>
-          ))
-        }
-      </p>
+      <p class="footer-links">{footerLinks.map((link, i) => (<Fragment>{i > 0 ? " | " : ""}<a class="link" href={link.href} {...extAttrs(link.href)}>{link.text}</a></Fragment>))}</p>
       <p class="tagline">{site.tagline}</p>
       <p class="copyright">{site.copyright}</p>
     </div>
