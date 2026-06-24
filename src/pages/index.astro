@@ -1,11 +1,58 @@
 ---
 import Base from "../layouts/Base.astro";
+import Name from "../components/Name.astro";
+import { site, hero, footerLinks } from "../site";
+
+const isExternal = (href?: string) => !!href && href.startsWith("http");
+const extAttrs = (href?: string) =>
+  isExternal(href) ? { target: "_blank", rel: "noreferrer noopener" } : {};
 ---
 
 <Base>
+  <nav class="nav">
+    <a class="nav-link" href="/" aria-label={site.name.main}>
+      <Name main={site.name.main} sub={site.name.sub} />
+    </a>
+  </nav>
+
   <main class="page">
-    <section class="header">
-      <p class="hero-line">Soufiane</p>
+    <section id="header" class="header">
+      {
+        hero.map((line) => (
+          <p class="hero-line">
+            {line.map((span) =>
+              span.href ? (
+                <a class="link" href={span.href} {...extAttrs(span.href)}>
+                  {span.text}
+                </a>
+              ) : (
+                span.text
+              ),
+            )}
+          </p>
+        ))
+      }
     </section>
+    <div class="gradientBg"></div>
   </main>
+
+  <footer class="footer">
+    <div class="footerBg"></div>
+    <div class="footer-content">
+      <p class="footer-links">
+        {
+          footerLinks.map((link, i) => (
+            <Fragment>
+              {i > 0 && " | "}
+              <a class="link" href={link.href} {...extAttrs(link.href)}>
+                {link.text}
+              </a>
+            </Fragment>
+          ))
+        }
+      </p>
+      <p class="tagline">{site.tagline}</p>
+      <p class="copyright">{site.copyright}</p>
+    </div>
+  </footer>
 </Base>
