@@ -6,7 +6,7 @@ interface Props {
 
 const { main, sub = main } = Astro.props;
 const letters = (word: string) =>
-  word.split("").map((c) => (c === " " ? " " : c));
+  word.split("").map((c) => (c === " " ? "\u00A0" : c));
 ---
 
 <span class="name">
