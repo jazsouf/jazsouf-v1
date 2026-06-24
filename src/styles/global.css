@@ -1,0 +1,168 @@
+:root {
+  --color-p-color: #ffffff;
+  --color-s-color: #f5f9fc;
+  --color-a-color: #c5c5c5;
+  --color-t-color: #1e1e24;
+  --serif: "Times New Roman", Times, serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 360px;
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  background: var(--color-a-color);
+  font-size: 16px;
+  line-height: 1.4;
+  font-family: var(--serif);
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--color-p-color);
+  color: var(--color-t-color);
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overscroll-behavior: none;
+}
+
+::selection {
+  background-color: var(--color-a-color);
+  color: var(--color-s-color);
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote {
+  margin-block-end: 0;
+}
+
+a {
+  color: currentColor;
+  text-decoration-skip-ink: auto;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.3s;
+}
+
+.link:hover {
+  color: var(--color-t-color);
+}
+
+/* Navbar */
+.nav {
+  position: absolute;
+  z-index: 20;
+  top: 1.25rem;
+  left: 2.5rem;
+}
+
+.nav-link {
+  display: inline-block;
+  text-transform: lowercase;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+/* Page + hero */
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  place-content: center;
+  min-height: 95svh;
+  padding: 0.75rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hero-line {
+  font-size: 1.25rem;
+  max-width: 64rem;
+  padding-top: 0.375rem;
+}
+
+.gradientBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  min-height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(
+    177deg,
+    var(--color-a-color) 10%,
+    var(--color-p-color) 80%,
+    var(--color-p-color) 100%
+  );
+}
+
+/* Footer */
+.footer {
+  position: relative;
+}
+
+.footerBg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  min-height: 100svh;
+  overflow: hidden;
+  background: linear-gradient(
+    183deg,
+    var(--color-p-color) 10%,
+    var(--color-a-color) 80%,
+    var(--color-a-color) 100%
+  );
+}
+
+.footer-content {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100svh;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 1.875rem;
+  padding: 0 10%;
+  line-height: 1.6;
+}
