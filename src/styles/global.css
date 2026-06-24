@@ -166,3 +166,7 @@ a {
   padding: 0 10%;
   line-height: 1.6;
 }
+
+.copyright {
+  font-size: 0.875rem;
+}
