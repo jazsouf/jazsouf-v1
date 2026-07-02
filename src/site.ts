@@ -2,7 +2,7 @@ export type Span = { text: string; href?: string };
 
 export const site = {
   title: "Soufiane",
-  description: "Soufiane El Jazouli — Tech at parc.",
+  description: "Soufiane El Jazouli — Technology at parc.",
   url: "https://soufianee.com",
   ogImage: "/og.png",
   name: "soufiane el jazouli",
@@ -11,7 +11,7 @@ export const site = {
 
 export const hero: Span[][] = [
   [
-    { text: "Tech at " },
+    { text: "Technology at " },
     { text: "parc", href: "https://parc.studio" },
     { text: "." },
   ],
