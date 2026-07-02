@@ -22,7 +22,7 @@ const extAttrs = (href?: string) =>
 
   <footer class="footer">
     <div class="footer-content">
-      <p class="footer-links">{footerLinks.map((link, i) => (<Fragment>{i > 0 ? " | " : ""}<a class="link" href={link.href} {...extAttrs(link.href)}>{link.text}</a></Fragment>))}</p>
+      <p class="footer-links">{footerLinks.map((link, i) => (<Fragment>{i > 0 ? "; " : ""}<a class="link" href={link.href} {...extAttrs(link.href)}>{link.text}</a></Fragment>))}</p>
       <p class="tagline">{site.tagline}</p>
     </div>
   </footer>

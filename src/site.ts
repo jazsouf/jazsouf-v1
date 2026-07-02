@@ -6,17 +6,17 @@ export const site = {
   url: "https://soufianee.com",
   ogImage: "/og.png",
   name: "soufiane el jazouli",
-  tagline: "Make things with care.",
+  tagline: "make things with care.",
 };
 
 export const hero: Span[][] = [
   [
-    { text: "Technology at " },
+    { text: "technology at " },
     { text: "parc", href: "https://parc.studio" },
     { text: "." },
   ],
   [
-    { text: "Reach out - " },
+    { text: "reach out; " },
     { text: "soufiane@parc.studio", href: "mailto:soufiane@parc.studio" },
   ],
 ];

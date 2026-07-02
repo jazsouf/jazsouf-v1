@@ -41,6 +41,21 @@ body {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    animation: fade-in 0.4s ease-out;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html,
 body {
   overscroll-behavior: none;
@@ -119,7 +134,7 @@ a {
   z-index: 10;
   display: grid;
   place-content: center;
-  min-height: 95svh;
+  min-height: 100svh;
   padding: 0.75rem;
   text-align: center;
   line-height: 1.6;
