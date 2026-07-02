@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-import Name from "../components/Name.astro";
 import { site, hero, footerLinks } from "../site";
 
 const isExternal = (href?: string) => !!href && href.startsWith("http");
@@ -10,15 +9,13 @@ const extAttrs = (href?: string) =>
 
 <Base>
   <nav class="nav">
-    <a class="nav-link" href="/" aria-label={site.name.main}>
-      <Name main={site.name.main} sub={site.name.sub} />
-    </a>
+    <a class="nav-link" href="/">{site.name}</a>
   </nav>
 
   <main class="page">
     <section id="header" class="header">
       {hero.map((line) => (
-        <p class="hero-line">{line.map((span) => (span.href ? <a class="link" href={span.href} {...extAttrs(span.href)}>{span.text}</a> : span.text))}</p>
+        <p class="hero-line">{line.map((span) => (span.href ? <a class="link" href={span.href} {...extAttrs(span.href)}>{span.text.split(/(parc)/).map((part) => (part === "parc" ? <span class="parc">{part}</span> : part))}</a> : span.text))}</p>
       ))}
     </section>
   </main>
@@ -27,7 +24,6 @@ const extAttrs = (href?: string) =>
     <div class="footer-content">
       <p class="footer-links">{footerLinks.map((link, i) => (<Fragment>{i > 0 ? " | " : ""}<a class="link" href={link.href} {...extAttrs(link.href)}>{link.text}</a></Fragment>))}</p>
       <p class="tagline">{site.tagline}</p>
-      <p class="copyright">{site.copyright}</p>
     </div>
   </footer>
 </Base>

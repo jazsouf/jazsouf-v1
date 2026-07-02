@@ -5,9 +5,8 @@ export const site = {
   description: "Soufiane El Jazouli — Tech @parc.",
   url: "https://soufianee.com",
   ogImage: "/og.png",
-  name: { main: "Soufiane", sub: "jazouli" },
-  tagline: "Make beautiful things that speak to people",
-  copyright: "© 2025 – Soufiane El Jazouli",
+  name: "soufiane el jazouli",
+  tagline: "Make things with care.",
 };
 
 export const hero: Span[][] = [
@@ -23,7 +22,7 @@ export const hero: Span[][] = [
 ];
 
 export const footerLinks: Span[] = [
-  { text: "email", href: "mailto:soufiane@parc.studio" },
+  { text: "are.na", href: "https://www.are.na/soufiane-el-jazouli/" },
   { text: "github", href: "https://github.com/jazsouf" },
   { text: "bsky", href: "https://bsky.app/profile/jazsouf.bsky.social" },
 ];

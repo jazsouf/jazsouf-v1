@@ -1,9 +1,19 @@
+@font-face {
+  font-family: "Parc Helvetica Medium";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Parc-Helvetica-Medium.woff2") format("woff2");
+}
+
 :root {
   --color-p-color: #ffffff;
   --color-s-color: #f5f9fc;
   --color-a-color: #c5c5c5;
   --color-t-color: #1e1e24;
   --serif: "Times New Roman", Times, serif;
+  --font-parc: "Parc Helvetica Medium", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 *,
@@ -72,6 +82,15 @@ a {
   color: var(--color-t-color);
 }
 
+.parc {
+  font-family: var(--font-parc);
+  font-weight: 500;
+  letter-spacing: 0;
+  /* Optical compensation: the parc face runs larger than Times at
+     equal font-size, so it is scaled down to match x-height. */
+  font-size: 0.85em;
+}
+
 /* Navbar */
 .nav {
   position: absolute;
@@ -133,8 +152,4 @@ a {
   font-size: 1.875rem;
   padding: 0 10%;
   line-height: 1.6;
-}
-
-.copyright {
-  font-size: 0.875rem;
 }
